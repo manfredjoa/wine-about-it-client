@@ -1,25 +1,25 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./pages/Home.jsx";
-import Search from "./pages/Search.jsx";
-import WineDetail from "./pages/WineDetail.jsx";
-import Favorites from "./pages/Favorites.jsx";
+import HomePage from "./pages/HomePage.jsx";
+import SearchPage from "./pages/SearchPage.jsx";
+import WineDetailPage from "./pages/WineDetailPage.jsx";
+import FavoritesPage from "./pages/FavoritesPage.jsx";
 import RegistrationPage from "./pages/RegistrationPage.jsx";
-import ShoppingCart from "./pages/ShoppingCart.jsx";
-import Checkout from "./pages/Checkout.jsx";
 import SignInPage from "./pages/SignInPage.jsx";
+import ShoppingCartPage from "./pages/ShoppingCartPage.jsx";
+import CheckoutPage from "./pages/CheckoutPage.jsx";
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/search/wine-detail" element={<WineDetail />} />
-        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/search/wine-detail" element={<WineDetailPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
-        <Route path="/shopping-cart" element={<ShoppingCart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/signin" element={<SignInPage />} />
+        <Route path="/sign-in" element={<SignInPage />} />
+        <Route path="/shopping-cart" element={<ShoppingCartPage />} />
+        <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
     </div>
   );

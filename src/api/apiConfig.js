@@ -3,8 +3,8 @@ import axios from "axios";
 let apiUrl;
 
 const apiUrls = {
-  production: "PRODUCTION URL (HEROKU)",
-  development: "DEVELOPMENT URL (LOCALHOST)",
+  production: "https://wine-about-it-d540b94350f1.herokuapp.com/api",
+  development: "https://wine-about-it-d540b94350f1.herokuapp.com/api",
 };
 
 if (window.location.hostname === "localhost") {
@@ -18,5 +18,3 @@ const api = axios.create({
 });
 
 export default api;
-
-// I personally think it's easier to also have the development URL as the deployed Heroku URL
