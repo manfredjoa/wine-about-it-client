@@ -4,6 +4,7 @@ import SearchPage from "./pages/SearchPage.jsx";
 import WineDetailPage from "./pages/WineDetailPage.jsx";
 import FavoritesPage from "./pages/FavoritesPage.jsx";
 import RegistrationPage from "./pages/RegistrationPage.jsx";
+import SignInPage from "./pages/SignInPage.jsx";
 import ShoppingCartPage from "./pages/ShoppingCartPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
 
@@ -16,6 +17,7 @@ function App() {
         <Route path="/search/wine-detail" element={<WineDetailPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
+        <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
       </Routes>
