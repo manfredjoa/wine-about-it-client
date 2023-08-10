@@ -23,7 +23,7 @@ const Footer = () => {
           </ul>
         </div>
         <div className="mt-6">
-          <h3 className="text-lg font-semibold mb-2">Newsletter</h3>
+          <h3 className="text-lg font-semibold mb-2">Sign Up for Our Newsletter</h3>
           <form onSubmit={handleSubmit} className="flex space-x-2">
             <input
               type="email"
@@ -40,9 +40,21 @@ const Footer = () => {
         <div className="mt-6">
           <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
           <ul className="flex space-x-4">
-            <li><a href="https://www.facebook.com/wineaboutit" className="hover:text-gray-400"><i className="fab fa-facebook"></i></a></li>
-            <li><a href="https://www.twitter.com/wineaboutit" className="hover:text-gray-400"><i className="fab fa-twitter"></i></a></li>
-            <li><a href="https://www.instagram.com/wineaboutit" className="hover:text-gray-400"><i className="fab fa-instagram"></i></a></li>
+            <li>
+              <a href="https://www.facebook.com/wineaboutit" className="hover:text-gray-400">
+                <i className="fab fa-facebook"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.twitter.com/wineaboutit" className="hover:text-gray-400">
+                <i className="fab fa-twitter"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/wineaboutit" className="hover:text-gray-400">
+                <i className="fab fa-instagram"></i>
+              </a>
+            </li>
           </ul>
         </div>
       </div>
