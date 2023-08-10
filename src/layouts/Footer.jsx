@@ -47,7 +47,7 @@ const Footer = () => {
             </li>
             <li>
               <a href="https://www.twitter.com/wineaboutit" className="hover:text-gray-400">
-                <i className="fab fa-twitter"></i>
+              <i className="fa-brands fa-x-twitter"></i>
               </a>
             </li>
             <li>
