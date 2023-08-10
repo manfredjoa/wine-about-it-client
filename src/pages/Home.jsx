@@ -1,3 +1,11 @@
+import WineCarousel from "../components/WineCarousel.jsx";
+
 export default function Home() {
-  return <div>Home</div>;
+  return (
+    <div>
+      {/* Nav */}
+      <WineCarousel />
+      {/* Footer */}
+    </div>
+  );
 }
