@@ -1,12 +1,22 @@
-import api from "./apiConfig.js";
+import axios from "axios";
 
-// CRUD functions to be exported typically following this format:
+let apiUrl;
 
-// export const FUNCTION = async () => {
-//   try {
-//     const response = await api.CRUD("/ENDPOINT");
-//     return response.data
-//   } catch (error) {
-//     console.log("Error: ERROR MESSAGE.", error);
-//   }
-// }
+const apiUrls = {
+  production: "PRODUCTION URL (HEROKU)",
+  development: "DEVELOPMENT URL (LOCALHOST)",
+};
+
+if (window.location.hostname === "localhost") {
+  apiUrl = apiUrls.development;
+} else {
+  apiUrl = apiUrls.production;
+}
+
+const api = axios.create({
+  baseURL: apiUrl,
+});
+
+export default api;
+
+// I personally think it's easier to also have the development URL as the deployed Heroku URL
