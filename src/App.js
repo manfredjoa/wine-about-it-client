@@ -8,6 +8,9 @@ import SignInPage from "./pages/SignInPage.jsx";
 import ShoppingCartPage from "./pages/ShoppingCartPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
 import FilterPage from "./pages/FilterPage.jsx";
+import AccountInfoPage from "./pages/AccountInfoPage.jsx";
+import LinkToRegistrationPage from "./pages/LinkToRegistrationPage.jsx";
+import AccountInfoPage from "./pages/AccountInfoPage.jsx"
 
 function App() {
   return (
@@ -15,14 +18,18 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/search/wine-detail" element={<WineDetailPage />} />
+        <Route path="/search/wine-detail/:id" element={<WineDetailPage />} />
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/filter" element={<FilterPage />} />
+        <Route path="/link-to-registration" element={<LinkToRegistrationPage />} />
+        <Route path="/filter" element={<FilterPage />} />
+        <Route path="/account-info" element={<AccountInfoPage />} />
       </Routes>
+      }
     </div>
   );
 }

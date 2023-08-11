@@ -15,6 +15,7 @@ export const getWine = async (id) => {
   try {
     const response = await api.get(`/wines/id/${id}`);
     return response.data;
+    console.log(response.data);
   } catch (error) {
     console.log("Error: Getting wine by ID.", error);
   }
