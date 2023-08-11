@@ -26,10 +26,8 @@ function App() {
         <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/filter" element={<FilterPage />} />
         <Route path="/link-to-registration" element={<LinkToRegistrationPage />} />
-        <Route path="/filter" element={<FilterPage />} />
         <Route path="/account-info" element={<AccountInfoPage />} />
       </Routes>
-      }
     </div>
   );
 }
