@@ -10,7 +10,6 @@ import CheckoutPage from "./pages/CheckoutPage.jsx";
 import FilterPage from "./pages/FilterPage.jsx";
 import AccountInfoPage from "./pages/AccountInfoPage.jsx";
 import LinkToRegistrationPage from "./pages/LinkToRegistrationPage.jsx";
-import AccountInfoPage from "./pages/AccountInfoPage.jsx"
 
 function App() {
   return (
@@ -24,8 +23,11 @@ function App() {
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/filter" element={<FilterPage />} />
-        <Route path="/link-to-registration" element={<LinkToRegistrationPage />} />
+        <Route path="/filter/:productType" element={<FilterPage />} />
+        <Route
+          path="/link-to-registration"
+          element={<LinkToRegistrationPage />}
+        />
         <Route path="/account-info" element={<AccountInfoPage />} />
       </Routes>
     </div>

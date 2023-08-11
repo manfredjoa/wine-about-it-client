@@ -2,47 +2,68 @@ import { useEffect, useState } from "react";
 import { getRedWines, getWhiteWines, getRoseWines, getWines } from "../api/api";
 import { ButtonGroup, Button } from "@material-tailwind/react";
 import WineDetail from "../components/WineDetail";
+import { useParams, useNavigate } from "react-router-dom";
 
 export default function FilterPage() {
   const [wine, setWine] = useState([]);
-  const [toggle, setToggle] = useState(false);
+  const [productTypeToggle, setProductTypeToggle] = useState(false);
+  const [subFilterToggle, setSubFilterToggle] = useState(false);
+  const navigate = useNavigate();
+  let { productType } = useParams();
 
+  // Re-renders page when productType button is clicked
   useEffect(() => {
-    fetchWines();
-  }, []);
+    fetchWinesByProductType();
+  }, [productTypeToggle]);
 
-  useEffect(() => {}, [toggle]);
-
-  async function fetchWines() {
-    const allWines = await getWines();
-    setWine(allWines);
+  // Fetches wines based on productType from url
+  async function fetchWinesByProductType() {
+    if (productType === "red") {
+      const allWines = await getRedWines();
+      setWine(allWines);
+    } else if (productType === "white") {
+      const allWines = await getWhiteWines();
+      setWine(allWines);
+    } else if (productType === "rose") {
+      const allWines = await getRoseWines();
+      setWine(allWines);
+    } else if (productType === "all") {
+      const allWines = await getWines();
+      setWine(allWines);
+    } // else { some error message saying invalid url? }
   }
 
-  const handleWineTypeFilter = async (e) => {
+  // When productType button is clicked, it will navigate to the url, with above useEffect re-rendering page
+  const handleProductTypeFilter = async (e) => {
     if (e.target.id === "red") {
-      const filteredWines = await getRedWines();
-      setWine(filteredWines);
+      navigate("/filter/red");
+      setProductTypeToggle(!productTypeToggle);
     } else if (e.target.id === "white") {
-      const filteredWines = await getWhiteWines();
-      setWine(filteredWines);
+      navigate("/filter/white");
+      setProductTypeToggle(!productTypeToggle);
     } else if (e.target.id === "rose") {
-      const filteredWines = await getRoseWines();
-      setWine(filteredWines);
+      navigate("/filter/rose");
+      setProductTypeToggle(!productTypeToggle);
     } else if (e.target.id === "all") {
-      const filteredWines = await getWines();
-      setWine(filteredWines);
+      navigate("/filter/all");
+      setProductTypeToggle(!productTypeToggle);
     }
   };
 
+  // Re-renders page when a subFilter is clicked
+  useEffect(() => {}, [subFilterToggle]);
+
+  // Sorts wines by price, lowest to highest, with above useEffect re-rendering page
   const handleLeastToMost = () => {
-    setToggle(!toggle);
+    setSubFilterToggle(!subFilterToggle);
     wine.sort((a, b) => {
       return a.Price - b.Price;
     });
   };
 
-  const handleMostoLeast = () => {
-    setToggle(!toggle);
+  // Sorts wines by price, highest to lowest, with above useEffect re-rendering page
+  const handleMostToLeast = () => {
+    setSubFilterToggle(!subFilterToggle);
     wine.sort((b, a) => {
       return a.Price - b.Price;
     });
@@ -51,16 +72,16 @@ export default function FilterPage() {
   return (
     <div>
       <ButtonGroup variant="outlined">
-        <Button id="all" onClick={handleWineTypeFilter}>
+        <Button id="all" onClick={handleProductTypeFilter}>
           All Wines
         </Button>
-        <Button id="red" onClick={handleWineTypeFilter}>
+        <Button id="red" onClick={handleProductTypeFilter}>
           Red Wines
         </Button>
-        <Button id="white" onClick={handleWineTypeFilter}>
+        <Button id="white" onClick={handleProductTypeFilter}>
           White Wines
         </Button>
-        <Button id="rose" onClick={handleWineTypeFilter}>
+        <Button id="rose" onClick={handleProductTypeFilter}>
           Rose Wines
         </Button>
       </ButtonGroup>
@@ -68,7 +89,7 @@ export default function FilterPage() {
       <ButtonGroup variant="outlined">
         <Button>A - Z</Button>
         <Button onClick={handleLeastToMost}>$ - $$$</Button>
-        <Button onClick={handleMostoLeast}>$$$ - $</Button>
+        <Button onClick={handleMostToLeast}>$$$ - $</Button>
       </ButtonGroup>
 
       <div className="grid grid-cols-4 gap-x-8 gap-y-4 mx-40 pt-32 ">
