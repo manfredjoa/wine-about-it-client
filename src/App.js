@@ -6,6 +6,8 @@ import FavoritesPage from "./pages/FavoritesPage.jsx";
 import RegistrationPage from "./pages/RegistrationPage.jsx";
 import ShoppingCartPage from "./pages/ShoppingCartPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
+import FilterPage from "./pages/FilterPage.jsx";
+import Alan from "./test/alan.jsx";
 
 function App() {
   return (
@@ -18,6 +20,9 @@ function App() {
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        {/* //don't forget to remove this route */}
+        <Route path="/alan" element={<Alan />} />
+        <Route path="/filter" element={<FilterPage />} />
       </Routes>
     </div>
   );
