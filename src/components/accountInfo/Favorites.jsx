@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Card, CardBody, Typography } from "@material-tailwind/react";
+import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+
+// ... (previous imports)
 
 const FavoritesCard = ({ favorites }) => {
   const initialFavoriteMap = favorites.reduce((map, favorite) => {
@@ -27,25 +29,25 @@ const FavoritesCard = ({ favorites }) => {
   const last3Favorites = favorites.slice(Math.max(favorites.length - 3, 0));
 
   return (
-    <Card className="w-1/3">
-      <div className="bg-gray-500 text-white text-center py-2 font-bold">
+    <Card className="w-full">
+      <div className="bg-gray-500 text-white text-center py-6 font-bold text-3xl">
         Favorites
       </div>
-      <CardBody>
+      <CardBody className="flex flex-col">
         {last3Favorites.map((favorite, index) => (
           <div key={index} className="mb-4">
-            <div className="flex justify-between items-center mb-2">
+            <div className="flex items-center justify-between">
               <Link
                 to={`/wine/${favorite.productId}`}
-                className="block text-blue-500 hover:underline"
+                className="block text-black-500 hover:underline"
               >
-                <Typography color="blue-gray" className="font-medium">
+                <Typography color="black-gray" className="font-medium">
                   {favorite.productName}
                 </Typography>
               </Link>
               <button
                 onClick={() => toggleFavorite(favorite.productId)}
-                className="focus:outline-none"
+                className="focus:outline-solid"
               >
                 <FontAwesomeIcon
                   icon={
@@ -59,21 +61,24 @@ const FavoritesCard = ({ favorites }) => {
                 />
               </button>
             </div>
-            <Typography color="blue-gray" className="font-medium">
-              ${favorite.price}
-            </Typography>
+            <hr className="w-full h-0.5 bg-gray-300 mt-2" />
           </div>
         ))}
       </CardBody>
       <div className="flex justify-center mt-4">
-        <Link to="/favorites" className="text-blue-500 hover:underline">
-          <div className="px-2 py-1 hover:bg-blue-100 rounded-md">
+        <Button
+          color="gray"
+          className="bg-gray-300 hover:bg-gray-400 border-none rounded-none text-gray-700 hover:text-black-500"
+          ripple="light"
+        >
+          <Link to="/favorites">
             View All Favorites
-          </div>
-        </Link>
+          </Link>
+        </Button>
       </div>
     </Card>
   );
 };
 
 export default FavoritesCard;
+

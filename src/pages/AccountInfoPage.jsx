@@ -3,6 +3,7 @@ import OrderHistoryCard from '../components/accountInfo/OrderHistory';
 import FavoritesCard from '../components/accountInfo/Favorites';
 import Nav from '../layouts/Nav';
 import Footer from '../layouts/Footer';
+import UserInfoCard from '../components/accountInfo/UserInfo';
 
 const AccountInfoPage = () => {
   const mockOrders = [
@@ -44,16 +45,37 @@ const AccountInfoPage = () => {
     },
   ];
 
+  const userInfo = {
+    firstName: 'Daija',
+    lastName: 'Watt',
+    email: 'watt.daija@yahoo.com',
+    shippingAddress: '3465 Duluth Hwy, Duluth, GA',
+  };
+
   return (
     <div className="flex flex-col min-h-screen">
       <Nav />
-      <div className="flex space-x-6 py-8 px-4">
-        <OrderHistoryCard orders={mockOrders} />
-        <FavoritesCard favorites={favorites} />
+      <div className="bg-gray-100 py-4 flex justify-center text-uppercase">
+        <div className="max-w-screen-xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center text-uppercase">{userInfo.firstName}'s Account </h2>
+        </div>
       </div>
+
+      <div>
+        <div className="flex space-x-6 py-8 px-4">
+          <UserInfoCard user={userInfo} />
+          <OrderHistoryCard orders={mockOrders} />
+          <FavoritesCard favorites={favorites} />
+        </div>
+      </div>
+      
       <Footer />
     </div>
   );
 };
-
+ 
 export default AccountInfoPage;
+
+
+
+
