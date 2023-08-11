@@ -94,7 +94,6 @@ export const getItalyWines = async () => {
 export const getWashingtonWines = async () => {
   try {
     const response = await api.get("/wines/country/Washington");
-    console.log(response.data.length);
     return response.data;
   } catch (error) {
     console.log("Error: Getting wines from Washington.", error);
@@ -105,7 +104,6 @@ export const getWashingtonWines = async () => {
 export const getAustraliaWines = async () => {
   try {
     const response = await api.get("/wines/country/Australia");
-    console.log(response.data.length);
     return response.data;
   } catch (error) {
     console.log("Error: Getting wines from Australia.", error);
@@ -116,7 +114,6 @@ export const getAustraliaWines = async () => {
 export const getNewZealandWines = async () => {
   try {
     const response = await api.get("/wines/country/New Zealand");
-    console.log(response.data.length);
     return response.data;
   } catch (error) {
     console.log("Error: Getting wines from New Zealand.", error);
@@ -127,7 +124,6 @@ export const getNewZealandWines = async () => {
 export const getOregonWines = async () => {
   try {
     const response = await api.get("/wines/country/Oregon");
-    console.log(response.data.length);
     return response.data;
   } catch (error) {
     console.log("Error: Getting wines from Oregon.", error);
@@ -138,7 +134,6 @@ export const getOregonWines = async () => {
 export const getSpainWines = async () => {
   try {
     const response = await api.get("/wines/country/Spain");
-    console.log(response.data.length);
     return response.data;
   } catch (error) {
     console.log("Error: Getting wines from Spain.", error);
@@ -149,7 +144,6 @@ export const getSpainWines = async () => {
 export const getArgentinaWines = async () => {
   try {
     const response = await api.get("/wines/country/Argentina");
-    console.log(response.data.length);
     return response.data;
   } catch (error) {
     console.log("Error: Getting wines from Argentina.", error);
@@ -160,7 +154,6 @@ export const getArgentinaWines = async () => {
 export const getGermanyWines = async () => {
   try {
     const response = await api.get("/wines/country/Germany");
-    console.log(response.data.length);
     return response.data;
   } catch (error) {
     console.log("Error: Getting wines from Germany.", error);
@@ -171,7 +164,6 @@ export const getGermanyWines = async () => {
 export const getPortugalWines = async () => {
   try {
     const response = await api.get("/wines/country/Portugal");
-    console.log(response.data.length);
     return response.data;
   } catch (error) {
     console.log("Error: Getting wines from Portugal.", error);
@@ -182,7 +174,6 @@ export const getPortugalWines = async () => {
 export const getSouthAfricaWines = async () => {
   try {
     const response = await api.get("/wines/country/South Africa");
-    console.log(response.data.length);
     return response.data;
   } catch (error) {
     console.log("Error: Getting wines from South Africa.", error);
