@@ -1,6 +1,6 @@
-import WineDetail from "./WineDetailPage";
+import WineDetail from "../components/WineDetail";
 
-export default function Favorites() {
+export default function FilterPage() {
   const mockData = [
     {
       WineName: "Chateau Leoville Las Cases St Julien 2015",
@@ -375,19 +375,11 @@ export default function Favorites() {
       flag: "https://flagsapi.com/US/flat/64.png",
     },
   ];
-  //yates shuffle algorithm
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
-      [array[i], array[j]] = [array[j], array[i]]; // swap elements
-    }
-    return array;
-  }
 
   return (
     <div className="grid grid-cols-4 gap-x-8 gap-y-4 mx-40 pt-32 ">
-      {shuffleArray([...mockData]).map((wine, index) => (
-        <div className="art-container" key={index}>
+      {mockData.map((wine, index) => (
+        <div className="wine-container" key={index}>
           <WineDetail wine={wine} />
         </div>
       ))}

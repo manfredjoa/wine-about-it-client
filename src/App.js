@@ -7,6 +7,8 @@ import RegistrationPage from "./pages/RegistrationPage.jsx";
 import SignInPage from "./pages/SignInPage.jsx";
 import ShoppingCartPage from "./pages/ShoppingCartPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
+import FilterPage from "./pages/FilterPage.jsx";
+import Alan from "./test/alan.jsx";
 
 import ManfredTest from "./pages/ManfredTest.jsx";
 
@@ -22,7 +24,13 @@ function App() {
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+
+        {/* //don't forget to remove this route */}
+        <Route path="/alan" element={<Alan />} />
+        <Route path="/filter" element={<FilterPage />} />
+
         <Route path="/manfred-test" element={<ManfredTest />} />
+
       </Routes>
     </div>
   );
