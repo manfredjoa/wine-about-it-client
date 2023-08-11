@@ -8,6 +8,7 @@ import SignInPage from "./pages/SignInPage.jsx";
 import ShoppingCartPage from "./pages/ShoppingCartPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
 import FilterPage from "./pages/FilterPage.jsx";
+import LinkToRegistrationPage from "./pages/LinkToRegistrationPage.jsx";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/link-to-registration" element={<LinkToRegistrationPage />} />
         <Route path="/filter/:productType" element={<FilterPage />} />
       </Routes>
     </div>
