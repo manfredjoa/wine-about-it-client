@@ -12,10 +12,13 @@ import Alan from "./test/alan.jsx";
 import Footer from "./layouts/Footer.jsx";
 
 import ManfredTest from "./pages/ManfredTest.jsx";
+import AccountInfoPage from "./pages/AccountInfoPage.jsx";
 
 function App() {
   return (
     <div>
+      <AccountInfoPage />
+      {/* 
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/search" element={<SearchPage />} />
@@ -27,12 +30,14 @@ function App() {
         <Route path="/checkout" element={<CheckoutPage />} />
 
         {/* //don't forget to remove this route */}
-        <Route path="/alan" element={<Alan />} />
+      {/*  <Route path="/alan" element={<Alan />} />
         <Route path="/filter" element={<FilterPage />} />
 
         <Route path="/manfred-test" element={<ManfredTest />} />
 
       </Routes>
+      }
+    */}
     </div>
   );
 }
