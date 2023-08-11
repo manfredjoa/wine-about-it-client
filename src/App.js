@@ -7,6 +7,8 @@ import RegistrationPage from "./pages/RegistrationPage.jsx";
 import ShoppingCartPage from "./pages/ShoppingCartPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
 
+import ManfredTest from "./pages/ManfredTest.jsx";
+
 function App() {
   return (
     <div>
@@ -18,6 +20,7 @@ function App() {
         <Route path="/registration" element={<RegistrationPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/manfred-test" element={<ManfredTest />} />
       </Routes>
     </div>
   );
