@@ -10,6 +10,16 @@ export const getWines = async () => {
   }
 };
 
+// Get one wine by ID
+export const getWine = async (id) => {
+  try {
+    const response = await api.get(`/wines/id/${id}`);
+    return response.data;
+  } catch (error) {
+    console.log("Error: Getting wine by ID.", error);
+  }
+};
+
 // ProductType //
 
 // Gets all red wines - 103
