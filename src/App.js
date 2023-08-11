@@ -9,6 +9,7 @@ import ShoppingCartPage from "./pages/ShoppingCartPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
 import FilterPage from "./pages/FilterPage.jsx";
 import Alan from "./test/alan.jsx";
+import Footer from "./layouts/Footer.jsx";
 
 import ManfredTest from "./pages/ManfredTest.jsx";
 
