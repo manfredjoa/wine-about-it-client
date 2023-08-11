@@ -21,7 +21,7 @@ function App() {
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage />} />
         <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/filter/:productType" element={<FilterPage />} />
+        <Route path="/filter" element={<FilterPage />} />
       </Routes>
     </div>
   );
