@@ -10,26 +10,29 @@ import CheckoutPage from "./pages/CheckoutPage.jsx";
 import FilterPage from "./pages/FilterPage.jsx";
 import AccountInfoPage from "./pages/AccountInfoPage.jsx";
 import LinkToRegistrationPage from "./pages/LinkToRegistrationPage.jsx";
+import Layout from "./layouts/Layout.jsx";
 
 function App() {
   return (
     <div>
+      <Layout>
         <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/search" element={<SearchPage />} />
-        <Route path="/search/wine-detail/:id" element={<WineDetailPage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/registration" element={<RegistrationPage />} />
-        <Route path="/sign-in" element={<SignInPage />} />
-        <Route path="/shopping-cart" element={<ShoppingCartPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/filter/:productType" element={<FilterPage />} />
-        <Route
-          path="/link-to-registration"
-          element={<LinkToRegistrationPage />}
-        />
-        <Route path="/account-info" element={<AccountInfoPage />} />
-  </Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/search" element={<SearchPage />} />
+          <Route path="/search/wine-detail/:id" element={<WineDetailPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/registration" element={<RegistrationPage />} />
+          <Route path="/sign-in" element={<SignInPage />} />
+          <Route path="/shopping-cart" element={<ShoppingCartPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
+          <Route path="/filter/:productType" element={<FilterPage />} />
+          <Route
+            path="/link-to-registration"
+            element={<LinkToRegistrationPage />}
+          />
+          <Route path="/account-info" element={<AccountInfoPage />} />
+        </Routes>
+      </Layout>
     </div>
   );
 }
