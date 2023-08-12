@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 function RoseWines() {
   return (
-    <div>
+    <div className="w-40 h-40">
       <Link to="/filter/rose">
         <img
           src="https://i.imgur.com/ByfizrF.jpg"
           alt="Rose Wines"
-          className="w-32 h-32"
+          className="w-full h-full object-cover"
         />
       </Link>
     </div>

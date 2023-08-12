@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 
 function AllWines() {
   return (
-    <div>
+    <div className="w-40 h-40">
       <Link to="/filter/all">
         <img
           src="https://i.imgur.com/RgmX0Q3.jpg"
           alt="All Wines"
-          className="w-32 h-32"
+          className="w-full h-full object-cover"
         />
       </Link>
     </div>
