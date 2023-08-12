@@ -102,7 +102,7 @@ const RegistrationPage = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"
+            className="w-full bg-black text-white py-2 rounded hover:bg-red-800"
           >
             Register
 
