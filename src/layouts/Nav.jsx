@@ -34,6 +34,7 @@ function AccountMenu() {
           variant="text"
           color="blue-gray"
           className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
+          style={{ color: "rgb(96, 20, 30)" }}
         >
           {createElement(UserCircleIcon, { className: "h-[24px] w-[24px]" })}
           <ChevronDownIcon
@@ -41,6 +42,7 @@ function AccountMenu() {
             className={`h-3 w-3 transition-transform ${
               isMenuOpen ? "rotate-180" : ""
             }`}
+            style={{ color: "rgb(96, 20, 30)" }}
           />
         </Button>
       </MenuHandler>
@@ -50,6 +52,7 @@ function AccountMenu() {
           <MenuItem
             onClick={closeMenu}
             className={"flex items-center gap-2 rounded"}
+            style={{ color: "rgb(96, 20, 30)" }}
           >
             {createElement(UserCircleIcon, {
               className: "h-4 w-4",
@@ -63,6 +66,7 @@ function AccountMenu() {
           <MenuItem
             onClick={closeMenu}
             className={"flex items-center gap-2 rounded"}
+            style={{ color: "rgb(96, 20, 30)" }}
           >
             {createElement(Cog6ToothIcon, {
               className: "h-4 w-4",
@@ -76,10 +80,11 @@ function AccountMenu() {
         <Typography as="a" href="">
           <MenuItem
             onClick={closeMenu}
-            className={"flex items-center gap-2 rounded text-red-500"}
+            className={"flex items-center gap-2 rounded"}
+            style={{ color: "rgb(96, 20, 30)" }}
           >
             {createElement(PowerIcon, {
-              className: "h-4 w-4 text-red-500",
+              className: "h-4 w-4",
               strokeWidth: 2,
             })}
             Sign Out
@@ -101,7 +106,10 @@ function NavList() {
         color="blue-gray"
         className="font-normal"
       >
-        <MenuItem className="flex items-center gap-2 lg:rounded-full">
+        <MenuItem
+          className="flex items-center gap-2 lg:rounded-full"
+          style={{ color: "rgb(96, 20, 30)" }}
+        >
           {createElement(HeartIcon, { className: "h-[24px] w-[24px]" })}
         </MenuItem>
       </Typography>
@@ -113,7 +121,10 @@ function NavList() {
         color="blue-gray"
         className="font-normal"
       >
-        <MenuItem className="flex items-center gap-2 lg:rounded-full">
+        <MenuItem
+          className="flex items-center gap-2 lg:rounded-full"
+          style={{ color: "rgb(96, 20, 30)" }}
+        >
           {createElement(ShoppingCartIcon, {
             className: "h-[24px] w-[24px]",
           })}
@@ -136,13 +147,14 @@ export default function Nav() {
   }, []);
 
   return (
-    <Navbar>
+    <Navbar className="max-w-full rounded-none">
       {/* ==================== */}
       <div className="relative mx-auto flex text-blue-gray-900">
         <Typography
           as="a"
           href="/"
-          className="mr-4 ml-2 cursor-pointer py-1.5 font-medium"
+          className="mr-4 ml-2 cursor-pointer py-1.5 font-black text-5xl"
+          style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
         >
           Wine About It
         </Typography>
