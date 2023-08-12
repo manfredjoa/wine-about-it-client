@@ -26,21 +26,6 @@ function AccountMenu() {
 
   const closeMenu = () => setIsMenuOpen(false);
 
-  const AccountMenuItems = [
-    {
-      label: "My Account",
-      icon: UserCircleIcon,
-    },
-    {
-      label: "Edit Account",
-      icon: Cog6ToothIcon,
-    },
-    {
-      label: "Sign Out",
-      icon: PowerIcon,
-    },
-  ];
-
   // Creates menu when clicking on account icon
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -59,35 +44,47 @@ function AccountMenu() {
           />
         </Button>
       </MenuHandler>
+
       <MenuList className="p-1">
-        {AccountMenuItems.map(({ label, icon }, key) => {
-          const isLastItem = key === AccountMenuItems.length - 1;
-          return (
-            <MenuItem
-              key={label}
-              // { key  === "My Account" ? "href=/account-info" : ""}
-              onClick={closeMenu}
-              className={`flex items-center gap-2 rounded ${
-                isLastItem
-                  ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                  : ""
-              }`}
-            >
-              {createElement(icon, {
-                className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
-                strokeWidth: 2,
-              })}
-              <Typography
-                as="span"
-                variant="small"
-                className="font-normal"
-                color={isLastItem ? "red" : "inherit"}
-              >
-                {label}
-              </Typography>
-            </MenuItem>
-          );
-        })}
+        <Typography as="a" href="/account-info">
+          <MenuItem
+            onClick={closeMenu}
+            className={"flex items-center gap-2 rounded"}
+          >
+            {createElement(UserCircleIcon, {
+              className: "h-4 w-4",
+              strokeWidth: 2,
+            })}
+            My Account
+          </MenuItem>
+        </Typography>
+
+        <Typography as="a" href="/account-info">
+          <MenuItem
+            onClick={closeMenu}
+            className={"flex items-center gap-2 rounded"}
+          >
+            {createElement(Cog6ToothIcon, {
+              className: "h-4 w-4",
+              strokeWidth: 2,
+            })}
+            Edit Account
+          </MenuItem>
+        </Typography>
+
+        {/* href needs to be set */}
+        <Typography as="a" href="">
+          <MenuItem
+            onClick={closeMenu}
+            className={"flex items-center gap-2 rounded text-red-500"}
+          >
+            {createElement(PowerIcon, {
+              className: "h-4 w-4 text-red-500",
+              strokeWidth: 2,
+            })}
+            Sign Out
+          </MenuItem>
+        </Typography>
       </MenuList>
     </Menu>
   );

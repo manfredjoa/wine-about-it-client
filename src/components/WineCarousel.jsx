@@ -4,7 +4,7 @@ import { Carousel } from "@material-tailwind/react";
 export default function WineCarousel() {
   return (
     <Carousel
-      className="h-screen/3 rounded-xl"
+      className="h-screen rounded-xl"
       loop={true}
       autoplay={true}
       autoplaySpeed={2000}
@@ -25,32 +25,32 @@ export default function WineCarousel() {
       <img
         src="https://i.imgur.com/KfnKjz8.jpg"
         alt="1"
-        className="h-full w-full object-cover"
-        />
+        className="h-screen w-screen object-cover"
+      />
       <img
         src="https://i.imgur.com/Gp9OB7Q.jpg"
         alt="2"
-        className="h-full w-full object-cover"
-        />
+        className="h-screen w-screen object-cover"
+      />
       <img
         src="https://i.imgur.com/x5aHcWZ.jpg"
         alt="3"
-        className="h-full w-full object-cover"
-        />
+        className="h-screen w-screen object-cover"
+      />
       <img
         src="https://i.imgur.com/vKJ5d5K.jpg"
         alt="4"
-        className="h-full w-full object-cover"
-        />
+        className="h-screen w-screen object-cover"
+      />
       <img
         src="https://i.imgur.com/R7Bvovn.jpg"
         alt="5"
-        className="h-full w-full object-cover"
-        />
+        className="h-screen w-screen object-cover"
+      />
       <img
         src="https://i.imgur.com/y06fvEP.jpg"
         alt="6"
-        className="h-full w-full object-cover"
+        className="h-screen w-screen object-cover"
       />
     </Carousel>
   );
