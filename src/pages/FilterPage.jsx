@@ -27,6 +27,7 @@ export default function FilterPage() {
     } else if (productType === "rose") {
       const allWines = await getRoseWines();
       setWine(allWines);
+      console.log(allWines.length);
     } else if (productType === "all") {
       const allWines = await getWines();
       setWine(allWines);
@@ -69,6 +70,13 @@ export default function FilterPage() {
     });
   };
 
+  const handleAToZ = () => {
+    setSubFilterToggle(!subFilterToggle);
+    //localeCompare compares two strings and returns a number so A = -1  etc
+    wine.sort((a, b) => {
+      return a.WineName.localeCompare(b.WineName);
+    });
+  };
   return (
     <div>
       <ButtonGroup variant="outlined">
@@ -87,7 +95,7 @@ export default function FilterPage() {
       </ButtonGroup>
 
       <ButtonGroup variant="outlined">
-        <Button>A - Z</Button>
+        <Button onClick={handleAToZ}>A - Z</Button>
         <Button onClick={handleLeastToMost}>$ - $$$</Button>
         <Button onClick={handleMostToLeast}>$$$ - $</Button>
       </ButtonGroup>
