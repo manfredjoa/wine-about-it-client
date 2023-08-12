@@ -1,9 +1,10 @@
-import { useState, useEffect, createElement } from "react";
+import { useState, useEffect, createElement, useNavigate } from "react";
 import {
   Navbar,
   Collapse,
   Typography,
   Button,
+  ButtonGroup,
   Menu,
   MenuHandler,
   MenuList,
@@ -18,12 +19,11 @@ import {
   Bars2Icon,
   HeartIcon,
   ShoppingCartIcon,
-  MagnifyingGlassIcon, // For navigating to browse page later on
+  // MagnifyingGlassIcon, // For navigating to browse page later on
 } from "@heroicons/react/24/outline";
 
 function AccountMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const closeMenu = () => setIsMenuOpen(false);
 
   // Creates menu when clicking on account icon
@@ -76,8 +76,7 @@ function AccountMenu() {
           </MenuItem>
         </Typography>
 
-        {/* href needs to be set */}
-        <Typography as="a" href="">
+        <Typography as="a" href="/sign-in">
           <MenuItem
             onClick={closeMenu}
             className={"flex items-center gap-2 rounded"}
@@ -94,6 +93,46 @@ function AccountMenu() {
     </Menu>
   );
 }
+
+// Trying to get this into the Nav Bar
+function Filters() {
+  const [productTypeToggle, setProductTypeToggle] = useState(false);
+  const navigate = useNavigate();
+
+  // When productType button is clicked, it will navigate to the url, with above useEffect re-rendering page
+  const handleProductTypeFilter = async (e) => {
+    if (e.target.id === "red") {
+      navigate("/filter/red");
+      setProductTypeToggle(!productTypeToggle);
+    } else if (e.target.id === "white") {
+      navigate("/filter/white");
+      setProductTypeToggle(!productTypeToggle);
+    } else if (e.target.id === "rose") {
+      navigate("/filter/rose");
+      setProductTypeToggle(!productTypeToggle);
+    } else if (e.target.id === "all") {
+      navigate("/filter/all");
+      setProductTypeToggle(!productTypeToggle);
+    }
+  };
+  return (
+    <ButtonGroup variant="outlined">
+      <Button id="all" onClick={handleProductTypeFilter}>
+        All Wines
+      </Button>
+      <Button id="red" onClick={handleProductTypeFilter}>
+        Red Wines
+      </Button>
+      <Button id="white" onClick={handleProductTypeFilter}>
+        White Wines
+      </Button>
+      <Button id="rose" onClick={handleProductTypeFilter}>
+        Rose Wines
+      </Button>
+    </ButtonGroup>
+  );
+}
+//
 
 // Creates favorites and shopping cart icons
 function NavList() {
