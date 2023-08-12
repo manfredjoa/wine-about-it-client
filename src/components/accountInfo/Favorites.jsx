@@ -5,8 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
 
-// ... (previous imports)
-
 const FavoritesCard = ({ favorites }) => {
   const initialFavoriteMap = favorites.reduce((map, favorite) => {
     map[favorite.productId] = true;
@@ -81,4 +79,3 @@ const FavoritesCard = ({ favorites }) => {
 };
 
 export default FavoritesCard;
-
