@@ -14,7 +14,7 @@ import LinkToRegistrationPage from "./pages/LinkToRegistrationPage.jsx";
 function App() {
   return (
     <div>
-      <Routes>
+        <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/search/wine-detail/:id" element={<WineDetailPage />} />
@@ -29,7 +29,7 @@ function App() {
           element={<LinkToRegistrationPage />}
         />
         <Route path="/account-info" element={<AccountInfoPage />} />
-      </Routes>
+  </Routes>
     </div>
   );
 }
