@@ -1,5 +1,6 @@
 import { useState, useEffect, createElement } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getRedWines, getWhiteWines, getRoseWines, getWines } from "../api/api";
 import {
   Navbar,
   Collapse,
@@ -21,6 +22,7 @@ import {
   ShoppingCartIcon,
   // MagnifyingGlassIcon, // For navigating to browse page later on
 } from "@heroicons/react/24/outline";
+import FilterPage from "../pages/FilterPage";
 
 function AccountMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -145,106 +147,103 @@ export default function Nav() {
     );
   }, []);
 
-  // const [productTypeToggle, setProductTypeToggle] = useState(false);
   let navigate = useNavigate();
 
   // When productType button is clicked, it will navigate to the url, with above useEffect re-rendering page
-  // const handleProductTypeFilter = async (e) => {
-  //   if (e.target.id === "red") {
-  //     navigate("/filter/red");
-  //     setProductTypeToggle(!productTypeToggle);
-  //   } else if (e.target.id === "white") {
-  //     navigate("/filter/white");
-  //     setProductTypeToggle(!productTypeToggle);
-  //   } else if (e.target.id === "rose") {
-  //     navigate("/filter/rose");
-  //     setProductTypeToggle(!productTypeToggle);
-  //   } else if (e.target.id === "all") {
-  //     navigate("/filter/all");
-  //     setProductTypeToggle(!productTypeToggle);
-  //   }
-  // };
+  const handleProductTypeFilter = async (e) => {
+    if (e.target.id === "red") {
+      navigate("/filter/red");
+    } else if (e.target.id === "white") {
+      navigate("/filter/white");
+    } else if (e.target.id === "rose") {
+      navigate("/filter/rose");
+    } else if (e.target.id === "all") {
+      navigate("/filter/all");
+    }
+  };
 
   return (
-    <Navbar className="max-w-full rounded-none">
-      {/* ==================== */}
-      <div
-        className="relative mx-auto flex"
-        style={{ color: "rgb(96, 20, 30)" }}
-      >
-        <Typography
-          as="a"
-          href="/"
-          className="mr-4 ml-2 cursor-pointer py-1.5 font-black text-5xl"
-          style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+    <div>
+      <Navbar className="max-w-full rounded-none">
+        {/* ==================== */}
+        <div
+          className="relative mx-auto flex"
+          style={{ color: "rgb(96, 20, 30)" }}
         >
-          Wine About It
-        </Typography>
+          <Typography
+            as="a"
+            href="/"
+            className="mr-4 ml-2 cursor-pointer py-1.5 font-black text-5xl"
+            style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+          >
+            Wine About It
+          </Typography>
 
-        <div className="flex justify-evenly grow">
-          <NavLink to="/filter/all">
-            <Typography
-              id="all"
-              // variant="text"
-              // onClick={}
-            >
-              All Wines
-            </Typography>
-          </NavLink>
+          {/* Favorites and shopping cart icons */}
+          <div className="absolute top-2/4 right-3 hidden -translate-x-2/4 -translate-y-2/4 lg:block">
+            <NavList />
+          </div>
 
-          <NavLink to="/filter/red">
-            <Typography
-              id="red"
-              variant="text"
-              // onClick={handleProductTypeFilter}
-            >
-              Red Wines
-            </Typography>
-          </NavLink>
+          {/* Responsive menu change (NavList > Bars2Icon) when Collapse is open (determined by useEffect above) */}
+          <IconButton
+            size="sm"
+            color="blue-gray"
+            variant="text"
+            onClick={toggleIsNavOpen}
+            className="ml-auto mr-2 lg:hidden"
+          >
+            <Bars2Icon className="h-6 w-6" />
+          </IconButton>
 
-          <NavLink to="/filter/white">
-            <Typography
-              id="white"
-              variant="text"
-              // onClick={handleProductTypeFilter}
-            >
-              White Wines
-            </Typography>
-          </NavLink>
-          <NavLink to="/filter/rose">
-            <Typography
-              id="rose"
-              variant="text"
-              // onClick={handleProductTypeFilter}
-            >
-              Rose Wines
-            </Typography>
-          </NavLink>
+          <AccountMenu />
         </div>
+        {/* ==================== */}
 
-        {/* Favorites and shopping cart icons */}
-        <div className="absolute top-2/4 right-3 hidden -translate-x-2/4 -translate-y-2/4 lg:block">
+        <Collapse open={isNavOpen} className="overflow-scroll">
           <NavList />
-        </div>
+        </Collapse>
+      </Navbar>
 
-        {/* Responsive menu change (NavList > Bars2Icon) when Collapse is open (determined by useEffect above) */}
-        <IconButton
-          size="sm"
-          color="blue-gray"
+      <div
+        className="flex justify-center border-b border-t"
+        style={{ borderColor: "rgb(96, 20, 30)" }}
+      >
+        <Button
+          id="all"
           variant="text"
-          onClick={toggleIsNavOpen}
-          className="ml-auto mr-2 lg:hidden"
+          onClick={handleProductTypeFilter}
+          style={{ color: "rgb(96, 20, 30)" }}
         >
-          <Bars2Icon className="h-6 w-6" />
-        </IconButton>
+          All Wines
+        </Button>
 
-        <AccountMenu />
+        <Button
+          id="red"
+          variant="text"
+          onClick={handleProductTypeFilter}
+          style={{ color: "rgb(96, 20, 30)" }}
+        >
+          Red Wines
+        </Button>
+
+        <Button
+          id="white"
+          variant="text"
+          onClick={handleProductTypeFilter}
+          style={{ color: "rgb(96, 20, 30)" }}
+        >
+          White Wines
+        </Button>
+
+        <Button
+          id="rose"
+          variant="text"
+          onClick={handleProductTypeFilter}
+          style={{ color: "rgb(96, 20, 30)" }}
+        >
+          Rose Wines
+        </Button>
       </div>
-      {/* ==================== */}
-
-      <Collapse open={isNavOpen} className="overflow-scroll">
-        <NavList />
-      </Collapse>
-    </Navbar>
+    </div>
   );
 }
