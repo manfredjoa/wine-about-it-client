@@ -1,4 +1,5 @@
 import { useState, useEffect, createElement } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   Navbar,
   Collapse,
@@ -18,12 +19,11 @@ import {
   Bars2Icon,
   HeartIcon,
   ShoppingCartIcon,
-  MagnifyingGlassIcon, // For navigating to browse page later on
+  // MagnifyingGlassIcon, // For navigating to browse page later on
 } from "@heroicons/react/24/outline";
 
 function AccountMenu() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
   const closeMenu = () => setIsMenuOpen(false);
 
   // Creates menu when clicking on account icon
@@ -76,8 +76,7 @@ function AccountMenu() {
           </MenuItem>
         </Typography>
 
-        {/* href needs to be set */}
-        <Typography as="a" href="">
+        <Typography as="a" href="/sign-in">
           <MenuItem
             onClick={closeMenu}
             className={"flex items-center gap-2 rounded"}
@@ -146,10 +145,33 @@ export default function Nav() {
     );
   }, []);
 
+  // const [productTypeToggle, setProductTypeToggle] = useState(false);
+  let navigate = useNavigate();
+
+  // When productType button is clicked, it will navigate to the url, with above useEffect re-rendering page
+  // const handleProductTypeFilter = async (e) => {
+  //   if (e.target.id === "red") {
+  //     navigate("/filter/red");
+  //     setProductTypeToggle(!productTypeToggle);
+  //   } else if (e.target.id === "white") {
+  //     navigate("/filter/white");
+  //     setProductTypeToggle(!productTypeToggle);
+  //   } else if (e.target.id === "rose") {
+  //     navigate("/filter/rose");
+  //     setProductTypeToggle(!productTypeToggle);
+  //   } else if (e.target.id === "all") {
+  //     navigate("/filter/all");
+  //     setProductTypeToggle(!productTypeToggle);
+  //   }
+  // };
+
   return (
     <Navbar className="max-w-full rounded-none">
       {/* ==================== */}
-      <div className="relative mx-auto flex text-blue-gray-900">
+      <div
+        className="relative mx-auto flex"
+        style={{ color: "rgb(96, 20, 30)" }}
+      >
         <Typography
           as="a"
           href="/"
@@ -158,6 +180,47 @@ export default function Nav() {
         >
           Wine About It
         </Typography>
+
+        <div className="flex justify-evenly grow">
+          <NavLink to="/filter/all">
+            <Typography
+              id="all"
+              // variant="text"
+              // onClick={}
+            >
+              All Wines
+            </Typography>
+          </NavLink>
+
+          <NavLink to="/filter/red">
+            <Typography
+              id="red"
+              variant="text"
+              // onClick={handleProductTypeFilter}
+            >
+              Red Wines
+            </Typography>
+          </NavLink>
+
+          <NavLink to="/filter/white">
+            <Typography
+              id="white"
+              variant="text"
+              // onClick={handleProductTypeFilter}
+            >
+              White Wines
+            </Typography>
+          </NavLink>
+          <NavLink to="/filter/rose">
+            <Typography
+              id="rose"
+              variant="text"
+              // onClick={handleProductTypeFilter}
+            >
+              Rose Wines
+            </Typography>
+          </NavLink>
+        </div>
 
         {/* Favorites and shopping cart icons */}
         <div className="absolute top-2/4 right-3 hidden -translate-x-2/4 -translate-y-2/4 lg:block">

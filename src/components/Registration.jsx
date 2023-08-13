@@ -1,6 +1,5 @@
-// RegistrationPage.js
-
-import React, { useState } from 'react';
+import { useState } from "react";
+import registerUser from "../api/users";
 
 const RegistrationPage = () => {
   const [formData, setFormData] = useState({
@@ -8,7 +7,7 @@ const RegistrationPage = () => {
     lastName: "",
     email: "",
     password: "",
-    dateOfBirth: ""
+    dateOfBirth: "",
   });
 
   //list of requirements for password
@@ -17,7 +16,7 @@ const RegistrationPage = () => {
     "At least one uppercase letter",
     "At least one lowercase letter",
     "At least one digit",
-    "At least one special character(!@#$%)"
+    "At least one special character(!@#$%)",
   ]);
 
   const handleChange = (e) => {
@@ -30,7 +29,7 @@ const RegistrationPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // form submission logic here
+    registerUser(formData);
     console.log(formData);
   };
 
@@ -73,7 +72,9 @@ const RegistrationPage = () => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-sm font-medium mb-1">Date of Birth(must be 21+ to purchase)</label>
+            <label className="block text-sm font-medium mb-1">
+              Date of Birth(must be 21+ to purchase)
+            </label>
             <input
               type="date"
               name="dateOfBirth"
@@ -105,11 +106,10 @@ const RegistrationPage = () => {
             className="w-full bg-black text-white py-2 rounded hover:bg-red-800"
           >
             Register
-
           </button>
-        </form >
-      </div >
-    </div >
+        </form>
+      </div>
+    </div>
   );
 };
 

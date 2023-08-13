@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const OrderHistoryCard = ({ orders }) => {
   if (!orders || orders.length === 0) {
@@ -9,7 +9,7 @@ const OrderHistoryCard = ({ orders }) => {
 
   const handleReorder = (order) => {
     // Handle reorder logic here!
-    console.log('Reordering:', order);
+    console.log("Reordering:", order);
   };
 
   // Only display the last three orders
@@ -24,7 +24,10 @@ const OrderHistoryCard = ({ orders }) => {
         {lastThreeOrders.map((order, index) => (
           <div key={index} className="mb-4">
             <div className="flex items-center justify-between">
-              <Link to={`/wine/${order.productId}`} className="block text-gray-500 hover:underline">
+              <Link
+                to={`/wine/${order.productId}`}
+                className="block text-gray-500 hover:underline"
+              >
                 <Typography color="blue-gray" className="font-medium">
                   {order.productName}
                 </Typography>
@@ -66,9 +69,7 @@ const OrderHistoryCard = ({ orders }) => {
           className="bg-gray-300 hover:bg-gray-400 border-none mb-5 rounded-none text-gray-700 hover:text-black-500"
           ripple="light"
         >
-          <Link to="/order-history">
-            View Order History
-          </Link>
+          <Link to="/order-history">View Order History</Link>
         </Button>
       </div>
     </Card>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
 
 const UserInfoCard = ({ user }) => {
@@ -18,19 +18,17 @@ const UserInfoCard = ({ user }) => {
           <Typography className="mb-2 font-medium">
             First Name: {firstName}
           </Typography>
-          <hr className="w-full h-0.5 bg-gray-300" /> 
+          <hr className="w-full h-0.5 bg-gray-300" />
         </div>
         <div className="mb-4">
           <Typography className="mb-2 font-medium">
             Last Name: {lastName}
           </Typography>
-          <hr className="w-full h-0.5 bg-gray-300" /> 
+          <hr className="w-full h-0.5 bg-gray-300" />
         </div>
         <div className="mb-4">
-          <Typography className="mb-2 font-medium">
-            Email: {email}
-          </Typography>
-          <hr className="w-full h-0.5 bg-gray-300" /> 
+          <Typography className="mb-2 font-medium">Email: {email}</Typography>
+          <hr className="w-full h-0.5 bg-gray-300" />
         </div>
         <div className="mb-4">
           <Typography className="mb-2 font-medium">
@@ -40,14 +38,14 @@ const UserInfoCard = ({ user }) => {
         </div>
       </CardBody>
       <div className="flex justify-center">
-          <Button
-            onClick={() => console.log('Edit Info clicked')}
-            className="bg-gray-300 hover:bg-gray-400 border-none rounded-none text-gray-700"
-            ripple="light"
-          >
-            Edit Info
-          </Button>
-        </div>
+        <Button
+          onClick={() => console.log("Edit Info clicked")}
+          className="bg-gray-300 hover:bg-gray-400 border-none rounded-none text-gray-700"
+          ripple="light"
+        >
+          Edit Info
+        </Button>
+      </div>
     </Card>
   );
 };
