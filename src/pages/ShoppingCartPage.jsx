@@ -1,3 +1,9 @@
+import Layout from "../layouts/Layout";
+
 export default function ShoppingCart() {
-  return <div>ShoppingCart</div>;
+  return (
+    <Layout>
+      <div>ShoppingCart</div>
+    </Layout>
+  );
 }

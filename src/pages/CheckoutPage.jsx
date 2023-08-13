@@ -1,10 +1,13 @@
 import Checkout from "../components/Checkout";
 import React from "react";
+import Layout from "../layouts/Layout";
 
 export default function CheckoutPage() {
   return (
-    <div>
-      <Checkout />
-    </div>
+    <Layout>
+      <div>
+        <Checkout />
+      </div>
+    </Layout>
   );
 }
