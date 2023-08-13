@@ -3,6 +3,7 @@ import { getRedWines, getWhiteWines, getRoseWines, getWines } from "../api/api";
 import { ButtonGroup, Button } from "@material-tailwind/react";
 import WineDetail from "../components/WineDetail";
 import { useParams, useNavigate } from "react-router-dom";
+import Nav from "../layouts/Nav";
 
 export default function FilterPage() {
   const [wine, setWine] = useState([]);
