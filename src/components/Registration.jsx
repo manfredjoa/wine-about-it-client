@@ -1,7 +1,7 @@
 import { useState } from "react";
 import registerUser from "../api/users";
 
-const RegistrationPage = () => {
+const Registration = () => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -113,4 +113,4 @@ const RegistrationPage = () => {
   );
 };
 
-export default RegistrationPage;
+export default Registration;

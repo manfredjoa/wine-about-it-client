@@ -1,3 +1,9 @@
+import Layout from "../layouts/Layout";
+
 export default function Search() {
-  return <div>Search</div>;
+  return (
+    <Layout>
+      <div>Search</div>
+    </Layout>
+  );
 }

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import { getRedWines, getWhiteWines, getRoseWines, getWines } from "../api/api";
 import { ButtonGroup, Button } from "@material-tailwind/react";
 import WineDetail from "../components/WineDetail";
-import { useParams, useNavigate } from "react-router-dom";
-import Nav from "../layouts/Nav";
+import Layout from "../layouts/Layout";
 
 export default function FilterPage() {
   const [wine, setWine] = useState([]);
@@ -79,35 +79,37 @@ export default function FilterPage() {
     });
   };
   return (
-    <div>
-      <ButtonGroup variant="outlined">
-        <Button id="all" onClick={handleProductTypeFilter}>
-          All Wines
-        </Button>
-        <Button id="red" onClick={handleProductTypeFilter}>
-          Red Wines
-        </Button>
-        <Button id="white" onClick={handleProductTypeFilter}>
-          White Wines
-        </Button>
-        <Button id="rose" onClick={handleProductTypeFilter}>
-          Rose Wines
-        </Button>
-      </ButtonGroup>
+    <Layout>
+      <div>
+        <ButtonGroup variant="outlined">
+          <Button id="all" onClick={handleProductTypeFilter}>
+            All Wines
+          </Button>
+          <Button id="red" onClick={handleProductTypeFilter}>
+            Red Wines
+          </Button>
+          <Button id="white" onClick={handleProductTypeFilter}>
+            White Wines
+          </Button>
+          <Button id="rose" onClick={handleProductTypeFilter}>
+            Rose Wines
+          </Button>
+        </ButtonGroup>
 
-      <ButtonGroup variant="outlined">
-        <Button onClick={handleAToZ}>A - Z</Button>
-        <Button onClick={handleLeastToMost}>$ - $$$</Button>
-        <Button onClick={handleMostToLeast}>$$$ - $</Button>
-      </ButtonGroup>
+        <ButtonGroup variant="outlined">
+          <Button onClick={handleAToZ}>A - Z</Button>
+          <Button onClick={handleLeastToMost}>$ - $$$</Button>
+          <Button onClick={handleMostToLeast}>$$$ - $</Button>
+        </ButtonGroup>
 
-      <div className="grid grid-cols-4 gap-x-8 gap-y-4 mx-40 pt-32 ">
-        {wine.map((wine, index) => (
-          <div className="wine-container" key={index}>
-            <WineDetail wine={wine} />
-          </div>
-        ))}
+        <div className="grid grid-cols-4 gap-x-8 gap-y-4 mx-40 pt-32 ">
+          {wine.map((wine, index) => (
+            <div className="wine-container" key={index}>
+              <WineDetail wine={wine} />
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 }
