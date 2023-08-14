@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { loginUser } from "../api/users";
 import { useNavigate } from "react-router-dom";
-const SignInPage = () => {
+
+export default function SignIn() {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -91,6 +92,4 @@ const SignInPage = () => {
       </div>
     </div>
   );
-};
-
-export default SignInPage;
+}

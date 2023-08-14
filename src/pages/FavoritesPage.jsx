@@ -1,7 +1,6 @@
 import WineDetail from "../components/WineDetail";
 import { getWine } from "../api/api";
 import { useEffect, useState } from "react";
-// import Layout from "../layouts/Layout";;
 
 export default function Favorites() {
   const [wines, setWines] = useState([]);
@@ -36,7 +35,6 @@ export default function Favorites() {
   }, []);
 
   return (
-    // <Layout>
     <div>
       <div>
         <h1 className="text-5xl font-bold mb-10 font-mono">YOUR WISH LIST</h1>
@@ -49,6 +47,5 @@ export default function Favorites() {
         ))}
       </div>
     </div>
-    // </Layout>
   );
 }

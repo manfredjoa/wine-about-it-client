@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-function WhiteWines() {
+export default function WhiteWines() {
   return (
     <div className="w-40 h-40">
       <Link to="/filter/white">
@@ -14,5 +13,3 @@ function WhiteWines() {
     </div>
   );
 }
-
-export default WhiteWines;

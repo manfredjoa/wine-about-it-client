@@ -1,7 +1,6 @@
-import React from "react";
 import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
 
-const UserInfoCard = ({ user }) => {
+export default function UserInfo({ user }) {
   if (!user) {
     return <div>No user information available.</div>;
   }
@@ -48,6 +47,4 @@ const UserInfoCard = ({ user }) => {
       </div>
     </Card>
   );
-};
-
-export default UserInfoCard;
+}

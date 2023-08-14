@@ -1,8 +1,7 @@
-import React from "react";
 import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
-const OrderHistoryCard = ({ orders }) => {
+export default function OrderHistory({ orders }) {
   if (!orders || orders.length === 0) {
     return <div>No order history available.</div>;
   }
@@ -74,6 +73,4 @@ const OrderHistoryCard = ({ orders }) => {
       </div>
     </Card>
   );
-};
-
-export default OrderHistoryCard;
+}
