@@ -28,7 +28,7 @@ export default function Favorites({ favorites }) {
 
   return (
     <Card className="w-full">
-      <div className="bg-gray-500 text-white text-center py-6 font-bold text-3xl">
+      <div className="bg-black text-white text-center py-6 font-bold text-3xl">
         Favorites
       </div>
       <CardBody className="flex flex-col">
@@ -64,7 +64,7 @@ export default function Favorites({ favorites }) {
       <div className="flex justify-center mt-4">
         <Button
           color="gray"
-          className="bg-gray-300 hover:bg-gray-400 border-none rounded-none text-gray-700 hover:text-black-500"
+          className="bg-black hover:bg-red-800 border-none rounded-none text-white hover:text-black-500"
           ripple="light"
         >
           <Link to="/favorites">View All Favorites</Link>

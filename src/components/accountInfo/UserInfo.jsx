@@ -9,7 +9,7 @@ export default function UserInfo({ user }) {
 
   return (
     <Card className="w-full">
-      <div className="bg-gray-500 text-white text-center py-6 font-bold text-3xl">
+      <div className="bg-black text-white text-center py-6 font-bold text-3xl">
         User Info
       </div>
       <CardBody className="flex flex-col">
@@ -37,14 +37,14 @@ export default function UserInfo({ user }) {
         </div>
       </CardBody>
       <div className="flex justify-center">
-        <Button
-          onClick={() => console.log("Edit Info clicked")}
-          className="bg-gray-300 hover:bg-gray-400 border-none rounded-none text-gray-700"
-          ripple="light"
-        >
-          Edit Info
-        </Button>
-      </div>
+          <Button
+            onClick={() => console.log('Edit Info clicked')}
+            className="bg-black hover:bg-red-800 border-none rounded-none text-white"
+            ripple="light"
+          >
+            Edit Info
+          </Button>
+        </div>
     </Card>
   );
 }
