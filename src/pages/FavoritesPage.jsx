@@ -1,7 +1,7 @@
 import WineDetail from "../components/WineDetail";
 import { getWine } from "../api/api";
 import { useEffect, useState } from "react";
-import Layout from "../layouts/Layout";
+// import Layout from "../layouts/Layout";;
 
 export default function Favorites() {
   const [wines, setWines] = useState([]);
@@ -36,19 +36,19 @@ export default function Favorites() {
   }, []);
 
   return (
-    <Layout>
+    // <Layout>
+    <div>
       <div>
-        <div>
-          <h1 className="text-5xl font-bold mb-10 font-mono">YOUR WISH LIST</h1>
-        </div>
-        <div className="grid grid-cols-4 gap-x-40 gap-y-4 mx-40 pt-32 ">
-          {wines.map((wine, index) => (
-            <div className="wine-container" key={index}>
-              <WineDetail wine={wine} />
-            </div>
-          ))}
-        </div>
+        <h1 className="text-5xl font-bold mb-10 font-mono">YOUR WISH LIST</h1>
       </div>
-    </Layout>
+      <div className="grid grid-cols-4 gap-x-40 gap-y-4 mx-40 pt-32 ">
+        {wines.map((wine, index) => (
+          <div className="wine-container" key={index}>
+            <WineDetail wine={wine} />
+          </div>
+        ))}
+      </div>
+    </div>
+    // </Layout>
   );
 }

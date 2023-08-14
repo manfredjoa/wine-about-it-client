@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getRedWines, getWhiteWines, getRoseWines, getWines } from "../api/api";
 import { ButtonGroup, Button } from "@material-tailwind/react";
 import WineDetail from "../components/WineDetail";
-import Layout from "../layouts/Layout";
+// import Layout from "../layouts/Layout";;
 
 export default function FilterPage() {
   const [wine, setWine] = useState([]);
@@ -78,7 +78,7 @@ export default function FilterPage() {
     });
   };
   return (
-    <Layout>
+
       <div>
         <ButtonGroup className="flex justify-end mt-2.5 mr-2.5">
           <Button
@@ -101,14 +101,13 @@ export default function FilterPage() {
           </Button>
         </ButtonGroup>
 
-        <div className="grid grid-cols-4 gap-x-8 gap-y-4 mx-40 pt-32 ">
-          {wine.map((wine, index) => (
-            <div className="wine-container" key={index}>
-              <WineDetail wine={wine} />
-            </div>
-          ))}
-        </div>
+      <div className="grid grid-cols-4 gap-x-8 gap-y-4 mx-40 pt-32 ">
+        {wine.map((wine, index) => (
+          <div className="wine-container" key={index}>
+            <WineDetail wine={wine} />
+          </div>
+        ))}
       </div>
-    </Layout>
+    </div>
   );
 }
