@@ -22,7 +22,8 @@ import {
   // MagnifyingGlassIcon, // For navigating to browse page later on
 } from "@heroicons/react/24/outline";
 
-function AccountMenu() {
+//dropdown menu
+function AccountMenu({ user, handleLogOut }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
 
@@ -36,13 +37,17 @@ function AccountMenu() {
           className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
           style={{ color: "rgb(96, 20, 30)" }}
         >
-          {createElement(UserCircleIcon, { className: "h-[24px] w-[24px]" })}
+          {createElement(UserCircleIcon, {
+            className: "h-[24px] w-[24px]",
+            style: { color: user ? "green" : "rgb(96, 20, 30)" },
+          })}
+
           <ChevronDownIcon
             strokeWidth={2.5}
             className={`h-3 w-3 transition-transform ${
               isMenuOpen ? "rotate-180" : ""
             }`}
-            style={{ color: "rgb(96, 20, 30)" }}
+            style={{ color: user ? "green" : "rgb(96, 20, 30)" }}
           />
         </Button>
       </MenuHandler>
@@ -76,7 +81,11 @@ function AccountMenu() {
           </MenuItem>
         </Typography>
 
-        <Typography as="a" href="/sign-in">
+        <Typography
+          as="a"
+          onClick={user ? handleLogOut : undefined}
+          href={user ? undefined : "/sign-in"}
+        >
           <MenuItem
             onClick={closeMenu}
             className={"flex items-center gap-2 rounded"}
@@ -86,7 +95,7 @@ function AccountMenu() {
               className: "h-4 w-4",
               strokeWidth: 2,
             })}
-            Sign Out
+            {user ? "Sign Out" : "Sign In"}
           </MenuItem>
         </Typography>
       </MenuList>
@@ -133,7 +142,8 @@ function NavList() {
   );
 }
 
-export default function Nav() {
+//real below
+export default function Nav({ handleLogOut, user }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
@@ -146,7 +156,7 @@ export default function Nav() {
   }, []);
 
   // const [productTypeToggle, setProductTypeToggle] = useState(false);
-  let navigate = useNavigate();
+  // let navigate = useNavigate();
 
   // When productType button is clicked, it will navigate to the url, with above useEffect re-rendering page
   // const handleProductTypeFilter = async (e) => {
@@ -238,7 +248,7 @@ export default function Nav() {
           <Bars2Icon className="h-6 w-6" />
         </IconButton>
 
-        <AccountMenu />
+        <AccountMenu user={user} handleLogOut={handleLogOut} />
       </div>
       {/* ==================== */}
 

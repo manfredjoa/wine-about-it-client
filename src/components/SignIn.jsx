@@ -1,24 +1,43 @@
 import React, { useState } from "react";
-
+import { loginUser } from "../api/users";
+import { useNavigate } from "react-router-dom";
 const SignInPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
 
-  const handleSignIn = (e) => {
+  const navigate = useNavigate();
+
+  const onSignIn = async (e) => {
     e.preventDefault();
-    //sign-in logic here
+    // send post
+    const user = await loginUser(formData);
+    //logic not done, need to figure out how
+    // update the user state before the navigate hits
+
+    navigate("/");
+    window.location.reload();
   };
 
   const handleForgotPassword = (e) => {
     e.preventDefault();
-    //"forgot password" logic here
+    // Forgot password logic here using formData.email
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="bg-white p-8 rounded shadow-md w-96">
         <h2 className="text-2xl font-semibold mb-4">Sign In</h2>
-        <form onSubmit={handleSignIn}>
+        <form onSubmit={onSignIn}>
           <div className="mb-4">
             <label
               htmlFor="email"
@@ -29,9 +48,10 @@ const SignInPage = () => {
             <input
               type="email"
               id="email"
+              name="email"
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-500"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={formData.email}
+              onChange={handleChange}
               required
             />
           </div>
@@ -45,9 +65,10 @@ const SignInPage = () => {
             <input
               type="password"
               id="password"
+              name="password"
               className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring focus:ring-indigo-200 focus:border-indigo-500"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              value={formData.password}
+              onChange={handleChange}
               required
             />
           </div>
