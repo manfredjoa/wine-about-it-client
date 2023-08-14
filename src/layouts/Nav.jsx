@@ -1,6 +1,6 @@
 import { useState, useEffect, createElement } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { getRedWines, getWhiteWines, getRoseWines, getWines } from "../api/api";
+import { useNavigate } from "react-router-dom";
+
 import {
   Navbar,
   Collapse,
@@ -12,6 +12,7 @@ import {
   MenuItem,
   IconButton,
 } from "@material-tailwind/react";
+
 import {
   UserCircleIcon,
   ChevronDownIcon,
@@ -22,20 +23,17 @@ import {
   ShoppingCartIcon,
   // MagnifyingGlassIcon, // For navigating to browse page later on
 } from "@heroicons/react/24/outline";
-import FilterPage from "../pages/FilterPage";
 
 //dropdown menu
 function AccountMenu({ user, handleLogOut }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
 
-  // Creates menu when clicking on account icon
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
       <MenuHandler>
         <Button
           variant="text"
-          color="blue-gray"
           className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
           style={{ color: "rgb(96, 20, 30)" }}
         >
@@ -113,7 +111,6 @@ function NavList() {
         as="a"
         href="/favorites"
         variant="small"
-        color="blue-gray"
         className="font-normal"
       >
         <MenuItem
@@ -128,7 +125,6 @@ function NavList() {
         as="a"
         href="/shopping-cart"
         variant="small"
-        color="blue-gray"
         className="font-normal"
       >
         <MenuItem
@@ -147,8 +143,8 @@ function NavList() {
 //real below
 export default function Nav({ handleLogOut, user }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
-
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
+  const navigate = useNavigate();
 
   useEffect(() => {
     window.addEventListener(
@@ -156,8 +152,6 @@ export default function Nav({ handleLogOut, user }) {
       () => window.innerWidth >= 960 && setIsNavOpen(false)
     );
   }, []);
-  // const [productTypeToggle, setProductTypeToggle] = useState(false);
-  // const navigate = useNavigate();
 
   // When productType button is clicked, it will navigate to the url, with above useEffect re-rendering page
   const handleProductTypeFilter = async (e) => {
@@ -183,8 +177,8 @@ export default function Nav({ handleLogOut, user }) {
           <Typography
             as="a"
             href="/"
-            className="mr-4 ml-2 cursor-pointer py-1.5 font-black text-5xl"
-            style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+            className="mr-4 ml-2 cursor-pointer py-1.5 font-black text-5xl mx-auto"
+            style={{ fontFamily: "Wine Date" }}
           >
             Wine About It
           </Typography>
@@ -197,15 +191,15 @@ export default function Nav({ handleLogOut, user }) {
           {/* Responsive menu change (NavList > Bars2Icon) when Collapse is open (determined by useEffect above) */}
           <IconButton
             size="sm"
-            color="blue-gray"
             variant="text"
             onClick={toggleIsNavOpen}
-            className="ml-auto mr-2 lg:hidden"
+            className="ml-auto mr-2 lg:hidden my-auto"
+            style={{ color: "rgb(96, 20, 30)" }}
           >
             <Bars2Icon className="h-6 w-6" />
           </IconButton>
 
-          <AccountMenu />
+          <AccountMenu user={user} handleLogOut={handleLogOut} />
         </div>
         {/* ==================== */}
 
@@ -226,10 +220,6 @@ export default function Nav({ handleLogOut, user }) {
         >
           All Wines
         </Button>
-
-        <AccountMenu user={user} handleLogOut={handleLogOut} />
-      </div>
-      {/* ==================== */}
 
         <Button
           id="red"
@@ -255,7 +245,7 @@ export default function Nav({ handleLogOut, user }) {
           onClick={handleProductTypeFilter}
           style={{ color: "rgb(96, 20, 30)" }}
         >
-          Rose Wines
+          Rosé Wines
         </Button>
       </div>
     </div>

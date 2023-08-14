@@ -1,7 +1,6 @@
-import OrderHistoryCard from "../components/accountInfo/OrderHistory";
-import FavoritesCard from "../components/accountInfo/Favorites";
+import OrderHistory from "../components/accountInfo/OrderHistory";
+import Favorites from "../components/accountInfo/Favorites";
 import UserInfoCard from "../components/accountInfo/UserInfo";
-// // import Layout from "../layouts/Layout";;
 
 export default function AccountInfoPage() {
   const mockOrders = [
@@ -51,7 +50,6 @@ export default function AccountInfoPage() {
   };
 
   return (
-    // <Layout>
     <div className="flex flex-col min-h-screen">
       <div className="bg-gray-100 py-4 flex justify-center text-uppercase">
         <div className="max-w-screen-xl mx-auto px-4">
@@ -64,11 +62,10 @@ export default function AccountInfoPage() {
       <div>
         <div className="flex space-x-6 py-8 px-4">
           <UserInfoCard user={userInfo} />
-          <OrderHistoryCard orders={mockOrders} />
-          <FavoritesCard favorites={favorites} />
+          <OrderHistory orders={mockOrders} />
+          <Favorites favorites={favorites} />
         </div>
       </div>
     </div>
-    // </Layout>
   );
 }

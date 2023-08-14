@@ -9,15 +9,14 @@ import ShoppingCartPage from "./pages/ShoppingCartPage.jsx";
 import CheckoutPage from "./pages/CheckoutPage.jsx";
 import FilterPage from "./pages/FilterPage.jsx";
 import AccountInfoPage from "./pages/AccountInfoPage.jsx";
-import LinkToRegistrationPage from "./pages/LinkToRegistrationPage.jsx";
-import { useState, useEffect } from "react";
-import { verifyUser } from "./api/users.js";
 import Nav from "./layouts/Nav.jsx";
 import Footer from "./layouts/Footer.jsx";
+import { useState, useEffect } from "react";
+import { verifyUser } from "./api/users.js";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "./api/users.js";
 
-function App() {
+export default function App() {
   const [user, setUser] = useState(null);
 
   const navigate = useNavigate();
@@ -65,18 +64,9 @@ function App() {
           path="/filter/:productType"
           element={<FilterPage user={user} />}
         />
-        <Route
-          path="/link-to-registration"
-          element={<LinkToRegistrationPage />}
-        />
         <Route path="/account-info" element={<AccountInfoPage />} />
       </Routes>
       <Footer />
     </div>
   );
 }
-
-export default App;
-
-// wineDetail in URL to be replaced by slug (probably :WineName)
-// Kebab case for URL? This makes the most sense to me

@@ -1,7 +1,7 @@
 import { Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
-function WineDetail({ wine }) {
+export default function WineDetail({ wine }) {
   const navigate = useNavigate();
   return (
     <div onClick={() => navigate(`/search/wine-detail/${wine._id}`)}>
@@ -19,5 +19,3 @@ function WineDetail({ wine }) {
     </div>
   );
 }
-
-export default WineDetail;

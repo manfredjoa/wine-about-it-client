@@ -1,14 +1,12 @@
-import React from "react";
+// const CenteredPage = () => {
+//   return (
+//     <div className="flex justify-center items-center h-screen">
+//       <CheckoutForm />
+//     </div>
+//   );
+// };
 
-const CenteredPage = () => {
-  return (
-    <div className="flex justify-center items-center h-screen">
-      <CheckoutForm />
-    </div>
-  );
-};
-
-const CheckoutForm = () => {
+export default function Checkout() {
   return (
     <form className="w-full max-w-md">
       <div className="mb-4">
@@ -53,6 +51,4 @@ const CheckoutForm = () => {
       </button>
     </form>
   );
-};
-
-export default CheckoutForm;
+}

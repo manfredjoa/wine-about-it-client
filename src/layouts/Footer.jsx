@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const Footer = () => {
+export default function Footer() {
   const [email, setEmail] = useState("");
 
   const handleEmailChange = (e) => {
@@ -85,6 +85,4 @@ const Footer = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

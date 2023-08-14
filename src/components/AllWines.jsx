@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-function AllWines() {
+export default function AllWines() {
   return (
     <div className="w-40 h-40">
       <Link to="/filter/all">
@@ -14,5 +13,3 @@ function AllWines() {
     </div>
   );
 }
-
-export default AllWines;

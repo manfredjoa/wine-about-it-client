@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { getWine } from "../api/api";
 import { useEffect, useState } from "react";
-// import Layout from "../layouts/Layout";;
 
 export default function WineDetail() {
   const [wine, setWine] = useState({});
@@ -19,7 +18,6 @@ export default function WineDetail() {
   }
 
   return (
-    // <Layout>
     <div className="mx-20 mt-10">
       <div className="flex p-4 max-w-4xl mx-auto mb-10">
         <div className="flex-1 pr-4">
@@ -49,6 +47,5 @@ export default function WineDetail() {
         </div>
       </div>
     </div>
-    // </Layout>
   );
 }
