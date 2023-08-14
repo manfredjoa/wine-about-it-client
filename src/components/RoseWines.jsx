@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
-function RoseWines() {
+export default function RoseWines() {
   return (
     <div className="w-40 h-40">
       <Link to="/filter/rose">
@@ -14,5 +13,3 @@ function RoseWines() {
     </div>
   );
 }
-
-export default RoseWines;

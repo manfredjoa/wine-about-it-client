@@ -1,20 +1,18 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getRedWines, getWhiteWines, getRoseWines, getWines } from "../api/api";
-import { ButtonGroup, Button } from "@material-tailwind/react";
+import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
 import WineDetail from "../components/WineDetail";
-import { useParams, useNavigate } from "react-router-dom";
 
 export default function FilterPage() {
   const [wine, setWine] = useState([]);
-  const [productTypeToggle, setProductTypeToggle] = useState(false);
   const [subFilterToggle, setSubFilterToggle] = useState(false);
-  const navigate = useNavigate();
   let { productType } = useParams();
 
-  // Re-renders page when productType button is clicked
+  // Re-renders page when productType button is clicked, as well as when filters are clicked in Nav Bar
   useEffect(() => {
     fetchWinesByProductType();
-  }, [productTypeToggle]);
+  }, [productType]);
 
   // Fetches wines based on productType from url
   async function fetchWinesByProductType() {
@@ -27,29 +25,11 @@ export default function FilterPage() {
     } else if (productType === "rose") {
       const allWines = await getRoseWines();
       setWine(allWines);
-      console.log(allWines.length);
     } else if (productType === "all") {
       const allWines = await getWines();
       setWine(allWines);
     } // else { some error message saying invalid url? }
   }
-
-  // When productType button is clicked, it will navigate to the url, with above useEffect re-rendering page
-  const handleProductTypeFilter = async (e) => {
-    if (e.target.id === "red") {
-      navigate("/filter/red");
-      setProductTypeToggle(!productTypeToggle);
-    } else if (e.target.id === "white") {
-      navigate("/filter/white");
-      setProductTypeToggle(!productTypeToggle);
-    } else if (e.target.id === "rose") {
-      navigate("/filter/rose");
-      setProductTypeToggle(!productTypeToggle);
-    } else if (e.target.id === "all") {
-      navigate("/filter/all");
-      setProductTypeToggle(!productTypeToggle);
-    }
-  };
 
   // Re-renders page when a subFilter is clicked
   useEffect(() => {}, [subFilterToggle]);
@@ -77,28 +57,59 @@ export default function FilterPage() {
       return a.WineName.localeCompare(b.WineName);
     });
   };
+
   return (
     <div>
-      <ButtonGroup variant="outlined">
-        <Button id="all" onClick={handleProductTypeFilter}>
-          All Wines
+      <ButtonGroup className="flex justify-end mt-2.5 mr-2.5">
+        <Button
+          onClick={handleAToZ}
+          style={{ backgroundColor: "rgb(96, 20, 30)" }}
+        >
+          A - Z
         </Button>
-        <Button id="red" onClick={handleProductTypeFilter}>
-          Red Wines
+
+        <Button
+          onClick={handleLeastToMost}
+          style={{ backgroundColor: "rgb(96, 20, 30)" }}
+        >
+          $ - $$$
         </Button>
-        <Button id="white" onClick={handleProductTypeFilter}>
-          White Wines
-        </Button>
-        <Button id="rose" onClick={handleProductTypeFilter}>
-          Rose Wines
+
+        <Button
+          onClick={handleMostToLeast}
+          style={{ backgroundColor: "rgb(96, 20, 30)" }}
+        >
+          $$$ - $
         </Button>
       </ButtonGroup>
 
-      <ButtonGroup variant="outlined">
-        <Button onClick={handleAToZ}>A - Z</Button>
-        <Button onClick={handleLeastToMost}>$ - $$$</Button>
-        <Button onClick={handleMostToLeast}>$$$ - $</Button>
-      </ButtonGroup>
+      <Typography
+        className="text-5xl font-black text-center mt-8"
+        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+      >
+        {productType === "red" && `Red Wines (${wine.length})`}
+      </Typography>
+
+      <Typography
+        className="text-5xl font-black text-center mt-8"
+        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+      >
+        {productType === "white" && `White Wines (${wine.length})`}
+      </Typography>
+
+      <Typography
+        className="text-5xl font-black text-center mt-8"
+        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+      >
+        {productType === "rose" && `Rose Wines (${wine.length})`}
+      </Typography>
+
+      <Typography
+        className="text-5xl font-black text-center mt-8"
+        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+      >
+        {productType === "all" && `All Wines (${wine.length})`}
+      </Typography>
 
       <div className="grid grid-cols-4 gap-x-8 gap-y-4 mx-40 pt-32 ">
         {wine.map((wine, index) => (

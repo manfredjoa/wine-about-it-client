@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 
-const FavoritesCard = ({ favorites }) => {
+export default function Favorites({ favorites }) {
   const initialFavoriteMap = favorites.reduce((map, favorite) => {
     map[favorite.productId] = true;
     return map;
@@ -48,13 +48,11 @@ const FavoritesCard = ({ favorites }) => {
                 className="focus:outline-solid"
               >
                 <FontAwesomeIcon
-                  icon={
-                    favoriteMap[favorite.productId] ? faHeart : farHeart
-                  }
+                  icon={favoriteMap[favorite.productId] ? faHeart : farHeart}
                   className={`text-lg ${
                     favoriteMap[favorite.productId]
-                      ? 'text-red-500'
-                      : 'text-gray-500'
+                      ? "text-red-500"
+                      : "text-gray-500"
                   }`}
                 />
               </button>
@@ -69,13 +67,9 @@ const FavoritesCard = ({ favorites }) => {
           className="bg-black hover:bg-red-800 border-none rounded-none text-white hover:text-black-500"
           ripple="light"
         >
-          <Link to="/favorites">
-            View All Favorites
-          </Link>
+          <Link to="/favorites">View All Favorites</Link>
         </Button>
       </div>
     </Card>
   );
-};
-
-export default FavoritesCard;
+}

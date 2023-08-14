@@ -1,6 +1,4 @@
-import React from "react";
 import WineCarousel from "../components/WineCarousel.jsx";
-import Footer from "../layouts/Footer.jsx";
 import AllWines from "../components/AllWines.jsx";
 import RedWines from "../components/RedWines.jsx";
 import WhiteWines from "../components/WhiteWines.jsx";
@@ -17,8 +15,6 @@ export default function Home() {
         <WhiteWines />
         <RoseWines />
       </div>
-
-      <Footer />
     </div>
   );
 }
