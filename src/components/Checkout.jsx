@@ -1,5 +1,5 @@
-import react from 'react';
-import { useState } from 'react';
+import { useState } from "react";
+
 export default function Checkout() {
   const [formData, setFormData] = useState({
     email: "",
