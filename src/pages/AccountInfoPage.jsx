@@ -46,10 +46,10 @@ const AccountInfoPage = () => {
   ];
 
   const userInfo = {
-    firstName: 'Daija',
-    lastName: 'Watt',
-    email: 'watt.daija@yahoo.com',
-    shippingAddress: '3465 Duluth Hwy, Duluth, GA',
+    firstName: 'John',
+    lastName: 'Doe',
+    email: 'doe.john@yahoo.com',
+    shippingAddress: '1234 Duluth Hwy, Duluth, GA',
   };
 
   return (

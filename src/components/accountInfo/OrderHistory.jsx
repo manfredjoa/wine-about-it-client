@@ -17,7 +17,7 @@ const OrderHistoryCard = ({ orders }) => {
 
   return (
     <Card className="w-full">
-      <div className="bg-gray-500 text-white text-center py-6 font-bold text-3xl">
+      <div className="bg-black text-white text-center py-6 font-bold text-3xl">
         Order History
       </div>
       <CardBody className="flex flex-col">
@@ -31,7 +31,7 @@ const OrderHistoryCard = ({ orders }) => {
               </Link>
               <Button
                 onClick={() => handleReorder(order)}
-                className="bg-gray-300 hover:bg-gray-400 border-none rounded-none text-gray-700 ml-4"
+                className="bg-black hover:bg-red-800 border-none rounded-none text-white ml-4"
                 ripple="light"
               >
                 Reorder
@@ -63,7 +63,7 @@ const OrderHistoryCard = ({ orders }) => {
       <div className="flex justify-center mt-4">
         <Button
           color="gray"
-          className="bg-gray-300 hover:bg-gray-400 border-none mb-5 rounded-none text-gray-700 hover:text-black-500"
+          className="bg-black hover:bg-red-800 border-none mb-5 rounded-none text-white hover:text-black-500"
           ripple="light"
         >
           <Link to="/order-history">
