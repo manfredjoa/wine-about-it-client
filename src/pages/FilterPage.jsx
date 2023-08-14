@@ -1,21 +1,19 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getRedWines, getWhiteWines, getRoseWines, getWines } from "../api/api";
-import { ButtonGroup, Button } from "@material-tailwind/react";
+import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
 import WineDetail from "../components/WineDetail";
 import Layout from "../layouts/Layout";
 
 export default function FilterPage() {
   const [wine, setWine] = useState([]);
-  const [productTypeToggle, setProductTypeToggle] = useState(false);
   const [subFilterToggle, setSubFilterToggle] = useState(false);
-  const navigate = useNavigate();
   let { productType } = useParams();
 
   // Re-renders page when productType button is clicked, as well as when filters are clicked in Nav Bar
   useEffect(() => {
     fetchWinesByProductType();
-  }, [productTypeToggle, productType]);
+  }, [productType]);
 
   // Fetches wines based on productType from url
   async function fetchWinesByProductType() {
@@ -33,23 +31,6 @@ export default function FilterPage() {
       setWine(allWines);
     } // else { some error message saying invalid url? }
   }
-
-  // When productType button is clicked, it will navigate to the url, with above useEffect re-rendering page
-  const handleProductTypeFilter = async (e) => {
-    if (e.target.id === "red") {
-      navigate("/filter/red");
-      setProductTypeToggle(!productTypeToggle);
-    } else if (e.target.id === "white") {
-      navigate("/filter/white");
-      setProductTypeToggle(!productTypeToggle);
-    } else if (e.target.id === "rose") {
-      navigate("/filter/rose");
-      setProductTypeToggle(!productTypeToggle);
-    } else if (e.target.id === "all") {
-      navigate("/filter/all");
-      setProductTypeToggle(!productTypeToggle);
-    }
-  };
 
   // Re-renders page when a subFilter is clicked
   useEffect(() => {}, [subFilterToggle]);
@@ -77,6 +58,7 @@ export default function FilterPage() {
       return a.WineName.localeCompare(b.WineName);
     });
   };
+
   return (
     <Layout>
       <div>
@@ -87,12 +69,14 @@ export default function FilterPage() {
           >
             A - Z
           </Button>
+
           <Button
             onClick={handleLeastToMost}
             style={{ backgroundColor: "rgb(96, 20, 30)" }}
           >
             $ - $$$
           </Button>
+
           <Button
             onClick={handleMostToLeast}
             style={{ backgroundColor: "rgb(96, 20, 30)" }}
@@ -100,6 +84,34 @@ export default function FilterPage() {
             $$$ - $
           </Button>
         </ButtonGroup>
+
+        <Typography
+          className="text-5xl font-black text-center mt-8"
+          style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+        >
+          {productType === "red" && `Red Wines (${wine.length})`}
+        </Typography>
+
+        <Typography
+          className="text-5xl font-black text-center mt-8"
+          style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+        >
+          {productType === "white" && `White Wines (${wine.length})`}
+        </Typography>
+
+        <Typography
+          className="text-5xl font-black text-center mt-8"
+          style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+        >
+          {productType === "rose" && `Rose Wines (${wine.length})`}
+        </Typography>
+
+        <Typography
+          className="text-5xl font-black text-center mt-8"
+          style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+        >
+          {productType === "all" && `All Wines (${wine.length})`}
+        </Typography>
 
         <div className="grid grid-cols-4 gap-x-8 gap-y-4 mx-40 pt-32 ">
           {wine.map((wine, index) => (
