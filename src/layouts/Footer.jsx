@@ -13,14 +13,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900 text-white flex-shrink-0 py-4">
-      <div className="container mx-auto">
-        <div className="flex flex-wrap items-center justify-between">
-          <p className="text-sm">
+    <footer className="bg-gray-900 text-white flex-shrink-0 py-10 mt-4">
+      <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
+        <div>
+          <p className="text-sm mb-2">
             &copy; {new Date().getFullYear()} Wine About It. All rights
             reserved.
           </p>
-          <ul className="flex space-x-4">
+          <ul className="flex space-x-4 mt-2">
             <li>
               <a href="/about" className="hover:text-gray-400">
                 About
@@ -33,7 +33,7 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-        <div className="mt-6">
+        <div className="mt-6 md:mt-0 md:ml-6">
           <h3 className="text-lg font-semibold mb-2">
             Sign Up for Our Newsletter
           </h3>
@@ -47,13 +47,14 @@ export default function Footer() {
             />
             <button
               type="submit"
-              className="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 focus:outline-none focus:ring focus:ring-blue-300"
+              className="px-4 py-2 text-white rounded-md focus:outline-none focus:ring focus:ring-blue-300"
+              style={{ backgroundColor: 'rgb(96, 20, 30)' }}
             >
               Submit
             </button>
           </form>
         </div>
-        <div className="mt-6">
+        <div className="mt-6 md:mt-0 md:ml-6">
           <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
           <ul className="flex space-x-4">
             <li>

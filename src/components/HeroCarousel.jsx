@@ -1,9 +1,23 @@
 import { Carousel } from "@material-tailwind/react";
 
-export default function WineCarousel() {
+export default function HeroCarousel() {
+
+  const aspectRatio = 16 / 9;
+
+  const images = [
+    "https://i.imgur.com/KfnKjz8.jpg",
+    "https://i.imgur.com/Gp9OB7Q.jpg",
+    "https://i.imgur.com/x5aHcWZ.jpg",
+    "https://i.imgur.com/vKJ5d5K.jpg",
+    "https://i.imgur.com/R7Bvovn.jpg",
+    "https://i.imgur.com/y06fvEP.jpg",
+  ];
+
+  //const carouselHeight = 200;
+
   return (
-    <Carousel
-      className="h-screen"
+     <Carousel
+      style={{ height: "70vh" }}
       loop={true}
       autoplay={true}
       autoplayDelay={2000}
@@ -24,32 +38,38 @@ export default function WineCarousel() {
       <img
         src="https://i.imgur.com/KfnKjz8.jpg"
         alt="1"
-        className="h-4/6 w-screen object-cover"
+        className="w-screen object-cover object-bottom"
+        style={{ height: "70vh" }}
       />
       <img
         src="https://i.imgur.com/Gp9OB7Q.jpg"
         alt="2"
-        className="h-4/6 w-screen object-cover"
+        className="w-screen object-cover"
+        style={{ height: "70vh" }}
       />
       <img
         src="https://i.imgur.com/x5aHcWZ.jpg"
         alt="3"
-        className="h-4/6 w-screen object-cover"
+        className="w-screen object-cover object-top"
+        style={{ height: "70vh" }}
       />
       <img
         src="https://i.imgur.com/vKJ5d5K.jpg"
         alt="4"
-        className="h-4/6 w-screen object-cover"
+        className="w-screen object-cover"
+        style={{ height: "70vh" }}
       />
       <img
         src="https://i.imgur.com/R7Bvovn.jpg"
         alt="5"
-        className="h-4/6 w-screen object-cover"
+        className="w-screen object-cover"
+        style={{ height: "70vh" }}
       />
       <img
         src="https://i.imgur.com/y06fvEP.jpg"
         alt="6"
-        className="h-4/6 w-screen object-cover"
+        className="w-screen object-cover"
+        style={{ height: "70vh" }}
       />
     </Carousel>
   );
