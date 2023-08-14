@@ -10,26 +10,68 @@ import CheckoutPage from "./pages/CheckoutPage.jsx";
 import FilterPage from "./pages/FilterPage.jsx";
 import AccountInfoPage from "./pages/AccountInfoPage.jsx";
 import LinkToRegistrationPage from "./pages/LinkToRegistrationPage.jsx";
+import { useState, useEffect } from "react";
+import { verifyUser } from "./api/users.js";
+import Nav from "./layouts/Nav.jsx";
+import Footer from "./layouts/Footer.jsx";
+import { useNavigate } from "react-router-dom";
+import { loginUser } from "./api/users.js";
 
 function App() {
+  const [user, setUser] = useState(null);
+
+  const navigate = useNavigate();
+
+  // page refresh App.js will check for token
+  useEffect(() => {
+    const fetchUser = async () => {
+      const user = await verifyUser();
+      user ? setUser(user) : setUser(null);
+      console.log(user);
+    };
+    fetchUser();
+  }, []);
+
+  const handleLogOut = () => {
+    localStorage.removeItem("token");
+    setUser(null);
+  };
+
+  // drill this down to the sign-in page
+  // const handleSignIn = async (formData) => {
+  //   const user = await loginUser(formData);
+  //   setUser(user);
+
+  //   navigate("/");
+  //   console.log("I called the useEffect in App.js");
+  // };
+
   return (
     <div>
+      <Nav user={user} handleLogOut={handleLogOut} />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage user={user} />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/search/wine-detail/:id" element={<WineDetailPage />} />
-        <Route path="/favorites" element={<FavoritesPage />} />
-        <Route path="/registration" element={<RegistrationPage />} />
+        <Route path="/favorites" element={<FavoritesPage user={user} />} />
+        <Route
+          path="/registration"
+          element={<RegistrationPage setUser={setUser} />}
+        />
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/shopping-cart" element={<ShoppingCartPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/filter/:productType" element={<FilterPage />} />
+        <Route path="/checkout" element={<CheckoutPage user={user} />} />
+        <Route
+          path="/filter/:productType"
+          element={<FilterPage user={user} />}
+        />
         <Route
           path="/link-to-registration"
           element={<LinkToRegistrationPage />}
         />
         <Route path="/account-info" element={<AccountInfoPage />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

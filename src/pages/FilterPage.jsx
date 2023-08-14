@@ -3,7 +3,6 @@ import { useParams } from "react-router-dom";
 import { getRedWines, getWhiteWines, getRoseWines, getWines } from "../api/api";
 import { Button, ButtonGroup, Typography } from "@material-tailwind/react";
 import WineDetail from "../components/WineDetail";
-import Layout from "../layouts/Layout";
 
 export default function FilterPage() {
   const [wine, setWine] = useState([]);
@@ -60,67 +59,65 @@ export default function FilterPage() {
   };
 
   return (
-    <Layout>
-      <div>
-        <ButtonGroup className="flex justify-end mt-2.5 mr-2.5">
-          <Button
-            onClick={handleAToZ}
-            style={{ backgroundColor: "rgb(96, 20, 30)" }}
-          >
-            A - Z
-          </Button>
-
-          <Button
-            onClick={handleLeastToMost}
-            style={{ backgroundColor: "rgb(96, 20, 30)" }}
-          >
-            $ - $$$
-          </Button>
-
-          <Button
-            onClick={handleMostToLeast}
-            style={{ backgroundColor: "rgb(96, 20, 30)" }}
-          >
-            $$$ - $
-          </Button>
-        </ButtonGroup>
-
-        <Typography
-          className="text-5xl font-black text-center mt-8"
-          style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+    <div>
+      <ButtonGroup className="flex justify-end mt-2.5 mr-2.5">
+        <Button
+          onClick={handleAToZ}
+          style={{ backgroundColor: "rgb(96, 20, 30)" }}
         >
-          {productType === "red" && `Red Wines (${wine.length})`}
-        </Typography>
+          A - Z
+        </Button>
 
-        <Typography
-          className="text-5xl font-black text-center mt-8"
-          style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+        <Button
+          onClick={handleLeastToMost}
+          style={{ backgroundColor: "rgb(96, 20, 30)" }}
         >
-          {productType === "white" && `White Wines (${wine.length})`}
-        </Typography>
+          $ - $$$
+        </Button>
 
-        <Typography
-          className="text-5xl font-black text-center mt-8"
-          style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+        <Button
+          onClick={handleMostToLeast}
+          style={{ backgroundColor: "rgb(96, 20, 30)" }}
         >
-          {productType === "rose" && `Rose Wines (${wine.length})`}
-        </Typography>
+          $$$ - $
+        </Button>
+      </ButtonGroup>
 
-        <Typography
-          className="text-5xl font-black text-center mt-8"
-          style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
-        >
-          {productType === "all" && `All Wines (${wine.length})`}
-        </Typography>
+      <Typography
+        className="text-5xl font-black text-center mt-8"
+        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+      >
+        {productType === "red" && `Red Wines (${wine.length})`}
+      </Typography>
 
-        <div className="grid grid-cols-4 gap-x-8 gap-y-4 mx-40 pt-32 ">
-          {wine.map((wine, index) => (
-            <div className="wine-container" key={index}>
-              <WineDetail wine={wine} />
-            </div>
-          ))}
-        </div>
+      <Typography
+        className="text-5xl font-black text-center mt-8"
+        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+      >
+        {productType === "white" && `White Wines (${wine.length})`}
+      </Typography>
+
+      <Typography
+        className="text-5xl font-black text-center mt-8"
+        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+      >
+        {productType === "rose" && `Rose Wines (${wine.length})`}
+      </Typography>
+
+      <Typography
+        className="text-5xl font-black text-center mt-8"
+        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+      >
+        {productType === "all" && `All Wines (${wine.length})`}
+      </Typography>
+
+      <div className="grid grid-cols-4 gap-x-8 gap-y-4 mx-40 pt-32 ">
+        {wine.map((wine, index) => (
+          <div className="wine-container" key={index}>
+            <WineDetail wine={wine} />
+          </div>
+        ))}
       </div>
-    </Layout>
+    </div>
   );
 }

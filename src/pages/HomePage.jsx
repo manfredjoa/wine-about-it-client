@@ -8,17 +8,17 @@ import Layout from "../layouts/Layout.jsx";
 
 export default function Home() {
   return (
-    <Layout>
-      <div>
-        <WineCarousel />
+    // <Layout>
+    <div>
+      <WineCarousel />
 
-        <div className="flex justify-center items-center gap-4 w-full mt-6 mb-6">
-          <AllWines />
-          <RedWines />
-          <WhiteWines />
-          <RoseWines />
-        </div>
+      <div className="flex justify-center items-center gap-4 w-full mt-6 mb-6">
+        <AllWines />
+        <RedWines />
+        <WhiteWines />
+        <RoseWines />
       </div>
-    </Layout>
+    </div>
+    // </Layout>
   );
 }
