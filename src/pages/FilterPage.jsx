@@ -59,63 +59,66 @@ export default function FilterPage() {
   };
 
   return (
-    <div>
-      <ButtonGroup className="flex justify-end mt-2.5 mr-2.5">
-        <Button
-          onClick={handleAToZ}
-          style={{ backgroundColor: "rgb(96, 20, 30)" }}
-        >
-          A - Z
-        </Button>
-
-        <Button
-          onClick={handleLeastToMost}
-          style={{ backgroundColor: "rgb(96, 20, 30)" }}
-        >
-          $ - $$$
-        </Button>
-
-        <Button
-          onClick={handleMostToLeast}
-          style={{ backgroundColor: "rgb(96, 20, 30)" }}
-        >
-          $$$ - $
-        </Button>
-      </ButtonGroup>
-
+    <div className="bg-gray-100">
       <Typography
-        className="text-5xl font-black text-center mt-8"
+        className="text-5xl font-black text-center pt-10"
         style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
       >
         {productType === "red" && `Red Wines (${wine.length})`}
       </Typography>
 
       <Typography
-        className="text-5xl font-black text-center mt-8"
+        className="text-5xl font-black text-center"
         style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
       >
         {productType === "white" && `White Wines (${wine.length})`}
       </Typography>
 
       <Typography
-        className="text-5xl font-black text-center mt-8"
+        className="text-5xl font-black text-center"
         style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
       >
         {productType === "rose" && `Rose Wines (${wine.length})`}
       </Typography>
 
       <Typography
-        className="text-5xl font-black text-center mt-8"
+        className="text-5xl font-black text-center"
         style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
       >
         {productType === "all" && `All Wines (${wine.length})`}
       </Typography>
 
-      <div className="grid grid-cols-4 gap-x-8 gap-y-4 mx-40 pt-32 ">
+      <div className="flex justify-evenly">
+        <div style={{ width: "320px" }}></div>
+        <div style={{ width: "320px" }}></div>
+        <div style={{ width: "320px" }}></div>
+        <ButtonGroup className="flex justify-end" style={{ width: "320px" }}>
+          <Button
+            onClick={handleAToZ}
+            style={{ backgroundColor: "rgb(96, 20, 30)" }}
+          >
+            A - Z
+          </Button>
+
+          <Button
+            onClick={handleLeastToMost}
+            style={{ backgroundColor: "rgb(96, 20, 30)" }}
+          >
+            $ - $$$
+          </Button>
+
+          <Button
+            onClick={handleMostToLeast}
+            style={{ backgroundColor: "rgb(96, 20, 30)" }}
+          >
+            $$$ - $
+          </Button>
+        </ButtonGroup>
+      </div>
+
+      <div className="wine-container flex flex-wrap justify-evenly gap-y-8">
         {wine.map((wine, index) => (
-          <div className="wine-container" key={index}>
-            <WineDetail wine={wine} />
-          </div>
+          <WineDetail wine={wine} key={index} />
         ))}
       </div>
     </div>
