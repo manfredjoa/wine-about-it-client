@@ -1,12 +1,11 @@
-// const CenteredPage = () => {
-//   return (
-//     <div className="flex justify-center items-center h-screen">
-//       <CheckoutForm />
-//     </div>
-//   );
-// };
+import { useState } from "react";
 
 export default function Checkout() {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+
   return (
     <form className="w-full max-w-md">
       <div className="mb-4">
@@ -43,6 +42,54 @@ export default function Checkout() {
           placeholder="123 Main St, City, Country"
         />
       </div>
+      <div className="mb-4">
+        <label htmlFor="address" className="block font-semibold mb-1">
+          {" "}
+          Address Line 2
+        </label>
+        <textarea
+          id="address"
+          className="w-full p-2 h-10 border rounded"
+          rows="4"
+          placeholder="123 Main St, City, Country"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="city" className="block font-semibold mb-1">
+          {" "}
+          City
+        </label>
+        <textarea
+          id="city"
+          className="w-full p-2 h-10 border rounded"
+          rows="4"
+          placeholder="123 Main St, City, Country"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="state" className="block font-semibold mb-1">
+          {" "}
+          State
+        </label>
+        <textarea
+          id="address"
+          className="w-full p-2 h-10 border rounded"
+          rows="4"
+          placeholder="123 Main St, City, Country"
+        />
+      </div>
+      <div className="mb-4">
+        <label htmlFor="postal-code" className="block font-semibold mb-1">
+          {" "}
+          Postal Code
+        </label>
+        <textarea
+          id="address"
+          className="w-full p-2 h-10 border rounded"
+          rows="4"
+          placeholder="123 Main St, City, Country"
+        />
+      </div>
       <button
         type="submit"
         className="bg-black hover:bg-red-800 text-white py-2 px-4 rounded w-full"
@@ -52,3 +99,10 @@ export default function Checkout() {
     </form>
   );
 }
+
+
+
+
+
+
+

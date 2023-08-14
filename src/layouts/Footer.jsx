@@ -1,4 +1,10 @@
 import { useState } from "react";
+import {
+  increment,
+  decrement,
+  incrementByAmount,
+} from "../redux/features/cart/cartSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -11,9 +17,14 @@ export default function Footer() {
     e.preventDefault();
     console.log("Email submitted:", email);
   };
+  const count = useSelector((state) => state.counter.value);
+  const dispatch = useDispatch();
 
   return (
     <footer className="bg-gray-900 text-white flex-shrink-0 py-10 mt-4">
+      <button onClick={() => dispatch(increment())}>Add 1 </button>
+      <br />
+      <button onClick={() => dispatch(decrement())}>Subtract 1 </button>
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <div>
           <p className="text-sm mb-2">
@@ -48,7 +59,7 @@ export default function Footer() {
             <button
               type="submit"
               className="px-4 py-2 text-white rounded-md focus:outline-none focus:ring focus:ring-blue-300"
-              style={{ backgroundColor: 'rgb(96, 20, 30)' }}
+              style={{ backgroundColor: "rgb(96, 20, 30)" }}
             >
               Submit
             </button>
