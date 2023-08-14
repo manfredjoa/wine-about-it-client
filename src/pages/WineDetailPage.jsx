@@ -1,6 +1,12 @@
 import { useParams } from "react-router-dom";
 import { getWine } from "../api/api";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  increment,
+  decrement,
+  incrementByAmount,
+} from "../redux/features/cart/cartSlice.js";
 
 export default function WineDetail() {
   const [wine, setWine] = useState({});
@@ -16,6 +22,9 @@ export default function WineDetail() {
     setWine(oneWine);
     console.log(wine);
   }
+
+  const dispatch = useDispatch();
+  const count = useSelector((state) => state.counter.value);
 
   return (
     <div className="mx-20 mt-10">
@@ -44,6 +53,9 @@ export default function WineDetail() {
           <p className="mb-2 text-3xl">
             <span className="font-bold">Description:</span> {wine.Description}
           </p>
+          <button onClick={() => dispatch(increment())}>Add 1 </button>
+          <br />
+          <button onClick={() => dispatch(decrement())}>Subtract 1 </button>
         </div>
       </div>
     </div>
