@@ -12,10 +12,10 @@ export default function FilterPage() {
   const navigate = useNavigate();
   let { productType } = useParams();
 
-  // Re-renders page when productType button is clicked
+  // Re-renders page when productType button is clicked, as well as when filters are clicked in Nav Bar
   useEffect(() => {
     fetchWinesByProductType();
-  }, [productTypeToggle]);
+  }, [productTypeToggle, productType]);
 
   // Fetches wines based on productType from url
   async function fetchWinesByProductType() {
@@ -28,7 +28,6 @@ export default function FilterPage() {
     } else if (productType === "rose") {
       const allWines = await getRoseWines();
       setWine(allWines);
-      console.log(allWines.length);
     } else if (productType === "all") {
       const allWines = await getWines();
       setWine(allWines);
@@ -79,28 +78,28 @@ export default function FilterPage() {
     });
   };
   return (
-    // <Layout>
-    <div>
-      <ButtonGroup variant="outlined">
-        <Button id="all" onClick={handleProductTypeFilter}>
-          All Wines
-        </Button>
-        <Button id="red" onClick={handleProductTypeFilter}>
-          Red Wines
-        </Button>
-        <Button id="white" onClick={handleProductTypeFilter}>
-          White Wines
-        </Button>
-        <Button id="rose" onClick={handleProductTypeFilter}>
-          Rose Wines
-        </Button>
-      </ButtonGroup>
 
-      <ButtonGroup variant="outlined">
-        <Button onClick={handleAToZ}>A - Z</Button>
-        <Button onClick={handleLeastToMost}>$ - $$$</Button>
-        <Button onClick={handleMostToLeast}>$$$ - $</Button>
-      </ButtonGroup>
+      <div>
+        <ButtonGroup className="flex justify-end mt-2.5 mr-2.5">
+          <Button
+            onClick={handleAToZ}
+            style={{ backgroundColor: "rgb(96, 20, 30)" }}
+          >
+            A - Z
+          </Button>
+          <Button
+            onClick={handleLeastToMost}
+            style={{ backgroundColor: "rgb(96, 20, 30)" }}
+          >
+            $ - $$$
+          </Button>
+          <Button
+            onClick={handleMostToLeast}
+            style={{ backgroundColor: "rgb(96, 20, 30)" }}
+          >
+            $$$ - $
+          </Button>
+        </ButtonGroup>
 
       <div className="grid grid-cols-4 gap-x-8 gap-y-4 mx-40 pt-32 ">
         {wine.map((wine, index) => (
@@ -110,6 +109,5 @@ export default function FilterPage() {
         ))}
       </div>
     </div>
-    // </Layout>
   );
 }
