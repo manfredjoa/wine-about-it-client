@@ -1,10 +1,4 @@
 import { useState } from "react";
-import {
-  increment,
-  decrement,
-  incrementByAmount,
-} from "../redux/features/cart/cartSlice";
-import { useSelector, useDispatch } from "react-redux";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
@@ -17,8 +11,6 @@ export default function Footer() {
     e.preventDefault();
     console.log("Email submitted:", email);
   };
-  const count = useSelector((state) => state.counter.value);
-  const dispatch = useDispatch();
 
   return (
     <footer className="bg-gray-900 text-white flex-shrink-0 py-10 mt-4">
