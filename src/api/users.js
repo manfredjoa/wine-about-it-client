@@ -42,14 +42,13 @@ export const verifyUser = async () => {
   return false;
 };
 
-export const updateFavorites = async (id, favorites) => {
+export const updateFavorites = async (userId, wineId) => {
   try {
-    console.log(id); // user ID
-    console.log(favorites); // wine ID
-    // const response = await api.put(`/users/${id}/favorites`, favorites);
-    const response = await api.put(`/users/${id}/favorites`);
-    return response.data;
+    const resp = await api.patch(`/users/${userId}/favorites`, {
+      favorites: wineId,
+    });
+    return resp.data;
   } catch (error) {
-    console.log("Error: Adding favorites.", error);
+    throw error;
   }
 };
