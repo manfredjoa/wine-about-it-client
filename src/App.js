@@ -46,7 +46,7 @@ export default function App() {
   // };
 
   return (
-    <div>
+    <div className="bg-gray-100">
       <Nav user={user} handleLogOut={handleLogOut} />
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />

@@ -170,7 +170,7 @@ export default function Nav({ handleLogOut, user }) {
   };
 
   return (
-    <div>
+    <div className="bg-white">
       <Navbar className="max-w-full rounded-none">
         {/* ==================== */}
         <div
