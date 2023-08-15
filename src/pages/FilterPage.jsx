@@ -59,7 +59,7 @@ export default function FilterPage() {
   };
 
   return (
-    <div className="bg-gray-100">
+    <div className="bg-gray-100 pb-10">
       <Typography
         className="text-5xl font-black text-center pt-10"
         style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
