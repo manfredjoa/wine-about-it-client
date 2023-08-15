@@ -28,7 +28,7 @@ import {
 function AccountMenu({ user, handleLogOut }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
-
+  console.log(user);
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen}>
       <MenuHandler>
@@ -105,6 +105,7 @@ function AccountMenu({ user, handleLogOut }) {
 
 // Creates favorites and shopping cart icons
 function NavList({ user, handleLogOut }) {
+  console.log(user);
   return (
     <div className="flex flex-row items-center justify-between">
       <Typography
@@ -142,7 +143,7 @@ function NavList({ user, handleLogOut }) {
 }
 
 //real below
-export default function Nav({ handleLogOut, user }) {
+export default function Nav({ user, handleLogOut }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
   const navigate = useNavigate();
@@ -166,7 +167,7 @@ export default function Nav({ handleLogOut, user }) {
       navigate("/filter/all");
     }
   };
-
+  console.log(user);
   return (
     <div className="bg-white">
       <Navbar className="max-w-full rounded-none">
@@ -190,7 +191,7 @@ export default function Nav({ handleLogOut, user }) {
 
           {/* Favorites and shopping cart icons */}
           <div className="flex justify-end w-1/6 top-2/4 hidden lg:block">
-            <NavList />
+            <NavList user={user} handleLogOut={handleLogOut} />
           </div>
 
           {/* Responsive menu change (NavList > Bars2Icon) when Collapse is open (determined by useEffect above) */}
