@@ -9,8 +9,8 @@ import {
 
 export default function WineDetail({ wine }) {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const count = useSelector((state) => state.counter.value);
+  // const dispatch = useDispatch();
+  // const count = useSelector((state) => state.counter.value);
   return (
     <div
       className="flex flex-col text-center gap-y-2.5 mt-5 bg-white"
@@ -25,9 +25,6 @@ export default function WineDetail({ wine }) {
       />
       <Typography>{wine.WineName}</Typography>
       <Typography>{wine.Price}</Typography>
-      <button onClick={() => dispatch(increment())}>Add 1 </button>
-      <br />
-      <button onClick={() => dispatch(decrement())}>Subtract 1 </button>
     </div>
   );
 }

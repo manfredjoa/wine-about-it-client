@@ -24,8 +24,6 @@ import {
   // MagnifyingGlassIcon, // For navigating to browse page later on
 } from "@heroicons/react/24/outline";
 
-import { useSelector } from "react-redux";
-
 //dropdown menu
 function AccountMenu({ user, handleLogOut }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -147,7 +145,6 @@ export default function Nav({ handleLogOut, user }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
   const navigate = useNavigate();
-  const count = useSelector((state) => state.counter.cartQuantity);
 
   useEffect(() => {
     window.addEventListener(
@@ -215,10 +212,6 @@ export default function Nav({ handleLogOut, user }) {
         className="flex justify-center border-b border-t"
         style={{ borderColor: "rgb(96, 20, 30)" }}
       >
-        <div>
-          <h1>{count}</h1>
-        </div>
-
         <Button
           id="all"
           variant="text"
