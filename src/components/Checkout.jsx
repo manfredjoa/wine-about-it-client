@@ -1,21 +1,38 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography, Button } from "@material-tailwind/react";
+import { createOrder } from "../api/orders";
 
 // I personally think checkout may look better as a modal pop up, rather than having a whole page for it
-export default function Checkout() {
+export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
+  console.log("Cart Items: ", cartQuantity);
+  console.log("Cart Totals: ", cartTotal);
+
+  console.log("ALL OBJECT", itemsInfo);
+
+  console.log("User Info", user);
+
+  console.log(user.firstName);
+
+  const items = itemsInfo.map((item) => ({
+    _id: item._id,
+    qty: item.quantity,
+  }));
+
+  console.log(items);
+
   const [submitForm, setSubmitForm] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    streetAddress: "",
+    firstName: user.firstName,
+    lastName: user.lastName,
+    addressLine1: "",
     addressLine2: "",
     city: "",
     state: "",
     postalCode: "",
-    creditCardNumber: "",
-    expiration: "",
-    cVC: "",
+    cartQuantity,
+    cartTotal,
+    items,
   });
 
   const navigate = useNavigate();
@@ -31,8 +48,13 @@ export default function Checkout() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    createOrder(formData);
+    handleRemoveState();
     setSubmitForm("submitted");
+  };
+  const handleRemoveState = () => {
+    localStorage.removeItem("persist:root");
+    window.location.reload();
   };
 
   return (

@@ -29,17 +29,17 @@ export default function WineDetail({ user }) {
 
   const dispatch = useDispatch();
 
-  // const addToFavorites = async () => {
-  //   console.log(user.id); // userID
-  //   console.log(id); // wineID
-  //   const response = await updateFavorites(user.id, id);
-  //   console.log(response);
-  //   return response;
-  // };
+  console.log(wine);
 
-  // const handleAddToFavorites = () => {
-  //   addToFavorites();
-  // };
+  const handleAddToFavorites = async () => {
+    const wineId = wine._id;
+    try {
+      await updateFavorites(user.id, wineId);
+      // Handle success (e.g., show a success message)
+    } catch (error) {
+      // Handle error (e.g., show an error message)
+    }
+  };
 
   const handleAddToCart = () => {
     const { _id, Price } = wine;
@@ -85,7 +85,7 @@ export default function WineDetail({ user }) {
             {count}
             <Button onClick={handlePlus}>+</Button>
           </div>
-          <Button>Add to Favorites</Button>
+          <Button onClick={handleAddToFavorites}>Add to Favorites</Button>
           <Button
             onClick={handleAddToCart}
             className="bg-black hover:bg-red-800 text-white py-5 px-10 mt-6 rounded-md"

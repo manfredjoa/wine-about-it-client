@@ -5,9 +5,10 @@ import { useState, useEffect, useRef } from "react";
 import WineDetailShopping from "../components/WineDetailShopping";
 import { Button } from "@material-tailwind/react";
 import { useNavigate, useLocation } from "react-router-dom";
-import CheckoutPage from "./CheckoutPage";
 
-export default function ShoppingCart() {
+import Checkout from "../components/Checkout";
+
+export default function ShoppingCart({ user }) {
   const cartQuantity = useSelector((state) => state.cart.cartQuantity);
   const cartTotal = useSelector((state) => state.cart.cartTotal);
   const items = useSelector((state) => state.cart.items);
@@ -17,7 +18,7 @@ export default function ShoppingCart() {
 
   useEffect(() => {
     fetchWines();
-  }, []);
+  }, [user]);
 
   const fetchWines = async () => {
     const cartItems = items.map((item) => item._id);
@@ -41,15 +42,11 @@ export default function ShoppingCart() {
     setCheckout(true);
   };
 
-  console.log("Cart Items: ", cartQuantity);
-  console.log("Cart Totals: ", cartTotal);
-
-  console.log("ALL OBJECT", itemsInfo);
-
   const handleRemoveState = () => {
     localStorage.removeItem("persist:root");
     window.location.reload();
   };
+
   return (
     <div>
       {!checkout ? (
@@ -69,7 +66,12 @@ export default function ShoppingCart() {
           <Button onClick={handleCheckout}>Check-Out</Button>
         </div>
       ) : (
-        <CheckoutPage />
+        <Checkout
+          user={user}
+          itemsInfo={itemsInfo}
+          cartQuantity={cartQuantity}
+          cartTotal={cartTotal}
+        />
       )}
     </div>
   );

@@ -9,21 +9,21 @@ export default function AccountInfoPage() {
   const [userInfo, setUserInfo] = useState({});
   const [favorites, setFavorites] = useState([]);
 
-  useEffect(() => {
-    if (user) {
-      const userId = user.userId;
+  // useEffect(() => {
+  //   if (user) {
+  //     const userId = user.userId;
 
-      getUserInfo(userId)
-        .then((userData) => setUserInfo(userData))
-        .catch((error) => console.error("Error fetching user data:", error));
+  //     // getUserInfo(userId)
+  //     //   .then((userData) => setUserInfo(userData))
+  //     //   .catch((error) => console.error("Error fetching user data:", error));
 
-      getFavorites(userId)
-        .then((userFavorites) => setFavorites(userFavorites))
-        .catch((error) =>
-          console.error("Error fetching user favorites:", error)
-        );
-    }
-  }, [user]);
+  //     // getFavorites(userId)
+  //     //   .then((userFavorites) => setFavorites(userFavorites))
+  //     //   .catch((error) =>
+  //     //     console.error("Error fetching user favorites:", error)
+  //     //   );
+  //   }
+  // }, [user]);
 
   return (
     <div className="flex flex-col min-h-screen">
