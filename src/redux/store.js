@@ -1,8 +1,27 @@
-import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "./features/cart/cartSlice.js";
+import storage from "redux-persist/lib/storage";
 
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-  },
+import { configureStore } from "@reduxjs/toolkit";
+import cartReducer from "./features/cart/cartSlice.js";
+import { persistReducer, persistStore } from "redux-persist";
+import thunk from "redux-thunk";
+import { combineReducers } from "@reduxjs/toolkit";
+
+const persistConfig = {
+  key: "root",
+  storage,
+};
+
+const rootReducer = combineReducers({
+  cart: cartReducer,
 });
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+// Define the store first
+export const store = configureStore({
+  reducer: persistedReducer,
+  middleware: [thunk],
+});
+
+// Then define the persistor
+export const persistor = persistStore(store);

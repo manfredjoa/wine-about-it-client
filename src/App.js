@@ -15,9 +15,13 @@ import { useState, useEffect } from "react";
 import { verifyUser } from "./api/users.js";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "./api/users.js";
+import { useSelector, useDispatch } from "react-redux";
+import { addUserId } from "./redux/features/cart/cartSlice.js";
 
 export default function App() {
   const [user, setUser] = useState(null);
+  const cartUserId = useSelector((state) => state.cart.userId);
+  const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
@@ -26,6 +30,8 @@ export default function App() {
     const fetchUser = async () => {
       const user = await verifyUser();
       user ? setUser(user) : setUser(null);
+      dispatch(addUserId(user.id));
+
       console.log(user);
     };
     fetchUser();
