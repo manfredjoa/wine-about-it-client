@@ -2,25 +2,12 @@ import { Carousel } from "@material-tailwind/react";
 
 export default function HeroCarousel() {
 
-  const aspectRatio = 16 / 9;
-
-  const images = [
-    "https://i.imgur.com/KfnKjz8.jpg",
-    "https://i.imgur.com/Gp9OB7Q.jpg",
-    "https://i.imgur.com/x5aHcWZ.jpg",
-    "https://i.imgur.com/vKJ5d5K.jpg",
-    "https://i.imgur.com/R7Bvovn.jpg",
-    "https://i.imgur.com/y06fvEP.jpg",
-  ];
-
-  //const carouselHeight = 200;
-
   return (
      <Carousel
       style={{ height: "70vh" }}
       loop={true}
       autoplay={true}
-      autoplayDelay={2000}
+      autoplayDelay={2500}
       navigation={({ setActiveIndex, activeIndex, length }) => (
         <div className="absolute bottom-4 left-2/4 z-50 flex -translate-x-2/4 gap-2">
           {new Array(length).fill("").map((_, i) => (

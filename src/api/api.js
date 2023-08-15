@@ -191,4 +191,50 @@ export const getSouthAfricaWines = async () => {
   }
 };
 
+export const addFavorite = async (userId, wine) => { // Added userId parameter
+  try {
+    const response = await api.post(`/users/${userId}/favorites`, wine); // Updated endpoint
+    return response.data;
+  } catch (error) {
+    console.log("Error: Adding favorite wine.", error);
+  }
+};
+
+export const updateFavorite = async (userId, wine) => { // Added userId parameter
+  try {
+    const response = await api.patch(`/users/${userId}/favorites`, { wine });
+    return response.data;
+  } catch (error) {
+    console.log("Error: Updating favorite wine.", error);
+  }
+};
+
+export const removeFavorite = async (userId, favoriteId) => {
+  try {
+    const response = await api.delete(`/users/${userId}/favorites/${favoriteId}`);
+    return response.data;
+  } catch (error) {
+    console.log("Error: Removing favorite wine.", error);
+  }
+};
+
+export const getFavorites = async (userId) => { // Added userId parameter
+  try {
+    const response = await api.get(`/users/${userId}/favorites`); // Updated endpoint
+    return response.data;
+  } catch (error) {
+    console.log("Error: Getting favorite wines.", error);
+  }
+};
+
+export const getUserInfo = async (userId) => {
+  try {
+    const response = await api.get(`/users/${userId}`);
+    return response.data;
+  } catch (error) {
+    console.log("Error: Getting user information.", error);
+    throw error;
+  }
+};
+
 // ==================== //

@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom";
 import { getWine } from "../api/api";
 import { useEffect, useState } from "react";
+import { addFavorite } from "../api/api";
 
 export default function WineDetail() {
   const [wine, setWine] = useState({});
+  const [isFavorite, setIsFavorite] = useState(false);
 
   let { id } = useParams();
 
@@ -14,8 +16,21 @@ export default function WineDetail() {
   async function fetchWine() {
     const oneWine = await getWine(id);
     setWine(oneWine);
-    console.log(wine);
+    // You can check here whether the fetched wine is in the favorites and set isFavorite accordingly
+    // For example, if you have a function to check if a wine is a favorite, you can do:
+    // const isCurrentlyFavorite = await checkIfFavorite(wine.id);
+    // setIsFavorite(isCurrentlyFavorite);
   }
+
+  const handleAddFavorite = async () => {
+    try {
+      await addFavorite(wine); // Make sure you have a function like this
+
+      setIsFavorite(true);
+    } catch (error) {
+      console.error("Error adding favorite:", error);
+    }
+  };
 
   return (
     <div className="mx-20 mt-10">
@@ -36,7 +51,7 @@ export default function WineDetail() {
             <span className="font-bold">Price:</span> {wine.Price}
           </p>
 
-          <img src={wine.flag} />
+          <img src={wine.flag} alt="Flag" />
 
           <p className="mb-2 text-3xl">
             <span className="font-bold">ProductType:</span> {wine.ProductType}

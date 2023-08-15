@@ -1,6 +1,7 @@
 import api from "./apiConfig";
 import jwtDecode from "jwt-decode";
 
+
 export async function registerUser(credentials) {
   try {
     const response = await api.post("/users/register", credentials);
@@ -23,9 +24,9 @@ export async function loginUser(credentials) {
     console.log("Error: Logging in user.", error);
   }
 }
-export async function getUser(id) {
+export async function getUser(user) {
   try {
-    const response = await api.get(`/users/id/${id}`);
+    const response = await api.get(`/users/id/${user.id}`);
     return response.data;
   } catch (error) {
     console.log("Error: Getting user.", error);

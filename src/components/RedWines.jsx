@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function RedWines() {
   return (
-    <div className="w-30 h-80">
+    <div className="w-30 h-100">
       <Link to="/filter/red">
         <img
           src="https://i.imgur.com/hfqd8Os.jpg"

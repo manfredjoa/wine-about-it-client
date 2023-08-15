@@ -44,8 +44,7 @@ export default function RandomWinesCarousel() {
     <div className="max-h-80 overflow-hidden mt-6">
       <Carousel
         loop={true}
-        autoplay={true}
-        autoplayDelay={3000}
+        autoplay={false}
         swipe={false}
         perPage={1} // Set to display one wine at a time
         className="h-90"

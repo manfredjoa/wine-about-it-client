@@ -6,7 +6,9 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 
 export default function Favorites({ favorites }) {
-  const initialFavoriteMap = favorites.reduce((map, favorite) => {
+  const favoriteList = favorites || [];
+
+  const initialFavoriteMap = favoriteList.reduce((map, favorite) => {
     map[favorite.productId] = true;
     return map;
   }, {});
@@ -20,11 +22,11 @@ export default function Favorites({ favorites }) {
     }));
   };
 
-  if (!favorites || favorites.length === 0) {
+  if (favoriteList.length === 0) {
     return <div>No favorites available.</div>;
   }
 
-  const last3Favorites = favorites.slice(Math.max(favorites.length - 3, 0));
+  const last3Favorites = favoriteList.slice(Math.max(favoriteList.length - 3, 0));
 
   return (
     <Card className="w-full">
