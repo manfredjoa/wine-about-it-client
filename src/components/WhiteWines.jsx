@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 export default function WhiteWines() {
   return (
-    <div className="w-30 h-80">
+    <div className="w-30 h-[400px]">
       <Link to="/filter/white">
         <img
-          src="https://i.imgur.com/dsmCu80.jpg"
           alt="White Wines"
+          src="https://i.imgur.com/dsmCu80.jpg"
           className="w-full h-full object-cover"
         />
       </Link>
