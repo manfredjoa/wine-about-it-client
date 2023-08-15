@@ -52,12 +52,17 @@ export default function App() {
   // };
 
   return (
-    <div className="bg-gray-100">
+    <div
+    // className="bg-gray-100"
+    >
       <Nav user={user} handleLogOut={handleLogOut} />
       <Routes>
         <Route path="/" element={<HomePage user={user} />} />
         <Route path="/search" element={<SearchPage />} />
-        <Route path="/search/wine-detail/:id" element={<WineDetailPage />} />
+        <Route
+          path="/search/wine-detail/:id"
+          element={<WineDetailPage user={user} />}
+        />
         <Route path="/favorites" element={<FavoritesPage user={user} />} />
         <Route
           path="/registration"
