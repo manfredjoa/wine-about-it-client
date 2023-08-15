@@ -4,12 +4,14 @@ import { getWine } from "../api/api";
 import { useState, useEffect } from "react";
 import WineDetailShopping from "../components/WineDetailShopping";
 import { Button } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 export default function ShoppingCart() {
   const cartQuantity = useSelector((state) => state.cart.cartQuantity);
   const cartTotal = useSelector((state) => state.cart.cartTotal);
   const items = useSelector((state) => state.cart.items);
   const [theFetchedWines, setTheFetchedWines] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchWines();
@@ -56,6 +58,7 @@ export default function ShoppingCart() {
         {cartTotal}
       </div>
       <Button onClick={handleRemoveState}>Clear</Button>
+      <Button onClick={() => navigate("/checkout")}>Check-Out</Button>
     </div>
   );
 }
