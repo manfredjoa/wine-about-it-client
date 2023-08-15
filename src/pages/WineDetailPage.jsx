@@ -1,11 +1,13 @@
 import { useParams } from "react-router-dom";
 import { getWine } from "../api/api";
 import { useEffect, useState } from "react";
-import { addFavorite } from "../api/api";
+import { addItems } from "../redux/features/cart/cartSlice.js";
+import { useDispatch } from "react-redux";
+import { Button } from "@material-tailwind/react";
 
 export default function WineDetail() {
   const [wine, setWine] = useState({});
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [count, setCount] = useState(0);
 
   let { id } = useParams();
 
@@ -16,47 +18,68 @@ export default function WineDetail() {
   async function fetchWine() {
     const oneWine = await getWine(id);
     setWine(oneWine);
-    // You can check here whether the fetched wine is in the favorites and set isFavorite accordingly
-    // For example, if you have a function to check if a wine is a favorite, you can do:
-    // const isCurrentlyFavorite = await checkIfFavorite(wine.id);
-    // setIsFavorite(isCurrentlyFavorite);
   }
 
-  const handleAddFavorite = async () => {
-    try {
-      await addFavorite(wine); // Make sure you have a function like this
+  const handlePlus = () => {
+    setCount(count + 1);
+  };
+  const handleMinus = () => {
+    setCount(count - 1);
+  };
 
-      setIsFavorite(true);
-    } catch (error) {
-      console.error("Error adding favorite:", error);
-    }
+  const dispatch = useDispatch();
+
+  const handleAddToCart = () => {
+    const { _id, Price } = wine;
+    dispatch(addItems({ id: _id, price: Price, quantity: count }));
+    console.log(_id, Price, count);
   };
 
   return (
     <div className="mx-20 mt-10">
-      <div className="flex p-4 max-w-4xl mx-auto mb-10">
-        <div className="flex-1 pr-4">
+      <div className="flex p-4 max-w-4xl mx-auto mb-10 ml-auto">
+        <div className="flex-1">
           <img
             src={wine.img}
             alt={wine.WineName}
-            className="w-full h-auto object-cover"
+            className="w-1/2 h-auto object-cover"
           />
         </div>
 
         <div className="flex-1 text-center">
-          <h1 className="text-5xl font-bold mb-10 font-mono">
+          <h1 className="text-2xl font-italic mb-8 font-mono">
             {wine.WineName}
           </h1>
-          <p className="mb-2 text-3xl">
+
+          <div className="text-left mb-4">
+            <img src={wine.flag} alt="Flag" className="w-1/4 md:w-1/6 h-auto" />
+          </div>
+
+          <p className="mb-2 text-2xl text-left">
             <span className="font-bold">Price:</span> {wine.Price}
           </p>
 
-          <img src={wine.flag} alt="Flag" />
-
-          <p className="mb-2 text-3xl">
-            <span className="font-bold">ProductType:</span> {wine.ProductType}
+          <p className="mb-2 text-2xl font-serif text-left">
+            <span className="font-bold">Product Type:</span> {wine.ProductType}
           </p>
-          <p className="mb-2 text-3xl">
+
+          <div className="flex items-center mt-4">
+            <p className="text-lg font-semibold mr-2 ">Rating:</p>
+
+            <div className="flex"></div>
+          </div>
+          <div>
+            <Button onClick={handleMinus}>-</Button>
+            {count}
+            <Button onClick={handlePlus}>+</Button>
+          </div>
+          <button
+            onClick={handleAddToCart}
+            className="bg-black hover:bg-red-800 text-white py-5 px-10 mt-6 rounded-md"
+          >
+            Add to Cart
+          </button>
+          <p className="mb-6 text-1xl font-serif ">
             <span className="font-bold">Description:</span> {wine.Description}
           </p>
         </div>

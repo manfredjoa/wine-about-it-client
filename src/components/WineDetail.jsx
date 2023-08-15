@@ -1,21 +1,30 @@
-import { Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
+import { Typography } from "@material-tailwind/react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  increment,
+  decrement,
+  incrementByAmount,
+} from "../redux/features/cart/cartSlice.js";
 
 export default function WineDetail({ wine }) {
   const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const count = useSelector((state) => state.counter.value);
   return (
-    <div onClick={() => navigate(`/search/wine-detail/${wine._id}`)}>
-      <div className="flex flex-row">
-        <img className="h-80" src={wine.img} alt={wine.WineName} />
-        <div className="flex flex-col">
-          <p className="text-xl">{wine.Price}</p>
-          <p className="font-bold text-2xl">{wine.WineName}</p>
-        </div>
-        <div>
-          <Button>Add to Cart</Button>
-          <Button>Add to Favorites</Button>
-        </div>
-      </div>
+    <div
+      className="flex flex-col text-center gap-y-2.5 mt-5 bg-white"
+      style={{ width: "320px" }}
+      onClick={() => navigate(`/search/wine-detail/${wine._id}`)}
+    >
+      <img
+        className="object-contain mt-5"
+        src={wine.img}
+        alt={wine.WineName}
+        style={{ height: "90vh" }}
+      />
+      <Typography>{wine.WineName}</Typography>
+      <Typography>{wine.Price}</Typography>
     </div>
   );
 }

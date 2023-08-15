@@ -26,7 +26,8 @@ export async function loginUser(credentials) {
 }
 export async function getUser(user) {
   try {
-    const response = await api.get(`/users/id/${user.id}`);
+    const response = await api.get(`/users/id/${id}`);
+    console.log(response.data);
     return response.data;
   } catch (error) {
     console.log("Error: Getting user.", error);

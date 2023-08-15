@@ -1,3 +1,12 @@
+import { useSelector } from "react-redux";
+
 export default function ShoppingCart() {
-  return <div>ShoppingCart</div>;
+  const cartValue = useSelector((state) => state.cart.value);
+
+  return (
+    <div>
+      ShoppingCart
+      <div>Value: {cartValue}</div> {/* Displaying the value */}
+    </div>
+  );
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import WineDetail from "../components/WineDetail";
+<<<<<<< HEAD
 import { getWine, getFavorites, addFavorite } from "../api/api";
 import {getUser} from "../api/users"
 export default function FavoritesPage({user}) {
@@ -27,8 +28,35 @@ export default function FavoritesPage({user}) {
       }
     };
 
+=======
+import { getWine } from "../api/api";
+import { useEffect, useState } from "react";
+import { getUser } from "../api/users";
+
+export default function Favorites({ user }) {
+  const [wines, setWines] = useState([]);
+
+  const fetchWines = async () => {
+    try {
+      const calledUser = await getUser(user.id);
+
+      console.log(calledUser);
+
+      const { favorites } = calledUser;
+      const winePromises = favorites.map(getWine);
+
+      // able to call mulitlple  calls promise.all to wait for all promises to resolve,
+      const fetchedWines = await Promise.all(winePromises);
+
+      setWines(fetchedWines);
+    } catch (error) {
+      console.log("An error occurred while fetching wines:", error);
+    }
+  };
+  useEffect(() => {
+>>>>>>> 152e1ce16edeed8c96ac27e9c64934dfdf31a785
     fetchWines();
-  }, []);
+  }, [user]);
 
   return (
     <div>

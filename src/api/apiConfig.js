@@ -4,7 +4,7 @@ let apiUrl;
 
 const apiUrls = {
   production: "https://wine-about-it-d540b94350f1.herokuapp.com/api",
-  //development: "https://wine-about-it-d540b94350f1.herokuapp.com/api",
+  // development: "https://wine-about-it-d540b94350f1.herokuapp.com/api",
   development: "http://localhost:4000/api",
 };
 
