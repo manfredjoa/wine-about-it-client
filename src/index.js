@@ -5,7 +5,8 @@ import "./tailwind.css";
 import { ThemeProvider } from "@material-tailwind/react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./redux/store";
+import { store, persistor } from "./redux/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 <script
   src="https://kit.fontawesome.com/7f42122fa0.js"
@@ -15,10 +16,12 @@ import { store } from "./redux/store";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
-    <ThemeProvider>
-      <Router>
-        <App />
-      </Router>
-    </ThemeProvider>
+    <PersistGate loading={null} persistor={persistor}>
+      <ThemeProvider>
+        <Router>
+          <App />
+        </Router>
+      </ThemeProvider>
+    </PersistGate>
   </Provider>
 );
