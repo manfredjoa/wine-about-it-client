@@ -48,7 +48,7 @@ export default function Footer() {
             <button
               type="submit"
               className="px-4 py-2 text-white rounded-md focus:outline-none focus:ring focus:ring-blue-300"
-              style={{ backgroundColor: 'rgb(96, 20, 30)' }}
+              style={{ backgroundColor: "rgb(96, 20, 30)" }}
             >
               Submit
             </button>

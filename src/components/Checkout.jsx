@@ -1,54 +1,206 @@
-// const CenteredPage = () => {
-//   return (
-//     <div className="flex justify-center items-center h-screen">
-//       <CheckoutForm />
-//     </div>
-//   );
-// };
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Typography, Button } from "@material-tailwind/react";
 
+// I personally think checkout may look better as a modal pop up, rather than having a whole page for it
 export default function Checkout() {
+  const [submitForm, setSubmitForm] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    streetAddress: "",
+    addressLine2: "",
+    city: "",
+    state: "",
+    postalCode: "",
+    creditCardNumber: "",
+    expiration: "",
+    cVC: "",
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formData);
+    setSubmitForm("submitted");
+  };
+
   return (
-    <form className="w-full max-w-md">
-      <div className="mb-4">
-        <label htmlFor="firstName" className="block font-semibold mb-1">
-          First Name
-        </label>
-        <input
-          type="text"
-          id="firstName"
-          className="w-full p-2 border rounded"
-          placeholder="John"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="lastName" className="block font-semibold mb-1">
-          Last Name
-        </label>
-        <input
-          type="text"
-          id="lastName"
-          className="w-full p-2 border rounded"
-          placeholder="Doe"
-        />
-      </div>
-      <div className="mb-4">
-        <label htmlFor="address" className="block font-semibold mb-1">
-          {" "}
-          Address Line 1
-        </label>
-        <textarea
-          id="address"
-          className="w-full p-2 h-10 border rounded"
-          rows="4"
-          placeholder="123 Main St, City, Country"
-        />
-      </div>
-      <button
-        type="submit"
-        className="bg-black hover:bg-red-800 text-white py-2 px-4 rounded w-full"
-      >
-        Place Order
-      </button>
-    </form>
+    <>
+      {!submitForm ? (
+        <div className="flex justify-center">
+          <form
+            className="flex flex-col justify-center items-center w-80 gap-2"
+            style={{ color: "rgb(96, 20, 30)" }}
+            onSubmit={handleSubmit}
+          >
+            <Typography>
+              <label>First Name:</label>
+              <br />
+              <input
+                className="w-80 bg-gray-100 px-2 outline-none"
+                style={{ border: "1px solid rgb(96, 20, 30)" }}
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+              />
+            </Typography>
+
+            <Typography>
+              <label>Last Name:</label>
+              <br />
+              <input
+                className="w-80 bg-gray-100 px-2 outline-none"
+                style={{ border: "1px solid rgb(96, 20, 30)" }}
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+              />
+            </Typography>
+
+            <Typography>
+              <label>Street Address:</label>
+              <br />
+              <input
+                className="w-80 bg-gray-100 px-2 outline-none"
+                style={{ border: "1px solid rgb(96, 20, 30)" }}
+                type="text"
+                name="streetAddress"
+                value={formData.streetAddress}
+                onChange={handleChange}
+              />
+            </Typography>
+
+            <Typography>
+              <label>Address Line 2:</label>
+              <br />
+              <input
+                className="w-80 bg-gray-100 px-2 outline-none"
+                style={{ border: "1px solid rgb(96, 20, 30)" }}
+                type="text"
+                name="addressLine2"
+                value={formData.addressLine2}
+                onChange={handleChange}
+              />
+            </Typography>
+
+            <div className="w-80 flex flex-row justify-between">
+              <Typography>
+                <label>City:</label>
+                <br />
+                <input
+                  className="w-36 bg-gray-100 px-2 outline-none"
+                  style={{ border: "1px solid rgb(96, 20, 30)" }}
+                  type="text"
+                  name="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                />
+              </Typography>
+
+              <Typography>
+                <label>State:</label>
+                <br />
+                <input
+                  className="w-36 bg-gray-100 px-2 outline-none"
+                  style={{ border: "1px solid rgb(96, 20, 30)" }}
+                  type="text"
+                  name="state"
+                  value={formData.state}
+                  onChange={handleChange}
+                />
+              </Typography>
+            </div>
+
+            <Typography>
+              <label>Postal Code:</label>
+              <br />
+              <input
+                className="w-80 bg-gray-100 px-2 outline-none"
+                style={{ border: "1px solid rgb(96, 20, 30)" }}
+                type="text"
+                name="postalCode"
+                value={formData.postalCode}
+                onChange={handleChange}
+              />
+            </Typography>
+
+            <Typography>
+              <label>Credit Card Number:</label>
+              <br />
+              <input
+                className="w-80 bg-gray-100 px-2 outline-none"
+                style={{ border: "1px solid rgb(96, 20, 30)" }}
+                type="text"
+                name="creditCardNumber"
+                value={formData.creditCardNumber}
+                onChange={handleChange}
+              />
+            </Typography>
+
+            <div className="w-80 flex flex-row justify-between">
+              <Typography>
+                <label>Expiration:</label>
+                <br />
+                <input
+                  className="w-36 bg-gray-100 px-2 outline-none"
+                  style={{ border: "1px solid rgb(96, 20, 30)" }}
+                  type="text"
+                  name="expiration"
+                  value={formData.expiration}
+                  onChange={handleChange}
+                />
+              </Typography>
+
+              <Typography>
+                <label>CVC:</label>
+                <br />
+                <input
+                  className="w-36 bg-gray-100 px-2 outline-none"
+                  style={{ border: "1px solid rgb(96, 20, 30)" }}
+                  type="text"
+                  name="cVC"
+                  value={formData.cVC}
+                  onChange={handleChange}
+                />
+              </Typography>
+            </div>
+
+            <button
+              className="w-20 mt-5"
+              style={{ border: "1px solid rgb(96, 20, 30)" }}
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      ) : (
+        <div className="flex flex-col">
+          <Typography className="flex justify-center">
+            Thank you for your order!
+          </Typography>
+          <Button
+            onClick={() => {
+              navigate("/");
+            }}
+            className="w-40 flex justify-center mx-auto"
+          >
+            Home
+          </Button>
+        </div>
+      )}
+    </>
   );
 }
