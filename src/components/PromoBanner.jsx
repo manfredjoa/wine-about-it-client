@@ -1,14 +1,17 @@
-import React from "react";
+import { Typography } from "@material-tailwind/react";
 
 export default function PromoBanner() {
- 
   return (
-    <div className="text-white py-3 flex justify-center space-x-4 bg-black" >
-      <p className="text-center">Free shipping over $50</p>
-      <div className="border-l h-5"></div>
-      <p className="text-center">24/7 Customer Support</p>
-      <div className="border-l h-5"></div>
-      <p className="text-center">Over 200 Wines in Our Collection</p>
+    <div className="flex bg-black text-white">
+      <Typography className="lead w-1/3 text-center border-r">
+        Free shipping over $50
+      </Typography>
+      <Typography className="lead w-1/3 text-center border-r">
+        Over 200 Wines in our Collection
+      </Typography>
+      <Typography className="lead w-1/3 text-center">
+        24/7 Customer Support
+      </Typography>
     </div>
   );
 }

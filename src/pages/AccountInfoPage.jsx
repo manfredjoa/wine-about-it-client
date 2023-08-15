@@ -12,7 +12,6 @@ export default function AccountInfoPage() {
   // useEffect(() => {
   //   if (user) {
   //     const userId = user.userId;
-
   //     // getUserInfo(userId)
   //     //   .then((userData) => setUserInfo(userData))
   //     //   .catch((error) => console.error("Error fetching user data:", error));
