@@ -4,11 +4,11 @@ import { updateFavorites } from "../api/users";
 import { useEffect, useState } from "react";
 import { addItems } from "../redux/features/cart/cartSlice.js";
 import { useDispatch } from "react-redux";
-import { Button } from "@material-tailwind/react";
+import { Button, Typography } from "@material-tailwind/react";
 
 export default function WineDetail({ user }) {
   const [wine, setWine] = useState({});
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   let { id } = useParams();
 
   useEffect(() => {
@@ -24,7 +24,9 @@ export default function WineDetail({ user }) {
     setCount(count + 1);
   };
   const handleMinus = () => {
-    setCount(count - 1);
+    if (count > 1) {
+      setCount(count - 1);
+    }
   };
 
   const dispatch = useDispatch();
@@ -41,6 +43,11 @@ export default function WineDetail({ user }) {
   //   addToFavorites();
   // };
 
+  const handleHeart = () => {
+    console.log("heart");
+    // pop up utilizing use state toggle and favorite/unfavorite functions
+  };
+
   const handleAddToCart = () => {
     const { _id, Price } = wine;
     dispatch(addItems({ id: _id, price: Price, quantity: count }));
@@ -48,54 +55,73 @@ export default function WineDetail({ user }) {
   };
 
   return (
-    <div className="mx-20 mt-10">
-      <div className="flex p-4 max-w-4xl mx-auto mb-10 ml-auto">
-        <div className="flex-1">
-          <img
-            src={wine.img}
-            alt={wine.WineName}
-            className="w-1/2 h-auto object-cover"
-          />
-        </div>
+    <div className="flex flex-row">
+      <div
+        className="w-2/4 flex justify-center items-center"
+        style={{ height: "80vh" }}
+      >
+        <img
+          src={wine.img}
+          alt={wine.WineName}
+          className=" object-cover"
+          style={{ height: "70vh" }}
+        />
+      </div>
 
-        <div className="flex-1 text-center">
-          <h1 className="text-2xl font-italic mb-8 font-mono">
-            {wine.WineName}
-          </h1>
+      <div
+        className="flex flex-col w-2/4 justify-evenly"
+        style={{ height: "80vh" }}
+      >
+        <Typography variant="h3">{wine.WineName}</Typography>
 
-          <div className="text-left mb-4">
-            <img src={wine.flag} alt="Flag" className="w-1/4 md:w-1/6 h-auto" />
-          </div>
+        <Typography>
+          <img src={wine.flag} alt="Flag" className="" />
+        </Typography>
 
-          <p className="mb-2 text-2xl text-left">
-            <span className="font-bold">Price:</span> {wine.Price}
-          </p>
+        <Typography>Product Type: {wine.ProductType}</Typography>
 
-          <p className="mb-2 text-2xl font-serif text-left">
-            <span className="font-bold">Product Type:</span> {wine.ProductType}
-          </p>
+        <button
+          onClick={handleHeart}
+          className="w-11 middle none center flex items-center rounded-lg p-3 font-sans text-xs font-bold uppercase text-red-700 transition-all hover:bg-red-700/10 active:bg-red-700/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+          data-ripple-dark="true"
+        >
+          <i class="fas fa-heart text-lg leading-none"></i>
+        </button>
 
-          <div className="flex items-center mt-4">
-            <p className="text-lg font-semibold mr-2 ">Rating:</p>
+        <Typography variant="lead">${wine.Price}</Typography>
 
-            <div className="flex"></div>
-          </div>
-          <div>
-            <Button onClick={handleMinus}>-</Button>
-            {count}
-            <Button onClick={handlePlus}>+</Button>
-          </div>
-          <Button>Add to Favorites</Button>
+        <div className="w-2/5 flex justify-between">
           <Button
-            onClick={handleAddToCart}
-            className="bg-black hover:bg-red-800 text-white py-5 px-10 mt-6 rounded-md"
+            onClick={handleMinus}
+            variant="outlined"
+            className="rounded-none"
           >
-            Add to Cart
+            -
           </Button>
-          <p className="mb-6 text-1xl font-serif ">
-            <span className="font-bold">Description:</span> {wine.Description}
-          </p>
+          <Button
+            variant="outlined"
+            className="rounded-none pointer-events-none"
+          >
+            {count}
+          </Button>
+          <Button
+            onClick={handlePlus}
+            variant="outlined"
+            className="rounded-none"
+          >
+            +
+          </Button>
         </div>
+
+        <Button
+          onClick={handleAddToCart}
+          variant="outlined"
+          className="rounded-none w-2/5"
+        >
+          Add to Cart
+        </Button>
+
+        <Typography>Description: {wine.Description}</Typography>
       </div>
     </div>
   );
