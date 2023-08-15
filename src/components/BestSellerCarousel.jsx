@@ -62,7 +62,7 @@ export default function RandomWinesCarousel() {
                       alt={`Random Wine ${wineIndex + 1}`}
                       className="mx-auto max-h-full max-w-full mt-0"
                     />
-                      <p className="text-l">{wine.WineName}</p>
+                      <p className="text-l text-truncate">{wine.WineName}</p>
                     <div className="mt-2 mb-4 text-black overflow-hidden">
                     </div>
                   </div>

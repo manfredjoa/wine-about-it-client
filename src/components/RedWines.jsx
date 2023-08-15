@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function RedWines() {
   return (
-    <div className="w-30 h-[400px]">
+    <div className="w-30 h-[500px]">
       <Link to="/filter/red">
         <img
           alt="Red Wines"

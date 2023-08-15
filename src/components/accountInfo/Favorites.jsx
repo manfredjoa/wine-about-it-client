@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -23,7 +23,18 @@ export default function Favorites({ favorites }) {
   };
 
   if (favoriteList.length === 0) {
-    return <div>No favorites available.</div>;
+    return (
+      <Card className="w-full">
+        <div className="bg-black text-white text-center py-6 font-bold text-3xl">
+          Favorites
+        </div>
+        <CardBody>
+          <div className="text-center py-4 text-gray-600">
+            No favorites available.
+          </div>
+        </CardBody>
+      </Card>
+    );
   }
 
   const last3Favorites = favoriteList.slice(Math.max(favoriteList.length - 3, 0));

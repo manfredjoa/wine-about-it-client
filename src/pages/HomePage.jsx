@@ -15,7 +15,7 @@ export default function Home() {
       <PromoBanner />
       <HeroCarousel />
       <SelectionBanner />
-      <div className="flex justify-between gap-4 w-full mt-6 mb-6">
+      <div className="flex justify-between gap-4 w-full mt-6 mb-6 px-4">
         <AllWines />
         <RedWines />
         <WhiteWines />
