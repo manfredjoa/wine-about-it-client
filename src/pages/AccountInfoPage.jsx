@@ -2,9 +2,8 @@ import React, { useState, useEffect, useContext } from "react";
 import OrderHistory from "../components/accountInfo/OrderHistory";
 import Favorites from "../components/accountInfo/Favorites";
 import UserInfoCard from "../components/accountInfo/UserInfo";
-import { removeFavorite, getFavorites, getUserInfo, addFavorite } from "../api/api";
 
-const user = ""
+const user = "";
 
 export default function AccountInfoPage() {
   const [userInfo, setUserInfo] = useState({});
@@ -20,31 +19,11 @@ export default function AccountInfoPage() {
 
       getFavorites(userId)
         .then((userFavorites) => setFavorites(userFavorites))
-        .catch((error) => console.error("Error fetching user favorites:", error));
+        .catch((error) =>
+          console.error("Error fetching user favorites:", error)
+        );
     }
   }, [user]);
-
-  const handleRemoveFavorite = async (productId) => {
-    try {
-      await removeFavorite(user.userId, productId);
-
-      setFavorites((prevFavorites) =>
-        prevFavorites.filter((favorite) => favorite.productId !== productId)
-      );
-    } catch (error) {
-      console.error("Error removing favorite:", error);
-    }
-  };
-
-  const handleAddFavorite = async (productId) => {
-    try {
-      await addFavorite(user.userId, productId);
-
-      setFavorites((prevFavorites) => [...prevFavorites, { productId }]);
-    } catch (error) {
-      console.error("Error adding favorite:", error);
-    }
-  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -60,11 +39,7 @@ export default function AccountInfoPage() {
         <div className="flex space-x-6 py-8 px-4">
           <UserInfoCard user={userInfo} />
           <OrderHistory />
-          <Favorites
-            favorites={favorites}
-            onRemoveFavorite={handleRemoveFavorite}
-            onAddFavorite={handleAddFavorite}
-          />
+          <Favorites />
         </div>
       </div>
     </div>

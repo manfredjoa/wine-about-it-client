@@ -28,7 +28,7 @@ import {
 function AccountMenu({ user, handleLogOut }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = () => setIsMenuOpen(false);
-  console.log(user);
+
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen}>
       <MenuHandler>
@@ -105,7 +105,6 @@ function AccountMenu({ user, handleLogOut }) {
 
 // Creates favorites and shopping cart icons
 function NavList({ user, handleLogOut }) {
-  console.log(user);
   return (
     <div className="flex flex-row items-center justify-between">
       <Typography
@@ -167,7 +166,7 @@ export default function Nav({ user, handleLogOut }) {
       navigate("/filter/all");
     }
   };
-  console.log(user);
+
   return (
     <div className="bg-white">
       <Navbar className="max-w-full rounded-none">
@@ -208,7 +207,7 @@ export default function Nav({ user, handleLogOut }) {
         {/* ==================== */}
 
         <Collapse open={isNavOpen} className="overflow-scroll">
-          <NavList />
+          <NavList user={user} handleLogOut={handleLogOut} />
         </Collapse>
       </Navbar>
 
