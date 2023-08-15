@@ -64,7 +64,10 @@ export default function App() {
           element={<RegistrationPage setUser={setUser} />}
         />
         <Route path="/sign-in" element={<SignInPage />} />
-        <Route path="/shopping-cart" element={<ShoppingCartPage />} />
+        <Route
+          path="/shopping-cart"
+          element={<ShoppingCartPage user={user} />}
+        />
         <Route path="/checkout" element={<CheckoutPage user={user} />} />
         <Route
           path="/filter/:productType"
