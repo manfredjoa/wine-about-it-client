@@ -13,7 +13,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900 text-white flex-shrink-0 py-10 mt-4">
+    <footer className="bg-gray-900 text-white flex-shrink-0 py-10">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
         <div>
           <p className="text-sm mb-2">

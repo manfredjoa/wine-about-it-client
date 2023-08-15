@@ -21,7 +21,7 @@ export default function WineDetail({ wine }) {
         className="object-contain mt-5"
         src={wine.img}
         alt={wine.WineName}
-        style={{ height: "90vh" }}
+        style={{ height: "50vh" }}
       />
       <Typography>{wine.WineName}</Typography>
       <Typography>{wine.Price}</Typography>
