@@ -42,3 +42,21 @@ export const verifyUser = async () => {
   }
   return false;
 };
+
+// export const updateFavorites = async (id, favorites) => {
+//   try {
+//     console.log(id); // user ID
+//     console.log(favorites); // wine ID
+//     // const response = await api.put(`/users/${id}/favorites`, favorites);
+//     const response = await api.put(
+//       `/users/${id}/favorites`,
+//       (req,
+//       (res) => {
+//         findOneandUpdate({ _id: id }, { $push: { favorites: favorites } });
+//       })
+//     );
+//     return response.data;
+//   } catch (error) {
+//     console.log("Error: Adding favorites.", error);
+//   }
+// };

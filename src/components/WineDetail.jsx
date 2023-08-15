@@ -13,8 +13,8 @@ export default function WineDetail({ wine }) {
   // const count = useSelector((state) => state.counter.value);
   return (
     <div
-      className="flex flex-col text-center gap-y-2.5 mt-5 bg-white"
-      style={{ width: "320px" }}
+      className="flex flex-col text-center gap-y-2.5 mt-5 bg-white w-80"
+      // style={{ width: "320px" }}
       onClick={() => navigate(`/search/wine-detail/${wine._id}`)}
     >
       <img
