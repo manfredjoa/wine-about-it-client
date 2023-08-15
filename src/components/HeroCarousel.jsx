@@ -2,16 +2,6 @@ import { Carousel, Typography, Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
 export default function HeroCarousel() {
-  const images = [
-    "https://i.imgur.com/KfnKjz8.jpg",
-    "https://i.imgur.com/Gp9OB7Q.jpg",
-    "https://i.imgur.com/x5aHcWZ.jpg",
-    "https://i.imgur.com/vKJ5d5K.jpg",
-    "https://i.imgur.com/R7Bvovn.jpg",
-    "https://i.imgur.com/y06fvEP.jpg",
-  ];
-
-  const navigate = useNavigate();
 
   return (
     <Carousel

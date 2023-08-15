@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,7 +6,9 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as farHeart } from "@fortawesome/free-regular-svg-icons";
 
 export default function Favorites({ favorites }) {
-  const initialFavoriteMap = favorites.reduce((map, favorite) => {
+  const favoriteList = favorites || [];
+
+  const initialFavoriteMap = favoriteList.reduce((map, favorite) => {
     map[favorite.productId] = true;
     return map;
   }, {});
@@ -20,11 +22,22 @@ export default function Favorites({ favorites }) {
     }));
   };
 
-  if (!favorites || favorites.length === 0) {
-    return <div>No favorites available.</div>;
+  if (favoriteList.length === 0) {
+    return (
+      <Card className="w-full">
+        <div className="bg-black text-white text-center py-6 font-bold text-3xl">
+          Favorites
+        </div>
+        <CardBody>
+          <div className="text-center py-4 text-gray-600">
+            No favorites available.
+          </div>
+        </CardBody>
+      </Card>
+    );
   }
 
-  const last3Favorites = favorites.slice(Math.max(favorites.length - 3, 0));
+  const last3Favorites = favoriteList.slice(Math.max(favoriteList.length - 3, 0));
 
   return (
     <Card className="w-full">

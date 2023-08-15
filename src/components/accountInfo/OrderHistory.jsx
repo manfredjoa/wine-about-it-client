@@ -1,9 +1,21 @@
+import React from "react";
 import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
 import { Link } from "react-router-dom";
 
 export default function OrderHistory({ orders }) {
   if (!orders || orders.length === 0) {
-    return <div>No order history available.</div>;
+    return (
+      <Card className="w-full">
+        <div className="bg-black text-white text-center py-6 font-bold text-3xl">
+          Order History
+        </div>
+        <CardBody>
+          <div className="text-center py-4 text-gray-600">
+            No order history available.
+          </div>
+        </CardBody>
+      </Card>
+    );
   }
 
   const handleReorder = (order) => {
@@ -11,7 +23,6 @@ export default function OrderHistory({ orders }) {
     console.log("Reordering:", order);
   };
 
-  // Only display the last three orders
   const lastThreeOrders = orders.slice(Math.max(orders.length - 3, 0));
 
   return (

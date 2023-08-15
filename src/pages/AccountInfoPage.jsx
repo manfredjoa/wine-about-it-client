@@ -1,52 +1,49 @@
+import React, { useState, useEffect, useContext } from "react";
 import OrderHistory from "../components/accountInfo/OrderHistory";
 import Favorites from "../components/accountInfo/Favorites";
 import UserInfoCard from "../components/accountInfo/UserInfo";
+import { removeFavorite, getFavorites, getUserInfo, addFavorite } from "../api/api";
+
+const user = ""
 
 export default function AccountInfoPage() {
-  const mockOrders = [
-    {
-      productName: "LaCrema Chardonnay",
-      total: 50.0,
-      orderNumber: "GDSF54329",
-      status: "Shipped",
-    },
-    {
-      productName: "Prisoner Red Blend",
-      total: 150.0,
-      orderNumber: "GSKF43400",
-      status: "Delivered",
-    },
-    {
-      productName: "Trimabach Riesling",
-      total: 75.0,
-      orderNumber: "AKADFN3230",
-      status: "Processing",
-    },
-  ];
+  const [userInfo, setUserInfo] = useState({});
+  const [favorites, setFavorites] = useState([]);
 
-  const favorites = [
-    {
-      productName: "Silver Oak Cabernet Sauvignon",
-      price: 120.0,
-      productId: "5656y",
-    },
-    {
-      productName: "Opus One Red Blend",
-      price: 300.0,
-      productId: "5y5bfb",
-    },
-    {
-      productName: "Caymus Special Selection Cabernet Sauvignon",
-      price: 150.0,
-      productId: "56ey565",
-    },
-  ];
+  useEffect(() => {
+    if (user) {
+      const userId = user.userId;
 
-  const userInfo = {
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'doe.john@yahoo.com',
-    shippingAddress: '1234 Duluth Hwy, Duluth, GA',
+      getUserInfo(userId)
+        .then((userData) => setUserInfo(userData))
+        .catch((error) => console.error("Error fetching user data:", error));
+
+      getFavorites(userId)
+        .then((userFavorites) => setFavorites(userFavorites))
+        .catch((error) => console.error("Error fetching user favorites:", error));
+    }
+  }, [user]);
+
+  const handleRemoveFavorite = async (productId) => {
+    try {
+      await removeFavorite(user.userId, productId);
+
+      setFavorites((prevFavorites) =>
+        prevFavorites.filter((favorite) => favorite.productId !== productId)
+      );
+    } catch (error) {
+      console.error("Error removing favorite:", error);
+    }
+  };
+
+  const handleAddFavorite = async (productId) => {
+    try {
+      await addFavorite(user.userId, productId);
+
+      setFavorites((prevFavorites) => [...prevFavorites, { productId }]);
+    } catch (error) {
+      console.error("Error adding favorite:", error);
+    }
   };
 
   return (
@@ -54,7 +51,7 @@ export default function AccountInfoPage() {
       <div className="bg-gray-100 py-4 flex justify-center text-uppercase">
         <div className="max-w-screen-xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-uppercase">
-            {userInfo.firstName}'s Account{" "}
+            {userInfo.firstName}'s Account
           </h2>
         </div>
       </div>
@@ -62,8 +59,12 @@ export default function AccountInfoPage() {
       <div>
         <div className="flex space-x-6 py-8 px-4">
           <UserInfoCard user={userInfo} />
-          <OrderHistory orders={mockOrders} />
-          <Favorites favorites={favorites} />
+          <OrderHistory />
+          <Favorites
+            favorites={favorites}
+            onRemoveFavorite={handleRemoveFavorite}
+            onAddFavorite={handleAddFavorite}
+          />
         </div>
       </div>
     </div>

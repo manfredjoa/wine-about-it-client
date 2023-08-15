@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function AllWines() {
   return (
-    <div className="w-30 h-80">
+    <div className="w-30 h-[500px]">
       <Link to="/filter/all">
         <img
           src="https://i.imgur.com/RgmX0Q3.jpg"
