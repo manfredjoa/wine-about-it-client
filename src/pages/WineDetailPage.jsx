@@ -1,14 +1,14 @@
 import { useParams } from "react-router-dom";
 import { getWine } from "../api/api";
+import { updateFavorites } from "../api/users";
 import { useEffect, useState } from "react";
 import { addItems } from "../redux/features/cart/cartSlice.js";
 import { useDispatch } from "react-redux";
 import { Button } from "@material-tailwind/react";
 
-export default function WineDetail() {
+export default function WineDetail({ user }) {
   const [wine, setWine] = useState({});
   const [count, setCount] = useState(0);
-
   let { id } = useParams();
 
   useEffect(() => {
@@ -28,6 +28,18 @@ export default function WineDetail() {
   };
 
   const dispatch = useDispatch();
+
+  // const addToFavorites = async () => {
+  //   console.log(user.id); // userID
+  //   console.log(id); // wineID
+  //   const response = await updateFavorites(user.id, id);
+  //   console.log(response);
+  //   return response;
+  // };
+
+  // const handleAddToFavorites = () => {
+  //   addToFavorites();
+  // };
 
   const handleAddToCart = () => {
     const { _id, Price } = wine;
@@ -73,12 +85,13 @@ export default function WineDetail() {
             {count}
             <Button onClick={handlePlus}>+</Button>
           </div>
-          <button
+          <Button>Add to Favorites</Button>
+          <Button
             onClick={handleAddToCart}
             className="bg-black hover:bg-red-800 text-white py-5 px-10 mt-6 rounded-md"
           >
             Add to Cart
-          </button>
+          </Button>
           <p className="mb-6 text-1xl font-serif ">
             <span className="font-bold">Description:</span> {wine.Description}
           </p>
