@@ -1,70 +1,99 @@
-# Getting Started with Create React App
+# 🍷 Wine About It Frontend 🍷
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the front-end repository of **Wine About It**, a web application for wine enthusiasts to explore and review different wines.
 
-## Available Scripts
+Here is where you can browse through all the wines and determine what you want to purchase.
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Introduction](#introduction)
+- [Features](#features)
+- [Demo](#demo)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Technologies Used](#technologies-used)
+- [Contributing](#contributing)
+- [License](#license)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Introduction
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This repository contains the front-end code for the Wine About It application. Wine About It is designed to provide users with a platform to discover and share their favorite wines, write reviews, and interact with fellow wine lovers, while being able to purchse their favorite wines.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **User Authentication**: Secure user registration and login functionality.
+- **Browse Wines**: Explore a wide variety of wines along with detailed information.
+- **Search and Filters**: Search for specific wines and apply filters based on preferences.
+- **Wine Reviews**: Read and write reviews for different wines.
+- **User Profile**: Personalized user profiles to track reviews and favorites.
+- **Responsive Design**: The app is optimized for various screen sizes.
 
-### `npm run build`
+## Demo
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+You can check out a live demo of the Wine About It application [here](#).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+To run the front-end of Wine About It locally, follow these steps:
 
-### `npm run eject`
+1. Clone this repository:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+ git clone https://github.com/manfredjoa/wine-about-it-client.git
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Navigate to the project directory:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```bash
+cd wine-about-it-client
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+3. Install the dependencies:
 
-## Learn More
+```bash
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+After installation, you can start the development server using:
 
-### Code Splitting
+```bash
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+This will start the app locally, and you can access it in your browser at http://localhost:3000.
 
-### Analyzing the Bundle Size
+## Technologies Used
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### React.js:
 
-### Making a Progressive Web App
+Front-end library for building user interfaces.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Redux:
 
-### Advanced Configuration
+State management for React applications.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Axios:
 
-### Deployment
+Promise-based HTTP client for making API requests.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+### Tailwind CSS and Material tailwind:
 
-### `npm run build` fails to minify
+Styling and layout design.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### User Authentication
+
+JWT
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to Wine About It, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature: git checkout -b feature-name.
+3. Make your changes and commit them: git commit -m "Add some feature".
+4. Push to the branch: git push origin feature-name.
+5. Create a pull request describing your changes.
+
+Please make sure to follow the Code of Conduct when contributing.
