@@ -1,10 +1,11 @@
 import { useSelector } from "react-redux";
 import { getWine } from "../api/api";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import WineDetailShopping from "../components/WineDetailShopping";
 import { Button } from "@material-tailwind/react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import CheckoutPage from "./CheckoutPage";
 
 export default function ShoppingCart() {
   const cartQuantity = useSelector((state) => state.cart.cartQuantity);
@@ -12,6 +13,7 @@ export default function ShoppingCart() {
   const items = useSelector((state) => state.cart.items);
   const [theFetchedWines, setTheFetchedWines] = useState([]);
   const navigate = useNavigate();
+  const [checkout, setCheckout] = useState(false);
 
   useEffect(() => {
     fetchWines();
@@ -35,6 +37,10 @@ export default function ShoppingCart() {
     return { ...wine, quantity: item.quantity };
   });
 
+  const handleCheckout = () => {
+    setCheckout(true);
+  };
+
   console.log("Cart Items: ", cartQuantity);
   console.log("Cart Totals: ", cartTotal);
 
@@ -46,19 +52,25 @@ export default function ShoppingCart() {
   };
   return (
     <div>
-      <h1>Shopping Cart</h1>
-      <div>
-        {itemsInfo.map((item, key) => (
-          <WineDetailShopping key={item._id} index={key} itemInfo={item} />
-        ))}
-      </div>
-      <div>
-        {cartQuantity}
-        <br />
-        {cartTotal}
-      </div>
-      <Button onClick={handleRemoveState}>Clear</Button>
-      <Button onClick={() => navigate("/checkout")}>Check-Out</Button>
+      {!checkout ? (
+        <div>
+          <h1>Shopping Cart</h1>
+          <div>
+            {itemsInfo.map((item, key) => (
+              <WineDetailShopping key={item._id} index={key} itemInfo={item} />
+            ))}
+          </div>
+          <div>
+            {cartQuantity}
+            <br />
+            {cartTotal}
+          </div>
+          <Button onClick={handleRemoveState}>Clear</Button>
+          <Button onClick={handleCheckout}>Check-Out</Button>
+        </div>
+      ) : (
+        <CheckoutPage />
+      )}
     </div>
   );
 }

@@ -73,7 +73,7 @@ export default function App() {
           path="/shopping-cart"
           element={<ShoppingCartPage user={user} />}
         />
-        <Route path="/checkout" element={<CheckoutPage user={user} />} />
+        {/* <Route path="/checkout" element={<CheckoutPage user={user} />} /> */}
         <Route
           path="/filter/:productType"
           element={<FilterPage user={user} />}

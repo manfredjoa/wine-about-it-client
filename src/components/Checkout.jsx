@@ -38,7 +38,7 @@ export default function Checkout() {
   return (
     <>
       {!submitForm ? (
-        <div className="flex justify-center">
+        <div className="flex justify-center mx-auto">
           <form
             className="flex flex-col justify-center items-center w-80 gap-2"
             style={{ color: "rgb(96, 20, 30)" }}
