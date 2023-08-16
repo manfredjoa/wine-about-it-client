@@ -4,11 +4,19 @@ import { updateFavorites } from "../api/users";
 import { useEffect, useState } from "react";
 import { addItems } from "../redux/features/cart/cartSlice.js";
 import { useDispatch } from "react-redux";
-import { Button } from "@material-tailwind/react";
+import {
+  Button,
+  Typography,
+  Popover,
+  PopoverHandler,
+  PopoverContent,
+} from "@material-tailwind/react";
 
 export default function WineDetail({ user }) {
   const [wine, setWine] = useState({});
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
+  const [heartToggle, setHeartToggle] = useState(false);
+  const [addToCart, setAddToCart] = useState(false);
   let { id } = useParams();
 
   useEffect(() => {
@@ -22,14 +30,17 @@ export default function WineDetail({ user }) {
 
   const handlePlus = () => {
     setCount(count + 1);
+    setAddToCart(false);
   };
+
   const handleMinus = () => {
-    setCount(count - 1);
+    if (count > 1) {
+      setCount(count - 1);
+      setAddToCart(false);
+    }
   };
 
   const dispatch = useDispatch();
-
-  console.log(wine);
 
   const handleAddToFavorites = async () => {
     const wineId = wine._id;
@@ -41,61 +52,131 @@ export default function WineDetail({ user }) {
     }
   };
 
+  const handleHeart = () => {
+    // pop up utilizing use state toggle and favorite/unfavorite functions
+    // handleAddToFavorites();
+    setHeartToggle(!heartToggle);
+  };
+
   const handleAddToCart = () => {
     const { _id, Price } = wine;
     dispatch(addItems({ id: _id, price: Price, quantity: count }));
+    setAddToCart(true);
     console.log(_id, Price, count);
   };
 
   return (
-    <div className="mx-20 mt-10">
-      <div className="flex p-4 max-w-4xl mx-auto mb-10 ml-auto">
-        <div className="flex-1">
-          <img
-            src={wine.img}
-            alt={wine.WineName}
-            className="w-1/2 h-auto object-cover"
-          />
+    <div className="flex flex-row" style={{ color: "rgb(96, 20, 30)" }}>
+      <div
+        className="w-2/4 flex justify-center items-center"
+        style={{ height: "80vh" }}
+      >
+        <img
+          src={wine.img}
+          alt={wine.WineName}
+          className=" object-cover"
+          style={{ height: "70vh" }}
+        />
+      </div>
+
+      <div
+        className="flex flex-col w-2/4 justify-evenly py-5 pr-5"
+        style={{ height: "80vh" }}
+      >
+        <Typography variant="h3">{wine.WineName}</Typography>
+
+        <Typography>
+          <img src={wine.flag} alt="Flag" className="" />
+        </Typography>
+
+        <Typography>
+          <strong>Product Type</strong>: {wine.ProductType}
+        </Typography>
+
+        {/* onClick does not work inside Popover unfortunately */}
+        {/* <Popover placement="right">
+          <PopoverHandler> */}
+        {!heartToggle ? (
+          <button
+            onClick={handleHeart}
+            class=" w-11 middle none center flex items-center rounded-lg p-3 font-sans text-xs font-bold uppercase text-black-500 transition-all hover:bg-black-500/10 active:bg-black-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+            data-ripple-dark="true"
+          >
+            <i class="fas fa-heart text-lg leading-none"></i>
+          </button>
+        ) : (
+          <div className="flex items-center">
+            <button
+              onClick={handleHeart}
+              class=" w-11 middle none center flex items-center rounded-lg p-3 font-sans text-xs font-bold uppercase text-red-700 transition-all hover:bg-red-700/10 active:bg-red-700/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              data-ripple-dark="true"
+            >
+              <i class="fas fa-heart text-lg leading-none"></i>
+            </button>
+            <Typography>Added to favorites</Typography>
+          </div>
+        )}
+        {/* </PopoverHandler>
+          <PopoverContent>
+            <Typography style={{ color: "rgb(96, 20, 30)" }}>
+              Added to favorites
+            </Typography>
+          </PopoverContent>
+        </Popover> */}
+
+        <Typography variant="lead">${wine.Price}</Typography>
+
+        <div className="w-2/5 flex justify-between">
+          <Button
+            onClick={handleMinus}
+            variant="outlined"
+            className="rounded-none"
+          >
+            -
+          </Button>
+
+          <Button
+            variant="outlined"
+            className="rounded-none pointer-events-none"
+          >
+            {count}
+          </Button>
+
+          <Button
+            onClick={handlePlus}
+            variant="outlined"
+            className="rounded-none"
+          >
+            +
+          </Button>
         </div>
 
-        <div className="flex-1 text-center">
-          <h1 className="text-2xl font-italic mb-8 font-mono">
-            {wine.WineName}
-          </h1>
-
-          <div className="text-left mb-4">
-            <img src={wine.flag} alt="Flag" className="w-1/4 md:w-1/6 h-auto" />
-          </div>
-
-          <p className="mb-2 text-2xl text-left">
-            <span className="font-bold">Price:</span> {wine.Price}
-          </p>
-
-          <p className="mb-2 text-2xl font-serif text-left">
-            <span className="font-bold">Product Type:</span> {wine.ProductType}
-          </p>
-
-          <div className="flex items-center mt-4">
-            <p className="text-lg font-semibold mr-2 ">Rating:</p>
-
-            <div className="flex"></div>
-          </div>
-          <div>
-            <Button onClick={handleMinus}>-</Button>
-            {count}
-            <Button onClick={handlePlus}>+</Button>
-          </div>
-          <Button onClick={handleAddToFavorites}>Add to Favorites</Button>
+        {/* onClick does not work inside Popover unfortunately */}
+        {/* <Popover placement="right">
+          <PopoverHandler> */}
+        <div className="flex items-center">
           <Button
             onClick={handleAddToCart}
-            className="bg-black hover:bg-red-800 text-white py-5 px-10 mt-6 rounded-md"
+            variant="outlined"
+            className="rounded-none w-2/5"
           >
             Add to Cart
           </Button>
-          <p className="mb-6 text-1xl font-serif ">
-            <span className="font-bold">Description:</span> {wine.Description}
-          </p>
+          {addToCart ? (
+            <Typography className="ml-5">Added {count} to cart</Typography>
+          ) : null}
         </div>
+        {/* </PopoverHandler>
+          <PopoverContent>
+            <Typography style={{ color: "rgb(96, 20, 30)" }}>
+              Added {count} {wine.wineName} to cart
+            </Typography> */}
+        {/* </PopoverContent>
+        </Popover> */}
+
+        <Typography>
+          <strong>Description</strong>: {wine.Description}
+        </Typography>
       </div>
     </div>
   );

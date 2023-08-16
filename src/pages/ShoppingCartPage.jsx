@@ -1,11 +1,8 @@
 import { useSelector } from "react-redux";
 import { getWine } from "../api/api";
-
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { Button, Typography } from "@material-tailwind/react";
 import WineDetailShopping from "../components/WineDetailShopping";
-import { Button } from "@material-tailwind/react";
-import { useNavigate, useLocation } from "react-router-dom";
-
 import Checkout from "../components/Checkout";
 
 export default function ShoppingCart({ user }) {
@@ -13,7 +10,6 @@ export default function ShoppingCart({ user }) {
   const cartTotal = useSelector((state) => state.cart.cartTotal);
   const items = useSelector((state) => state.cart.items);
   const [theFetchedWines, setTheFetchedWines] = useState([]);
-  const navigate = useNavigate();
   const [checkout, setCheckout] = useState(false);
 
   useEffect(() => {
@@ -51,19 +47,54 @@ export default function ShoppingCart({ user }) {
     <div>
       {!checkout ? (
         <div>
-          <h1>Shopping Cart</h1>
+          <Typography
+            className="text-4xl py-5 pl-5 font-black"
+            style={{
+              fontFamily: "Wine Date",
+              color: "rgb(96, 20, 30)",
+            }}
+          >
+            Shopping Cart
+          </Typography>
           <div>
             {itemsInfo.map((item, key) => (
               <WineDetailShopping key={item._id} index={key} itemInfo={item} />
             ))}
           </div>
-          <div>
-            {cartQuantity}
-            <br />
-            {cartTotal}
+          <div className="flex">
+            <div className="flex grow"></div>
+            <div
+              className="flex flex-col p-5"
+              style={{ color: "rgb(96, 20, 30)" }}
+            >
+              <Typography className="text-lg font-semibold">
+                Cart Quantity: {cartQuantity}
+              </Typography>
+
+              <p className="text-lg text-green-500 font-semibold">
+                Cart Total: {cartTotal} USD
+              </p>
+            </div>
           </div>
-          <Button onClick={handleRemoveState}>Clear</Button>
-          <Button onClick={handleCheckout}>Check-Out</Button>
+          <div className="flex flex-row">
+            <div className="flex grow"></div>
+            <div className="flex flex-row px-5 pb-5">
+              <Button
+                variant="outlined"
+                className="rounded-none w-32 mr-5"
+                onClick={handleRemoveState}
+              >
+                Clear Cart
+              </Button>
+              <Button
+                variant="outlined"
+                className="rounded-none w-32"
+                onClick={handleCheckout}
+              >
+                Checkout
+              </Button>
+            </div>
+          </div>
         </div>
       ) : (
         <Checkout

@@ -61,32 +61,29 @@ export default function FilterPage() {
   return (
     <div className="bg-gray-100 pb-10">
       <Typography
-        className="text-3xl font-black text-center pt-10"
-        style={{
-          fontFamily: "Optima, sans-serif",
-          color: "rgb(96, 20, 30)",
-        }}
+        className="text-4xl font-black text-center pt-10"
+        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
       >
         {productType === "red" && `Red Wines (${wine.length})`}
       </Typography>
 
       <Typography
-        className="text-3xl font-black text-center"
-        style={{ fontFamily: "Optima, sans-serif", color: "rgb(96, 20, 30)" }}
+        className="text-4xl font-black text-center"
+        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
       >
         {productType === "white" && `White Wines (${wine.length})`}
       </Typography>
 
       <Typography
-        className="text-3xl font-black text-center"
-        style={{ fontFamily: "Optima, sans-serif", color: "rgb(96, 20, 30)" }}
+        className="text-4xl font-black text-center"
+        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
       >
         {productType === "rose" && `Rose Wines (${wine.length})`}
       </Typography>
 
       <Typography
-        className="text-3xl font-black text-center"
-        style={{ fontFamily: "Optima, sans-serif", color: "rgb(96, 20, 30)" }}
+        className="text-4xl font-black text-center"
+        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
       >
         {productType === "all" && `All Wines (${wine.length})`}
       </Typography>
