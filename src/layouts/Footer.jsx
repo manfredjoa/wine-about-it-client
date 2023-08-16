@@ -14,13 +14,11 @@ export default function Footer() {
 
   return (
     <div className="flex flex-col min-h-fit">
-      <div className="flex-grow"></div>
       <footer className="bg-gray-900 text-white py-10">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
           <div>
             <p className="text-sm mb-2">
-              &copy; {new Date().getFullYear()} Wine About It. All rights
-              reserved.
+              &copy; {new Date().getFullYear()} Wine About It. All rights reserved.
             </p>
             <div className="flex justify-center">
               <ul className="flex space-x-4 mt-2">
