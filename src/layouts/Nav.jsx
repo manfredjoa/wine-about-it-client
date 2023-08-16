@@ -21,7 +21,7 @@ import {
   Bars2Icon,
   HeartIcon,
   ShoppingCartIcon,
-  // MagnifyingGlassIcon, // For navigating to browse page later on
+  MagnifyingGlassIcon,
 } from "@heroicons/react/24/outline";
 
 //dropdown menu
@@ -30,11 +30,11 @@ function AccountMenu({ user, handleLogOut }) {
   const closeMenu = () => setIsMenuOpen(false);
 
   return (
-    <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
+    <Menu open={isMenuOpen} handler={setIsMenuOpen}>
       <MenuHandler>
         <Button
           variant="text"
-          className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
+          className="flex items-center gap-1 rounded-full"
           style={{ color: "rgb(96, 20, 30)" }}
         >
           {createElement(UserCircleIcon, {
@@ -104,9 +104,9 @@ function AccountMenu({ user, handleLogOut }) {
 }
 
 // Creates favorites and shopping cart icons
-function NavList() {
+function NavList({ user, handleLogOut }) {
   return (
-    <div className="mb-4 mt-2 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center">
+    <div className="flex flex-row items-center justify-between">
       <Typography
         as="a"
         href="/favorites"
@@ -114,10 +114,10 @@ function NavList() {
         className="font-normal"
       >
         <MenuItem
-          className="flex items-center gap-2 lg:rounded-full"
+          className="flex items-center gap-2 rounded-full"
           style={{ color: "rgb(96, 20, 30)" }}
         >
-          {createElement(HeartIcon, { className: "h-[24px] w-[24px]" })}
+          {createElement(HeartIcon, { className: "h-6 w-6" })}
         </MenuItem>
       </Typography>
 
@@ -128,20 +128,21 @@ function NavList() {
         className="font-normal"
       >
         <MenuItem
-          className="flex items-center gap-2 lg:rounded-full"
+          className="flex items-center gap-2 rounded-full"
           style={{ color: "rgb(96, 20, 30)" }}
         >
           {createElement(ShoppingCartIcon, {
-            className: "h-[24px] w-[24px]",
+            className: "h-6 w-6",
           })}
         </MenuItem>
       </Typography>
+      <AccountMenu user={user} handleLogOut={handleLogOut} />
     </div>
   );
 }
 
 //real below
-export default function Nav({ handleLogOut, user }) {
+export default function Nav({ user, handleLogOut }) {
   const [isNavOpen, setIsNavOpen] = useState(false);
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
   const navigate = useNavigate();
@@ -170,22 +171,28 @@ export default function Nav({ handleLogOut, user }) {
     <div className="bg-white">
       <Navbar className="max-w-full rounded-none">
         {/* ==================== */}
-        <div
-          className="relative mx-auto flex"
-          style={{ color: "rgb(96, 20, 30)" }}
-        >
+        <div className="flex" style={{ color: "rgb(96, 20, 30)" }}>
           <Typography
-            as="a"
-            href="/"
-            className="mr-4 ml-2 cursor-pointer py-1.5 font-black text-5xl mx-auto"
+            onClick={() => navigate("/filter/all")}
+            className="flex items-center w-1/6"
+          >
+            {createElement(MagnifyingGlassIcon, {
+              className: "h-6 w-6",
+              strokeWidth: 2,
+            })}
+          </Typography>
+
+          <Typography
+            onClick={() => navigate("/")}
+            className="mr-4 ml-2 flex items-center justify-center grow cursor-pointer py-1.5 font-black text-5xl"
             style={{ fontFamily: "Wine Date" }}
           >
             Wine About It
           </Typography>
 
           {/* Favorites and shopping cart icons */}
-          <div className="absolute top-2/4 right-3 hidden -translate-x-2/4 -translate-y-2/4 lg:block">
-            <NavList />
+          <div className="flex justify-end w-1/6 top-2/4 hidden lg:block">
+            <NavList user={user} handleLogOut={handleLogOut} />
           </div>
 
           {/* Responsive menu change (NavList > Bars2Icon) when Collapse is open (determined by useEffect above) */}
@@ -198,13 +205,11 @@ export default function Nav({ handleLogOut, user }) {
           >
             <Bars2Icon className="h-6 w-6" />
           </IconButton>
-
-          <AccountMenu user={user} handleLogOut={handleLogOut} />
         </div>
         {/* ==================== */}
 
         <Collapse open={isNavOpen} className="overflow-scroll">
-          <NavList />
+          <NavList user={user} handleLogOut={handleLogOut} />
         </Collapse>
       </Navbar>
 

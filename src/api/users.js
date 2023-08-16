@@ -1,7 +1,6 @@
 import api from "./apiConfig";
 import jwtDecode from "jwt-decode";
 
-
 export async function registerUser(credentials) {
   try {
     const response = await api.post("/users/register", credentials);
@@ -24,7 +23,7 @@ export async function loginUser(credentials) {
     console.log("Error: Logging in user.", error);
   }
 }
-export async function getUser(user) {
+export async function getUser(id) {
   try {
     const response = await api.get(`/users/id/${id}`);
     console.log(response.data);
@@ -43,20 +42,13 @@ export const verifyUser = async () => {
   return false;
 };
 
-// export const updateFavorites = async (id, favorites) => {
-//   try {
-//     console.log(id); // user ID
-//     console.log(favorites); // wine ID
-//     // const response = await api.put(`/users/${id}/favorites`, favorites);
-//     const response = await api.put(
-//       `/users/${id}/favorites`,
-//       (req,
-//       (res) => {
-//         findOneandUpdate({ _id: id }, { $push: { favorites: favorites } });
-//       })
-//     );
-//     return response.data;
-//   } catch (error) {
-//     console.log("Error: Adding favorites.", error);
-//   }
-// };
+export const updateFavorites = async (userId, wineId) => {
+  try {
+    const resp = await api.patch(`/users/${userId}/favorites`, {
+      favorites: wineId,
+    });
+    return resp.data;
+  } catch (error) {
+    throw error;
+  }
+};
