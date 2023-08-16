@@ -1,5 +1,4 @@
 import HeroCarousel from "../components/HeroCarousel.jsx";
-import PromoBar from "../components/PromoBar.jsx";
 import AllWines from "../components/AllWines.jsx";
 import RedWines from "../components/RedWines.jsx";
 import WhiteWines from "../components/WhiteWines.jsx";

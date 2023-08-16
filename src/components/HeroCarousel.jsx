@@ -2,6 +2,7 @@ import { Carousel, Typography, Button } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
 export default function HeroCarousel() {
+  const navigate = useNavigate();
 
   return (
     <Carousel
@@ -20,9 +21,9 @@ export default function HeroCarousel() {
               onClick={() => setActiveIndex(i)}
             />
           ))}
-          {/* <div className="w-screen" style={{ height: "70vh" }}>
+          <div className="w-screen z-0" style={{ height: "70vh" }}>
             <div
-              className="w-2/6 h-2/4 flex flex-col items-end justify-evenly pr-10 hover:scale-110 duration-300"
+              className="w-2/6 h-2/4 absolute flex flex-col items-end justify-evenly pr-10 hover:scale-110 duration-300"
               style={{
                 marginTop: "17.5vh",
                 marginLeft: "50vw",
@@ -46,7 +47,7 @@ export default function HeroCarousel() {
                 See All Wines
               </Button>
             </div>
-          </div> */}
+          </div>
         </div>
       )}
     >

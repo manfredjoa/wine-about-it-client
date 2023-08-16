@@ -18,6 +18,8 @@ import { loginUser } from "./api/users.js";
 import { useSelector, useDispatch } from "react-redux";
 import { addUserId } from "./redux/features/cart/cartSlice.js";
 
+import Manfred from "./test/Manfred.jsx";
+
 export default function App() {
   const [user, setUser] = useState(null);
   const cartUserId = useSelector((state) => state.cart.userId);
@@ -77,6 +79,7 @@ export default function App() {
           element={<FilterPage user={user} />}
         />
         <Route path="/account-info" element={<AccountInfoPage user={user} />} />
+        <Route path="/manfred" element={<Manfred />} />
       </Routes>
       <Footer />
     </div>
