@@ -1,5 +1,5 @@
 import { Typography } from "@material-tailwind/react";
-import WineDetail from "../components/WineDetail";
+import WineDetailFavorite from "../components/WineDetailFavorite";
 import { getWine } from "../api/api";
 import { useEffect, useState } from "react";
 import { getUser } from "../api/users";
@@ -10,8 +10,6 @@ export default function Favorites({ user }) {
   const fetchWines = async () => {
     try {
       const calledUser = await getUser(user.id);
-
-      console.log(calledUser);
 
       const { favorites } = calledUser;
       const winePromises = favorites.map(getWine);
@@ -29,10 +27,10 @@ export default function Favorites({ user }) {
   }, [user]);
 
   return (
-    <div>
+    <div className="pb-5">
       <div>
         <Typography
-          className="flex items-center text-4xl font-black py-5 pl-5"
+          className="flex items-center text-4xl font-black py-5 pl-10"
           style={{
             fontFamily: "Wine Date",
             color: "rgb(96, 20, 30)",
@@ -44,8 +42,14 @@ export default function Favorites({ user }) {
       </div>
       <div className="flex flex-wrap justify-evenly gap-y-8">
         {wines.map((wine, index) => (
-          <div className="wine-container" key={index}>
-            <WineDetail wine={wine} />
+          <div className="wine-container flex" key={index}>
+            <WineDetailFavorite wine={wine} />
+            {/* <Button
+              variant="outlined"
+              className="h-8 w-8 p-1 rounded-none flex items-center justify-center"
+            >
+              x
+            </Button> */}
           </div>
         ))}
       </div>

@@ -61,39 +61,22 @@ export default function FilterPage() {
   return (
     <div className="bg-gray-100 pb-10">
       <Typography
-        className="text-4xl font-black text-center pt-10"
+        className="text-4xl font-black pl-14 pt-10"
         style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
       >
-        {productType === "red" && `Red Wines (${wine.length})`}
-      </Typography>
-
-      <Typography
-        className="text-4xl font-black text-center"
-        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
-      >
-        {productType === "white" && `White Wines (${wine.length})`}
-      </Typography>
-
-      <Typography
-        className="text-4xl font-black text-center"
-        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
-      >
-        {productType === "rose" && `Rose Wines (${wine.length})`}
-      </Typography>
-
-      <Typography
-        className="text-4xl font-black text-center"
-        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
-      >
-        {productType === "all" && `All Wines (${wine.length})`}
+        {(productType === "red" && `Red Wines (${wine.length})`) ||
+          (productType === "white" && `White Wines (${wine.length})`) ||
+          (productType === "rose" && `Rose Wines (${wine.length})`) ||
+          (productType === "all" && `All Wines (${wine.length})`)}
       </Typography>
 
       <div className="flex justify-evenly">
-        <div style={{ width: "320px" }}></div>
-        <div style={{ width: "320px" }}></div>
-        <div style={{ width: "320px" }}></div>
-        <ButtonGroup className="flex justify-end" style={{ width: "320px" }}>
+        <div className="w-80"></div>
+        <div className="w-80"></div>
+        <div className="w-80"></div>
+        <ButtonGroup className="flex justify-end w-80">
           <Button
+            className="rounded-none"
             onClick={handleAToZ}
             style={{ backgroundColor: "rgb(96, 20, 30)" }}
           >
@@ -101,6 +84,7 @@ export default function FilterPage() {
           </Button>
 
           <Button
+            className="rounded-none"
             onClick={handleLeastToMost}
             style={{ backgroundColor: "rgb(96, 20, 30)" }}
           >
@@ -108,6 +92,7 @@ export default function FilterPage() {
           </Button>
 
           <Button
+            className="rounded-none"
             onClick={handleMostToLeast}
             style={{ backgroundColor: "rgb(96, 20, 30)" }}
           >

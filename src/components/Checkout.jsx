@@ -49,13 +49,13 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     createOrder(formData);
+    console.log(formData);
     handleRemoveState();
     setSubmitForm("submitted");
     console.log(formData);
   };
   const handleRemoveState = () => {
     localStorage.removeItem("persist:root");
-    // window.location.reload();
   };
 
   return (

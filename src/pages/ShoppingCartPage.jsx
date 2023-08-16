@@ -44,7 +44,7 @@ export default function ShoppingCart({ user }) {
       {!checkout ? (
         <div>
           <Typography
-            className="text-4xl py-5 pl-5 font-black"
+            className="text-4xl py-5 pl-10 font-black"
             style={{
               fontFamily: "Wine Date",
               color: "rgb(96, 20, 30)",
@@ -63,12 +63,16 @@ export default function ShoppingCart({ user }) {
               className="flex flex-col p-5"
               style={{ color: "rgb(96, 20, 30)" }}
             >
+              {items.length === 0 ? (
+                <div style={{ height: "25vh" }}></div>
+              ) : null}
+
               <Typography className="text-lg font-semibold">
                 Cart Quantity: {cartQuantity}
               </Typography>
 
               <p className="text-lg text-green-500 font-semibold">
-                Cart Total: {cartTotal} USD
+                Cart Total: ${Math.floor(cartTotal)}
               </p>
             </div>
           </div>

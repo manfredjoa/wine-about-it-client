@@ -21,14 +21,12 @@ export default function WineDetailShopping({ itemInfo }) {
           >
             {itemInfo.WineName}
           </h3>
-          <p style={{ color: "rgb(96, 20, 30)" }}>
-            {itemInfo.Price} USD / each
-          </p>
+          <p style={{ color: "rgb(96, 20, 30)" }}>${itemInfo.Price} each</p>
           <p style={{ color: "rgb(96, 20, 30)" }}>
             Quantity: {itemInfo.quantity}
           </p>
           <p className="text-green-500 font-semibold">
-            Item Total: {itemInfo.Price * itemInfo.quantity} USD
+            Item Total: ${Math.floor(itemInfo.Price * itemInfo.quantity)}
           </p>
         </div>
       </div>

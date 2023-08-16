@@ -44,6 +44,8 @@ export default function WineDetail({ user }) {
 
   const handleAddToFavorites = async () => {
     const wineId = wine._id;
+    console.log(wineId);
+    console.log(user.id);
     try {
       await updateFavorites(user.id, wineId);
     } catch (error) {}
@@ -51,7 +53,10 @@ export default function WineDetail({ user }) {
 
   const handleHeart = () => {
     // pop up utilizing use state toggle and favorite/unfavorite functions
-    // handleAddToFavorites();
+    // if (heartToggle) {
+    // removefromfavorites
+    // } else { handleAddToFavorites() }
+    handleAddToFavorites();
     setHeartToggle(!heartToggle);
   };
 
@@ -91,37 +96,39 @@ export default function WineDetail({ user }) {
         </Typography>
 
         {/* onClick does not work inside Popover unfortunately */}
-        {/* <Popover placement="right">
-          <PopoverHandler> */}
-        {!heartToggle ? (
-          <button
-            onClick={handleHeart}
-            class=" w-11 middle none center flex items-center rounded-lg p-3 font-sans text-xs font-bold uppercase text-black-500 transition-all hover:bg-black-500/10 active:bg-black-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-            data-ripple-dark="true"
-          >
-            <i class="fas fa-heart text-lg leading-none"></i>
-          </button>
-        ) : (
-          <div className="flex items-center">
-            <button
-              onClick={handleHeart}
-              class=" w-11 middle none center flex items-center rounded-lg p-3 font-sans text-xs font-bold uppercase text-red-700 transition-all hover:bg-red-700/10 active:bg-red-700/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-              data-ripple-dark="true"
-            >
-              <i class="fas fa-heart text-lg leading-none"></i>
-            </button>
-            <Typography>Added to favorites</Typography>
-          </div>
-        )}
-        {/* </PopoverHandler>
+        <Popover placement="right">
+          <PopoverHandler onClick={handleHeart}>
+            {!heartToggle ? (
+              <button
+                onClick={handleHeart}
+                class=" w-11 middle none center flex items-center rounded-lg p-3 font-sans text-xs font-bold uppercase text-black-500 transition-all hover:bg-black-500/10 active:bg-black-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                data-ripple-dark="true"
+              >
+                <i class="fas fa-heart text-lg leading-none"></i>
+              </button>
+            ) : (
+              <div className="flex items-center">
+                <button
+                  onClick={handleHeart}
+                  class=" w-11 middle none center flex items-center rounded-lg p-3 font-sans text-xs font-bold uppercase text-red-700 transition-all hover:bg-red-700/10 active:bg-red-700/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                  data-ripple-dark="true"
+                >
+                  <i class="fas fa-heart text-lg leading-none"></i>
+                </button>
+                <Typography>Added to favorites</Typography>
+              </div>
+            )}
+          </PopoverHandler>
           <PopoverContent>
             <Typography style={{ color: "rgb(96, 20, 30)" }}>
               Added to favorites
             </Typography>
           </PopoverContent>
-        </Popover> */}
+        </Popover>
 
-        <Typography variant="lead">${wine.Price}</Typography>
+        <Typography variant="lead" className="text-green-500">
+          ${wine.Price}
+        </Typography>
 
         <div className="w-2/5 flex justify-between">
           <Button

@@ -9,7 +9,7 @@ export default function AccountInfoPage({ user }) {
       <div className="bg-gray-100 py-4 flex justify-center text-uppercase">
         <div className="max-w-screen-xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-uppercase">
-            My Account
+            My Account My Account
           </h2>
         </div>
       </div>

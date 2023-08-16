@@ -6,7 +6,6 @@ export default function WineDetail({ wine }) {
   return (
     <div
       className="flex flex-col text-center gap-y-2.5 mt-5 bg-white w-80"
-      // style={{ width: "320px" }}
       onClick={() => navigate(`/search/wine-detail/${wine._id}`)}
     >
       <img
@@ -15,8 +14,10 @@ export default function WineDetail({ wine }) {
         alt={wine.WineName}
         style={{ height: "50vh" }}
       />
-      <Typography>{wine.WineName}</Typography>
-      <Typography>{wine.Price}</Typography>
+      <Typography className="font-black">{wine.WineName}</Typography>
+      <Typography className="font-black text-green-500">
+        ${wine.Price}
+      </Typography>
     </div>
   );
 }
