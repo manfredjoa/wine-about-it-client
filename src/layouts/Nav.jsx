@@ -172,7 +172,10 @@ export default function Nav({ user, handleLogOut }) {
       <Navbar className="max-w-full rounded-none">
         {/* ==================== */}
         <div className="flex" style={{ color: "rgb(96, 20, 30)" }}>
-          <Typography className="flex items-center w-1/6">
+          <Typography
+            onClick={() => navigate("/filter/all")}
+            className="flex items-center w-1/6"
+          >
             {createElement(MagnifyingGlassIcon, {
               className: "h-6 w-6",
               strokeWidth: 2,
@@ -180,8 +183,7 @@ export default function Nav({ user, handleLogOut }) {
           </Typography>
 
           <Typography
-            as="a"
-            href="/"
+            onClick={() => navigate("/")}
             className="mr-4 ml-2 flex items-center justify-center grow cursor-pointer py-1.5 font-black text-5xl"
             style={{ fontFamily: "Wine Date" }}
           >

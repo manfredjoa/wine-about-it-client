@@ -5,7 +5,7 @@ import UserInfoCard from "../components/accountInfo/UserInfo";
 
 const user = "";
 
-export default function AccountInfoPage() {
+export default function AccountInfoPage({ user }) {
   const [userInfo, setUserInfo] = useState({});
   const [favorites, setFavorites] = useState([]);
 
@@ -29,7 +29,7 @@ export default function AccountInfoPage() {
       <div className="bg-gray-100 py-4 flex justify-center text-uppercase">
         <div className="max-w-screen-xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center text-uppercase">
-            {userInfo.firstName}'s Account
+            {user.firstName}'s Account
           </h2>
         </div>
       </div>

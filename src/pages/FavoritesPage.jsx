@@ -1,3 +1,4 @@
+import { Typography } from "@material-tailwind/react";
 import WineDetail from "../components/WineDetail";
 import { getWine } from "../api/api";
 import { useEffect, useState } from "react";
@@ -30,9 +31,18 @@ export default function Favorites({ user }) {
   return (
     <div>
       <div>
-        <h1 className="text-5xl font-bold mb-10 font-mono">YOUR WISH LIST</h1>
+        <Typography
+          className="flex items-center text-4xl font-black py-5 pl-5"
+          style={{
+            fontFamily: "Wine Date",
+            color: "rgb(96, 20, 30)",
+            borderBottom: "1px solid rgb(96, 20, 30)",
+          }}
+        >
+          Favorites
+        </Typography>
       </div>
-      <div className="grid grid-cols-4 gap-x-40 gap-y-4 mx-40 pt-32 ">
+      <div className="flex flex-wrap justify-evenly gap-y-8">
         {wines.map((wine, index) => (
           <div className="wine-container" key={index}>
             <WineDetail wine={wine} />

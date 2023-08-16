@@ -1,18 +1,35 @@
 export default function WineDetailShopping({ itemInfo }) {
   return (
-    <div className="flex flex-col space-y-4">
-      <div className="flex items-center space-x-4 p-4 bg-white shadow-md rounded-md">
+    <div className="flex flex-col">
+      <div
+        className="w-screen flex items-center space-x-4 p-5 bg-gray-100"
+        style={{
+          borderTop: "1px solid rgb(96, 20, 30)",
+          borderBottom: "1px solid rgb(96, 20, 30)",
+          marginTop: "-1px",
+        }}
+      >
         <img
-          className="w-32 h-32 object-cover rounded-full"
+          className="w-32 h-32 object-contain"
           src={itemInfo.img}
           alt={itemInfo.WineName}
         />
-        <div className="flex flex-col">
-          <h3 className="text-2xl font-semibold">{itemInfo.WineName}</h3>
-          <p className="text-lg text-green-500 font-semibold">
-            {itemInfo.Price} USD
+        <div className="flex flex-col justify-between">
+          <h3
+            className="text-2xl font-semibold"
+            style={{ color: "rgb(96, 20, 30)" }}
+          >
+            {itemInfo.WineName}
+          </h3>
+          <p style={{ color: "rgb(96, 20, 30)" }}>
+            {itemInfo.Price} USD / each
           </p>
-          <p className="text-gray-600">Quantity: {itemInfo.quantity}</p>
+          <p style={{ color: "rgb(96, 20, 30)" }}>
+            Quantity: {itemInfo.quantity}
+          </p>
+          <p className="text-green-500 font-semibold">
+            Item Total: {itemInfo.Price * itemInfo.quantity} USD
+          </p>
         </div>
       </div>
     </div>
