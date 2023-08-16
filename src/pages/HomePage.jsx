@@ -4,7 +4,7 @@ import AllWines from "../components/AllWines.jsx";
 import RedWines from "../components/RedWines.jsx";
 import WhiteWines from "../components/WhiteWines.jsx";
 import RoseWines from "../components/RoseWines.jsx";
-import RandomWinesCarousel from "../components/BestSellerCarousel.jsx";
+import RandomWinesCarousel from "../components/WineOfWeekCarousel.jsx";
 import SelectionBanner from "../components/SelectionBanner.jsx";
 import PromoBanner from "../components/PromoBanner.jsx";
 import OurFavoritesBanner from "../components/OurFavoritesBanner.jsx";
