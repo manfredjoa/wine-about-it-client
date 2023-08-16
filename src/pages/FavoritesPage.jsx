@@ -30,7 +30,7 @@ export default function Favorites({ user }) {
     <div className="pb-5">
       <div>
         <Typography
-          className="flex items-center text-4xl font-black py-5 pl-5"
+          className="flex items-center text-4xl font-black py-5 pl-10"
           style={{
             fontFamily: "Wine Date",
             color: "rgb(96, 20, 30)",

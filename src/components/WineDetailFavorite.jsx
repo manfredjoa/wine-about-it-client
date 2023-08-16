@@ -22,8 +22,10 @@ export default function WineDetailFavorite({ wine }) {
         alt={wine.WineName}
         style={{ height: "50vh" }}
       />
-      <Typography>{wine.WineName}</Typography>
-      <Typography>{wine.Price}</Typography>
+      <Typography className="font-black">{wine.WineName}</Typography>
+      <Typography className="font-black text-green-500">
+        ${wine.Price}
+      </Typography>
     </div>
   );
 }

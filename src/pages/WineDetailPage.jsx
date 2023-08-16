@@ -129,7 +129,9 @@ export default function WineDetail({ user }) {
           </PopoverContent>
         </Popover>
 
-        <Typography variant="lead">${wine.Price}</Typography>
+        <Typography variant="lead" className="text-green-500">
+          ${wine.Price}
+        </Typography>
 
         <div className="w-2/5 flex justify-between">
           <Button
