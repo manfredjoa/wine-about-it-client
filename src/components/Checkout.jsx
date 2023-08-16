@@ -54,7 +54,7 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
   };
   const handleRemoveState = () => {
     localStorage.removeItem("persist:root");
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
@@ -214,6 +214,7 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
             Thank you for your order!
           </Typography>
           <Button
+            type="submit"
             onClick={() => {
               navigate("/");
             }}
