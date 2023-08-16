@@ -46,10 +46,7 @@ export default function WineDetail({ user }) {
     const wineId = wine._id;
     try {
       await updateFavorites(user.id, wineId);
-      // Handle success (e.g., show a success message)
-    } catch (error) {
-      // Handle error (e.g., show an error message)
-    }
+    } catch (error) {}
   };
 
   const handleHeart = () => {

@@ -40,6 +40,7 @@ export default function App() {
   const handleLogOut = () => {
     localStorage.removeItem("token");
     setUser(null);
+    navigate("/sign-in");
   };
 
   // drill this down to the sign-in page

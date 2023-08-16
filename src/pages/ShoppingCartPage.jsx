@@ -21,12 +21,8 @@ export default function ShoppingCart({ user }) {
 
     const wineByIdPromise = cartItems.map(getWine);
 
-    console.log(wineByIdPromise);
-
     const fetchedWines = await Promise.all(wineByIdPromise);
     setTheFetchedWines(fetchedWines);
-    console.log(fetchedWines);
-    console.log(theFetchedWines);
   };
 
   const itemsInfo = theFetchedWines.map((wine) => {
