@@ -45,9 +45,20 @@ export default function RegistrationPage(props) {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded shadow-md w-96">
-        <h2 className="text-2xl font-semibold mb-4">Register</h2>
+    <div
+      className="flex justify-center items-center bg-gray-100"
+      style={{ color: "rgb(96, 20, 30)" }}
+    >
+      <div className="bg-white p-8 shadow-md w-96">
+        <h2
+          className="text-4xl font-black pb-5 text-center"
+          style={{
+            fontFamily: "Wine Date",
+            color: "rgb(96, 20, 30)",
+          }}
+        >
+          Registration
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">First Name</label>
@@ -56,7 +67,7 @@ export default function RegistrationPage(props) {
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
-              className="w-full rounded border px-3 py-2"
+              className="w-full border px-3 py-2"
               required
             />
           </div>
@@ -67,7 +78,7 @@ export default function RegistrationPage(props) {
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              className="w-full rounded border px-3 py-2"
+              className="w-full border px-3 py-2"
               required
             />
           </div>
@@ -78,20 +89,20 @@ export default function RegistrationPage(props) {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className="w-full rounded border px-3 py-2"
+              className="w-full border px-3 py-2"
               required
             />
           </div>
           <div className="mb-4">
             <label className="block text-sm font-medium mb-1">
-              Date of Birth(must be 21+ to purchase)
+              Date of Birth (must be 21+ to purchase)
             </label>
             <input
               type="date"
               name="dateOfBirth"
               value={formData.dateOfBirth}
               onChange={handleChange}
-              className="w-full rounded border px-3 py-2"
+              className="w-full border px-3 py-2"
               required
             />
           </div>
@@ -102,7 +113,7 @@ export default function RegistrationPage(props) {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              className="w-full rounded border px-3 py-2"
+              className="w-full border px-3 py-2"
               required
             />
             Password Requirements:
@@ -114,9 +125,9 @@ export default function RegistrationPage(props) {
           </div>
           <button
             type="submit"
-            className="w-full bg-black text-white py-2 rounded hover:bg-red-800"
+            className="w-full bg-black hover:bg-green-500 text-white py-2"
           >
-            Register
+            Create Your Account
           </button>
         </form>
       </div>

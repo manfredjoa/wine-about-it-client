@@ -76,7 +76,7 @@ export default function App() {
           path="/filter/:productType"
           element={<FilterPage user={user} />}
         />
-        <Route path="/account-info" element={<AccountInfoPage />} />
+        <Route path="/account-info" element={<AccountInfoPage user={user} />} />
       </Routes>
       <Footer />
     </div>
