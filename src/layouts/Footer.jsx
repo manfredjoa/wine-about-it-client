@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Footer() {
   const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -9,7 +11,7 @@ export default function Footer() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email submitted:", email);
+    navigate("/development");
   };
 
   return (
@@ -24,12 +26,12 @@ export default function Footer() {
             <div className="flex justify-center">
               <ul className="flex space-x-4 mt-2">
                 <li>
-                  <a href="/about" className="hover:text-gray-400">
+                  <a href="/development" className="hover:text-gray-400">
                     About
                   </a>
                 </li>
                 <li>
-                  <a href="/contact" className="hover:text-gray-400">
+                  <a href="/development" className="hover:text-gray-400">
                     Contact
                   </a>
                 </li>
@@ -61,26 +63,17 @@ export default function Footer() {
             <h3 className="text-lg font-semibold mb-2">Follow Us</h3>
             <ul className="flex space-x-4">
               <li>
-                <a
-                  href="https://www.facebook.com/wineaboutit"
-                  className="hover:text-gray-400"
-                >
+                <a href="development" className="hover:text-gray-400">
                   <i className="fab fa-facebook"></i>
                 </a>
               </li>
               <li>
-                <a
-                  href="https://www.twitter.com/wineaboutit"
-                  className="hover:text-gray-400"
-                >
+                <a href="/development" className="hover:text-gray-400">
                   <i className="fa-brands fa-x-twitter"></i>
                 </a>
               </li>
               <li>
-                <a
-                  href="https://www.instagram.com/wineaboutit"
-                  className="hover:text-gray-400"
-                >
+                <a href="development" className="hover:text-gray-400">
                   <i className="fab fa-instagram"></i>
                 </a>
               </li>

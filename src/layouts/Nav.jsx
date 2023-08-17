@@ -67,7 +67,7 @@ function AccountMenu({ user, handleLogOut }) {
           </MenuItem>
         </Typography>
 
-        <Typography as="a" href="/account-info">
+        <Typography as="a" href="/development">
           <MenuItem
             onClick={closeMenu}
             className={"flex items-center gap-2 rounded"}

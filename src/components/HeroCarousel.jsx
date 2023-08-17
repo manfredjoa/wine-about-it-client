@@ -21,7 +21,7 @@ export default function HeroCarousel() {
               onClick={() => setActiveIndex(i)}
             />
           ))}
-          <div className="w-screen" style={{ height: "70vh" }}>
+          {/* <div className="w-screen" style={{ height: "70vh" }}>
             <div
               className="w-2/6 h-2/4 absolute flex flex-col items-end justify-evenly pr-10 hover:scale-110 duration-300"
               style={{
@@ -58,7 +58,7 @@ export default function HeroCarousel() {
                 See All Wines
               </Button>
             </div>
-          </div>
+          </div> */}
         </div>
       )}
     >

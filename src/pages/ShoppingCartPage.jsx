@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { getWine } from "../api/api";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Typography } from "@material-tailwind/react";
 import WineDetailShopping from "../components/WineDetailShopping";
 import Checkout from "../components/Checkout";
@@ -11,6 +12,7 @@ export default function ShoppingCart({ user }) {
   const items = useSelector((state) => state.cart.items);
   const [theFetchedWines, setTheFetchedWines] = useState([]);
   const [checkout, setCheckout] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchWines();
@@ -31,7 +33,11 @@ export default function ShoppingCart({ user }) {
   });
 
   const handleCheckout = () => {
-    setCheckout(true);
+    if (user === null) {
+      navigate("/sign-in");
+    } else {
+      setCheckout(true);
+    }
   };
 
   const handleRemoveState = () => {

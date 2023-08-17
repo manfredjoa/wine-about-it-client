@@ -19,22 +19,25 @@ export default function OrderHistory({ user }) {
   return (
     <div>
       {orders ? (
-        <Card className="w-full">
+        <Card className="w-full bg-gray-100" style={{ height: "55vh" }}>
           <div className="bg-black text-white text-center py-6 font-bold text-3xl">
             Order History
           </div>
-          <CardBody>
-            <div className="text-center py-4 text-gray-600">
+          <CardBody className="overflow-scroll">
+            <div className=" py-4 text-gray-600">
               {orders.map((order, index) => (
                 <div key={index}>
-                  <h1>
-                    Order ID: {order._id} Total: ${order.total} Shipping Status:{" "}
-                    {order.isShipped ? " Shipped" : " Pending"}
+                  <h1 style={{ color: "rgb(96, 20, 30)" }}>
+                    Order ID: {order._id} <br />
+                    Cart Quantity: {order.cartQuantity} <br />
+                    Total: ${order.total} <br />
+                    Shipping Status: {order.isShipped
+                      ? " Shipped"
+                      : " Pending"}{" "}
+                    <br />
+                    Delivered: {order.isDelivered ? "Yes" : "No"}
                   </h1>
-                  <h1>
-                    Cart Quantity: {order.cartQuantity} Delivered:{" "}
-                    {order.isDelivered ? "Yes" : "No"}
-                  </h1>
+                  <hr className="w-full h-0.5 bg-gray-300" />
                 </div>
               ))}
             </div>
