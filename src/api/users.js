@@ -52,3 +52,14 @@ export const updateFavorites = async (userId, wineId) => {
     throw error;
   }
 };
+
+export const deleteFavorites = async (userId, wineId) => {
+  try {
+    const resp = await api.patch(`/users/delete/${userId}/favorites`, {
+      favorites: wineId,
+    });
+    return resp.data;
+  } catch (error) {
+    throw error;
+  }
+};

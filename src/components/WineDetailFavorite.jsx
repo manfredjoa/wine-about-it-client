@@ -1,16 +1,32 @@
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Typography, Button } from "@material-tailwind/react";
+import { removeFavorites } from "../redux/features/user/favoritesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteFavorites } from "../api/users";
 
-export default function WineDetailFavorite({ wine }) {
+export default function WineDetailFavorite({ wine, user }) {
+  const favorites = useSelector((state) => state.favorites.inFavorites);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleRemoveFromFavorites = async () => {
+    const wineId = wine._id;
+    try {
+      await deleteFavorites(user.id, wineId);
+      dispatch(removeFavorites());
+      window.location.reload();
+    } catch (error) {}
+  };
+
   return (
     <div className="flex flex-col text-center gap-y-2.5 mt-5 bg-white w-80">
       <div className="flex justify-end">
         <Button
           variant="outlined"
-          className="h-8 w-8 p-1 rounded-none absolute z-50"
+          className="h-8 w-8 p-1 rounded-none absolute z-50 outline-none"
           style={{ color: "rgb(96, 20, 30)", border: "none" }}
-          onClick={() => console.log("hi")}
+          onClick={handleRemoveFromFavorites}
         >
           x
         </Button>

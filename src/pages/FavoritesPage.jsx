@@ -3,8 +3,11 @@ import WineDetailFavorite from "../components/WineDetailFavorite";
 import { getWine } from "../api/api";
 import { useEffect, useState } from "react";
 import { getUser } from "../api/users";
+import { removeFavorites } from "../redux/features/user/favoritesSlice";
+import { useDispatch } from "react-redux";
 
 export default function Favorites({ user }) {
+  const dispatch = useDispatch();
   const [wines, setWines] = useState([]);
 
   const fetchWines = async () => {
@@ -22,6 +25,7 @@ export default function Favorites({ user }) {
       console.log("An error occurred while fetching wines:", error);
     }
   };
+
   useEffect(() => {
     fetchWines();
   }, [user]);
@@ -43,13 +47,7 @@ export default function Favorites({ user }) {
       <div className="flex flex-wrap justify-evenly gap-y-8">
         {wines.map((wine, index) => (
           <div className="wine-container flex" key={index}>
-            <WineDetailFavorite wine={wine} />
-            {/* <Button
-              variant="outlined"
-              className="h-8 w-8 p-1 rounded-none flex items-center justify-center"
-            >
-              x
-            </Button> */}
+            <WineDetailFavorite wine={wine} user={user} />
           </div>
         ))}
       </div>
