@@ -44,12 +44,6 @@ export default function Favorites({ user }) {
         {wines.map((wine, index) => (
           <div className="wine-container flex" key={index}>
             <WineDetailFavorite wine={wine} />
-            {/* <Button
-              variant="outlined"
-              className="h-8 w-8 p-1 rounded-none flex items-center justify-center"
-            >
-              x
-            </Button> */}
           </div>
         ))}
       </div>
