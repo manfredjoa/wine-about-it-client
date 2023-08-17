@@ -30,15 +30,26 @@ export default function HeroCarousel() {
                 backgroundColor: "rgba(255, 255, 255, .9)",
               }}
             >
-              <Typography className="text-right" variant="lead">
+              <Typography
+                className="text-right"
+                variant="lead"
+                style={{
+                  fontFamily: "'HelpUsGiambattista', sans-serif",
+                  color: "rgb(96, 20, 30)",
+                }}
+              >
                 We have more than <br />
-                <strong>1000 wines</strong>
+                <strong>200 wines</strong>
                 <br />
                 from all over the world
               </Typography>
 
               <Button
                 className="rounded-none w-2/5"
+                style={{
+                  fontFamily: "'HelpUsGiambattista', sans-serif",
+                  color: "rgb(96, 20, 30)",
+                }}
                 variant="outlined"
                 onClick={() => {
                   navigate("/filter/all");

@@ -33,12 +33,12 @@ export default function Favorites({ user }) {
         <Typography
           className="flex items-center text-4xl font-black py-5 pl-10"
           style={{
-            fontFamily: "Wine Date",
+            fontFamily: "'HelpUsGiambattista', sans-serif",
             color: "rgb(96, 20, 30)",
             borderBottom: "1px solid rgb(96, 20, 30)",
           }}
         >
-          Favorites
+          Favorites ({wines.length})
         </Typography>
       </div>
       <div className="flex flex-wrap justify-evenly gap-y-8">
@@ -48,6 +48,7 @@ export default function Favorites({ user }) {
           </div>
         ))}
       </div>
+      {wines.length === 0 ? <div style={{ height: "43vh" }}></div> : null}
     </div>
   );
 }

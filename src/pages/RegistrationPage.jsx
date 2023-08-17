@@ -53,7 +53,7 @@ export default function RegistrationPage(props) {
         <h2
           className="text-4xl font-black pb-5 text-center"
           style={{
-            fontFamily: "Wine Date",
+            fontFamily: "'HelpUsGiambattista', sans-serif",
             color: "rgb(96, 20, 30)",
           }}
         >

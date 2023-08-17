@@ -4,7 +4,6 @@ let apiUrl;
 
 const apiUrls = {
   production: "https://wine-about-it-d540b94350f1.herokuapp.com/api",
-  // development: "https://wine-about-it-d540b94350f1.herokuapp.com/api",
   development: "http://localhost:4000/api",
 };
 
@@ -25,8 +24,8 @@ const getToken = () => {
 };
 
 // intercepts the request and adds the token to the header
-// this  will do it for very request
-//but I can do specific request if I want to do by adding the header to the request
+// this  will do it for every request
+// but I can do specific request if I want to do by adding the header to the request
 api.interceptors.request.use(
   async function (config) {
     config.headers["Authorization"] = await getToken();
