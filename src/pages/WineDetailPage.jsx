@@ -1,9 +1,13 @@
 import { useParams } from "react-router-dom";
 import { getWine } from "../api/api";
-import { updateFavorites } from "../api/users";
+import { updateFavorites, deleteFavorites } from "../api/users";
 import { useEffect, useState } from "react";
 import { addItems } from "../redux/features/cart/cartSlice.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addFavorites,
+  removeFavorites,
+} from "../redux/features/user/favoritesSlice";
 import {
   Button,
   Typography,
@@ -13,14 +17,23 @@ import {
 } from "@material-tailwind/react";
 
 export default function WineDetail({ user }) {
+  const favorites = useSelector((state) => state.favorites.inFavorites);
+  const favoritesArray = useSelector((state) => state.favorites.allInFavorites);
+  console.log(favoritesArray);
+
   const [wine, setWine] = useState({});
   const [count, setCount] = useState(1);
-  const [heartToggle, setHeartToggle] = useState(false);
+  const [heartToggle, setHeartToggle] = useState();
   const [addToCart, setAddToCart] = useState(false);
   let { id } = useParams();
 
   useEffect(() => {
     fetchWine();
+    if (favoritesArray.includes(id)) {
+      setHeartToggle(true);
+    } else {
+      setHeartToggle(false);
+    }
   }, []);
 
   async function fetchWine() {
@@ -41,22 +54,36 @@ export default function WineDetail({ user }) {
   };
 
   const dispatch = useDispatch();
+  const wineId = wine._id;
 
   const handleAddToFavorites = async () => {
-    const wineId = wine._id;
     console.log(wineId);
     console.log(user.id);
+
     try {
       await updateFavorites(user.id, wineId);
     } catch (error) {}
   };
 
+  const handleRemoveFromFavorites = async () => {
+    const wineId = wine._id;
+    console.log(wineId);
+    console.log(user.id);
+    try {
+      await deleteFavorites(user.id, wineId);
+    } catch (error) {}
+  };
+
   const handleHeart = () => {
-    // pop up utilizing use state toggle and favorite/unfavorite functions
-    // if (heartToggle) {
-    // removefromfavorites
-    // } else { handleAddToFavorites() }
-    handleAddToFavorites();
+    if (heartToggle) {
+      handleRemoveFromFavorites();
+      dispatch(removeFavorites(wineId));
+      console.log(favoritesArray);
+    } else {
+      handleAddToFavorites();
+      dispatch(addFavorites(wineId));
+      console.log(favoritesArray);
+    }
     setHeartToggle(!heartToggle);
   };
 
@@ -95,12 +122,11 @@ export default function WineDetail({ user }) {
           <strong>Product Type</strong>: {wine.ProductType}
         </Typography>
 
-        {/* onClick does not work inside Popover unfortunately */}
         <Popover placement="right">
           <PopoverHandler onClick={handleHeart}>
             {!heartToggle ? (
               <button
-                onClick={handleHeart}
+                // onClick={handleHeart}
                 class=" w-11 middle none center flex items-center rounded-lg p-3 font-sans text-xs font-bold uppercase text-black-500 transition-all hover:bg-black-500/10 active:bg-black-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 data-ripple-dark="true"
               >
@@ -109,21 +135,29 @@ export default function WineDetail({ user }) {
             ) : (
               <div className="flex items-center">
                 <button
-                  onClick={handleHeart}
+                  // onClick={handleHeart}
                   class=" w-11 middle none center flex items-center rounded-lg p-3 font-sans text-xs font-bold uppercase text-red-700 transition-all hover:bg-red-700/10 active:bg-red-700/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                   data-ripple-dark="true"
                 >
                   <i class="fas fa-heart text-lg leading-none"></i>
                 </button>
-                <Typography>Added to favorites</Typography>
+                {/* <Typography>Added to favorites</Typography> */}
               </div>
             )}
           </PopoverHandler>
-          <PopoverContent>
-            <Typography style={{ color: "rgb(96, 20, 30)" }}>
-              Added to favorites
-            </Typography>
-          </PopoverContent>
+          {!heartToggle ? (
+            <PopoverContent>
+              <Typography style={{ color: "rgb(96, 20, 30)" }}>
+                Added to favorites
+              </Typography>
+            </PopoverContent>
+          ) : (
+            <PopoverContent>
+              <Typography style={{ color: "rgb(96, 20, 30)" }}>
+                Removed from favorites
+              </Typography>
+            </PopoverContent>
+          )}
         </Popover>
 
         <Typography variant="lead" className="text-green-500">

@@ -22,6 +22,7 @@ export default function Favorites({ user }) {
       console.log("An error occurred while fetching wines:", error);
     }
   };
+
   useEffect(() => {
     fetchWines();
   }, [user]);
@@ -43,7 +44,7 @@ export default function Favorites({ user }) {
       <div className="flex flex-wrap justify-evenly gap-y-8">
         {wines.map((wine, index) => (
           <div className="wine-container flex" key={index}>
-            <WineDetailFavorite wine={wine} />
+            <WineDetailFavorite wine={wine} user={user} />
           </div>
         ))}
       </div>

@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from "react";
 import OrderHistory from "../components/accountInfo/OrderHistory";
 import Favorites from "../components/accountInfo/Favorites";
 import UserInfoCard from "../components/accountInfo/UserInfo";
