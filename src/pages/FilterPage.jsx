@@ -62,7 +62,10 @@ export default function FilterPage() {
     <div className="bg-gray-100 pb-10">
       <Typography
         className="text-4xl font-black pl-14 pt-10"
-        style={{ fontFamily: "Wine Date", color: "rgb(96, 20, 30)" }}
+        style={{
+          fontFamily: "'HelpUsGiambattista', sans-serif",
+          color: "rgb(96, 20, 30)",
+        }}
       >
         {(productType === "red" && `Red Wines (${wine.length})`) ||
           (productType === "white" && `White Wines (${wine.length})`) ||
@@ -78,7 +81,10 @@ export default function FilterPage() {
           <Button
             className="rounded-none"
             onClick={handleAToZ}
-            style={{ backgroundColor: "rgb(96, 20, 30)" }}
+            style={{
+              backgroundColor: "rgb(96, 20, 30)",
+              fontFamily: "'HelpUsGiambattista', sans-serif",
+            }}
           >
             A - Z
           </Button>
@@ -86,7 +92,10 @@ export default function FilterPage() {
           <Button
             className="rounded-none"
             onClick={handleLeastToMost}
-            style={{ backgroundColor: "rgb(96, 20, 30)" }}
+            style={{
+              backgroundColor: "rgb(96, 20, 30)",
+              fontFamily: "'HelpUsGiambattista', sans-serif",
+            }}
           >
             $ - $$$
           </Button>
@@ -94,7 +103,10 @@ export default function FilterPage() {
           <Button
             className="rounded-none"
             onClick={handleMostToLeast}
-            style={{ backgroundColor: "rgb(96, 20, 30)" }}
+            style={{
+              backgroundColor: "rgb(96, 20, 30)",
+              fontFamily: "'HelpUsGiambattista', sans-serif",
+            }}
           >
             $$$ - $
           </Button>

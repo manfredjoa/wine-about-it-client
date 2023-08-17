@@ -173,7 +173,7 @@ export default function Nav({ user, handleLogOut }) {
         {/* ==================== */}
         <div className="flex" style={{ color: "rgb(96, 20, 30)" }}>
           <Typography
-            onClick={() => navigate("/filter/all")}
+            onClick={() => navigate("/development")}
             className="flex items-center w-1/6"
           >
             {createElement(MagnifyingGlassIcon, {
@@ -221,7 +221,10 @@ export default function Nav({ user, handleLogOut }) {
           id="all"
           variant="text"
           onClick={handleProductTypeFilter}
-          style={{ color: "rgb(96, 20, 30)" }}
+          style={{
+            color: "rgb(96, 20, 30)",
+            fontFamily: "'HelpUsGiambattista', sans-serif",
+          }}
         >
           All Wines
         </Button>
@@ -230,7 +233,10 @@ export default function Nav({ user, handleLogOut }) {
           id="red"
           variant="text"
           onClick={handleProductTypeFilter}
-          style={{ color: "rgb(96, 20, 30)" }}
+          style={{
+            color: "rgb(96, 20, 30)",
+            fontFamily: "'HelpUsGiambattista', sans-serif",
+          }}
         >
           Red Wines
         </Button>
@@ -239,7 +245,10 @@ export default function Nav({ user, handleLogOut }) {
           id="white"
           variant="text"
           onClick={handleProductTypeFilter}
-          style={{ color: "rgb(96, 20, 30)" }}
+          style={{
+            color: "rgb(96, 20, 30)",
+            fontFamily: "'HelpUsGiambattista', sans-serif",
+          }}
         >
           White Wines
         </Button>
@@ -248,7 +257,10 @@ export default function Nav({ user, handleLogOut }) {
           id="rose"
           variant="text"
           onClick={handleProductTypeFilter}
-          style={{ color: "rgb(96, 20, 30)" }}
+          style={{
+            color: "rgb(96, 20, 30)",
+            fontFamily: "'HelpUsGiambattista', sans-serif",
+          }}
         >
           Rosé Wines
         </Button>

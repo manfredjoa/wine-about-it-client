@@ -6,7 +6,6 @@ import FavoritesPage from "./pages/FavoritesPage.jsx";
 import RegistrationPage from "./pages/RegistrationPage.jsx";
 import SignInPage from "./pages/SignInPage.jsx";
 import ShoppingCartPage from "./pages/ShoppingCartPage.jsx";
-import CheckoutPage from "./pages/CheckoutPage.jsx";
 import FilterPage from "./pages/FilterPage.jsx";
 import AccountInfoPage from "./pages/AccountInfoPage.jsx";
 import Nav from "./layouts/Nav.jsx";
@@ -17,12 +16,12 @@ import { useNavigate } from "react-router-dom";
 import { loginUser } from "./api/users.js";
 import { useSelector, useDispatch } from "react-redux";
 import { addUserId } from "./redux/features/cart/cartSlice.js";
+import Development from "./components/Development.jsx";
 
 export default function App() {
   const [user, setUser] = useState(null);
   const cartUserId = useSelector((state) => state.cart.userId);
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
 
   // page refresh App.js will check for token
@@ -31,8 +30,6 @@ export default function App() {
       const user = await verifyUser();
       user ? setUser(user) : setUser(null);
       dispatch(addUserId(user.id));
-
-      console.log(user);
     };
     fetchUser();
   }, []);
@@ -42,15 +39,6 @@ export default function App() {
     setUser(null);
     navigate("/sign-in");
   };
-
-  // drill this down to the sign-in page
-  // const handleSignIn = async (formData) => {
-  //   const user = await loginUser(formData);
-  //   setUser(user);
-
-  //   navigate("/");
-  //   console.log("I called the useEffect in App.js");
-  // };
 
   return (
     <div className="bg-gray-100">
@@ -72,12 +60,12 @@ export default function App() {
           path="/shopping-cart"
           element={<ShoppingCartPage user={user} />}
         />
-        {/* <Route path="/checkout" element={<CheckoutPage user={user} />} /> */}
         <Route
           path="/filter/:productType"
           element={<FilterPage user={user} />}
         />
         <Route path="/account-info" element={<AccountInfoPage user={user} />} />
+        <Route path="/development" element={<Development />} />
       </Routes>
       <Footer />
     </div>

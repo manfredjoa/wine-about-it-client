@@ -17,15 +17,15 @@ import {
 } from "@material-tailwind/react";
 
 export default function WineDetail({ user }) {
-  const favorites = useSelector((state) => state.favorites.inFavorites);
   const favoritesArray = useSelector((state) => state.favorites.allInFavorites);
-  console.log(favoritesArray);
 
   const [wine, setWine] = useState({});
   const [count, setCount] = useState(1);
   const [heartToggle, setHeartToggle] = useState();
   const [addToCart, setAddToCart] = useState(false);
+  const dispatch = useDispatch();
   let { id } = useParams();
+  const wineId = wine._id;
 
   useEffect(() => {
     fetchWine();
@@ -53,13 +53,7 @@ export default function WineDetail({ user }) {
     }
   };
 
-  const dispatch = useDispatch();
-  const wineId = wine._id;
-
   const handleAddToFavorites = async () => {
-    console.log(wineId);
-    console.log(user.id);
-
     try {
       await updateFavorites(user.id, wineId);
     } catch (error) {}
@@ -67,8 +61,6 @@ export default function WineDetail({ user }) {
 
   const handleRemoveFromFavorites = async () => {
     const wineId = wine._id;
-    console.log(wineId);
-    console.log(user.id);
     try {
       await deleteFavorites(user.id, wineId);
     } catch (error) {}
@@ -78,11 +70,9 @@ export default function WineDetail({ user }) {
     if (heartToggle) {
       handleRemoveFromFavorites();
       dispatch(removeFavorites(wineId));
-      console.log(favoritesArray);
     } else {
       handleAddToFavorites();
       dispatch(addFavorites(wineId));
-      console.log(favoritesArray);
     }
     setHeartToggle(!heartToggle);
   };
@@ -91,11 +81,15 @@ export default function WineDetail({ user }) {
     const { _id, Price } = wine;
     dispatch(addItems({ id: _id, price: Price, quantity: count }));
     setAddToCart(true);
-    console.log(_id, Price, count);
   };
 
   return (
-    <div className="flex flex-row" style={{ color: "rgb(96, 20, 30)" }}>
+    <div
+      className="flex flex-row"
+      style={{
+        color: "rgb(96, 20, 30)",
+      }}
+    >
       <div
         className="w-2/4 flex justify-center items-center"
         style={{ height: "80vh" }}
@@ -112,21 +106,25 @@ export default function WineDetail({ user }) {
         className="flex flex-col w-2/4 justify-evenly py-5 pr-5"
         style={{ height: "80vh" }}
       >
-        <Typography variant="h3">{wine.WineName}</Typography>
+        <Typography
+          variant="h3"
+          style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+        >
+          {wine.WineName}
+        </Typography>
 
         <Typography>
           <img src={wine.flag} alt="Flag" className="" />
         </Typography>
 
-        <Typography>
+        <Typography style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}>
           <strong>Product Type</strong>: {wine.ProductType}
         </Typography>
 
         <Popover placement="right">
-          <PopoverHandler onClick={handleHeart}>
+          <PopoverHandler className="w-11" onClick={handleHeart}>
             {!heartToggle ? (
               <button
-                // onClick={handleHeart}
                 class=" w-11 middle none center flex items-center rounded-lg p-3 font-sans text-xs font-bold uppercase text-black-500 transition-all hover:bg-black-500/10 active:bg-black-500/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 data-ripple-dark="true"
               >
@@ -135,26 +133,34 @@ export default function WineDetail({ user }) {
             ) : (
               <div className="flex items-center">
                 <button
-                  // onClick={handleHeart}
                   class=" w-11 middle none center flex items-center rounded-lg p-3 font-sans text-xs font-bold uppercase text-red-700 transition-all hover:bg-red-700/10 active:bg-red-700/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                   data-ripple-dark="true"
                 >
                   <i class="fas fa-heart text-lg leading-none"></i>
                 </button>
-                {/* <Typography>Added to favorites</Typography> */}
               </div>
             )}
           </PopoverHandler>
           {!heartToggle ? (
             <PopoverContent>
-              <Typography style={{ color: "rgb(96, 20, 30)" }}>
-                Added to favorites
+              <Typography
+                style={{
+                  color: "rgb(96, 20, 30)",
+                  fontFamily: "'HelpUsGiambattista', sans-serif",
+                }}
+              >
+                Removed from favorites
               </Typography>
             </PopoverContent>
           ) : (
             <PopoverContent>
-              <Typography style={{ color: "rgb(96, 20, 30)" }}>
-                Removed from favorites
+              <Typography
+                style={{
+                  color: "rgb(96, 20, 30)",
+                  fontFamily: "'HelpUsGiambattista', sans-serif",
+                }}
+              >
+                Added to favorites
               </Typography>
             </PopoverContent>
           )}
@@ -176,6 +182,7 @@ export default function WineDetail({ user }) {
           <Button
             variant="outlined"
             className="rounded-none pointer-events-none"
+            style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
           >
             {count}
           </Button>
@@ -189,30 +196,31 @@ export default function WineDetail({ user }) {
           </Button>
         </div>
 
-        {/* onClick does not work inside Popover unfortunately */}
-        {/* <Popover placement="right">
-          <PopoverHandler> */}
-        <div className="flex items-center">
-          <Button
-            onClick={handleAddToCart}
-            variant="outlined"
-            className="rounded-none w-2/5"
-          >
-            Add to Cart
-          </Button>
-          {addToCart ? (
-            <Typography className="ml-5">Added {count} to cart</Typography>
-          ) : null}
-        </div>
-        {/* </PopoverHandler>
+        <Popover>
+          <PopoverHandler onClick={handleAddToCart}>
+            <div className="flex items-center">
+              <Button
+                variant="outlined"
+                className="rounded-none w-2/5"
+                style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+              >
+                Add to Cart
+              </Button>
+            </div>
+          </PopoverHandler>
           <PopoverContent>
-            <Typography style={{ color: "rgb(96, 20, 30)" }}>
-              Added {count} {wine.wineName} to cart
-            </Typography> */}
-        {/* </PopoverContent>
-        </Popover> */}
+            <Typography
+              style={{
+                color: "rgb(96, 20, 30)",
+                fontFamily: "'HelpUsGiambattista', sans-serif",
+              }}
+            >
+              Added {count} to cart
+            </Typography>
+          </PopoverContent>
+        </Popover>
 
-        <Typography>
+        <Typography style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}>
           <strong>Description</strong>: {wine.Description}
         </Typography>
       </div>

@@ -1,6 +1,9 @@
 import { Card, CardBody, Typography, Button } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 export default function UserInfo({ user }) {
+  const navigate = useNavigate();
+
   if (!user) {
     return <div>No user information available.</div>;
   }
@@ -37,14 +40,14 @@ export default function UserInfo({ user }) {
         </div>
       </CardBody>
       <div className="flex justify-center">
-          <Button
-            onClick={() => console.log('Edit Info clicked')}
-            className="bg-black hover:bg-red-800 border-none rounded-none text-white"
-            ripple="light"
-          >
-            Edit Info
-          </Button>
-        </div>
+        <Button
+          onClick={() => navigate("/development")}
+          className="bg-black hover:bg-red-800 border-none rounded-none text-white"
+          ripple="light"
+        >
+          Edit Info
+        </Button>
+      </div>
     </Card>
   );
 }

@@ -46,8 +46,9 @@ export default function ShoppingCart({ user }) {
           <Typography
             className="text-4xl py-5 pl-10 font-black"
             style={{
-              fontFamily: "Wine Date",
+              fontFamily: "'HelpUsGiambattista', sans-serif",
               color: "rgb(96, 20, 30)",
+              borderBottom: "1px solid rgb(96, 20, 30)",
             }}
           >
             Shopping Cart
@@ -64,10 +65,13 @@ export default function ShoppingCart({ user }) {
               style={{ color: "rgb(96, 20, 30)" }}
             >
               {items.length === 0 ? (
-                <div style={{ height: "25vh" }}></div>
+                <div style={{ height: "23vh" }}></div>
               ) : null}
 
-              <Typography className="text-lg font-semibold">
+              <Typography
+                className="text-lg font-semibold"
+                style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+              >
                 Cart Quantity: {cartQuantity}
               </Typography>
 
@@ -82,6 +86,7 @@ export default function ShoppingCart({ user }) {
               <Button
                 variant="outlined"
                 className="rounded-none w-32 mr-5"
+                style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
                 onClick={handleRemoveState}
               >
                 Clear Cart
@@ -89,6 +94,7 @@ export default function ShoppingCart({ user }) {
               <Button
                 variant="outlined"
                 className="rounded-none w-32"
+                style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
                 onClick={handleCheckout}
               >
                 Checkout

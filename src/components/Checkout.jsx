@@ -67,12 +67,16 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
             style={{ color: "rgb(96, 20, 30)" }}
             onSubmit={handleSubmit}
           >
-            <Typography>
+            <Typography
+              style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+            >
               <label>First Name:</label>
               <br />
               <input
                 className="w-80 bg-gray-100 px-2 outline-none"
-                style={{ border: "1px solid rgb(96, 20, 30)" }}
+                style={{
+                  border: "1px solid rgb(96, 20, 30)",
+                }}
                 type="text"
                 name="firstName"
                 value={formData.firstName}
@@ -80,12 +84,16 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
               />
             </Typography>
 
-            <Typography>
+            <Typography
+              style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+            >
               <label>Last Name:</label>
               <br />
               <input
                 className="w-80 bg-gray-100 px-2 outline-none"
-                style={{ border: "1px solid rgb(96, 20, 30)" }}
+                style={{
+                  border: "1px solid rgb(96, 20, 30)",
+                }}
                 type="text"
                 name="lastName"
                 value={formData.lastName}
@@ -93,7 +101,9 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
               />
             </Typography>
 
-            <Typography>
+            <Typography
+              style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+            >
               <label>Street Address:</label>
               <br />
               <input
@@ -106,7 +116,9 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
               />
             </Typography>
 
-            <Typography>
+            <Typography
+              style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+            >
               <label>Address Line 2:</label>
               <br />
               <input
@@ -120,7 +132,9 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
             </Typography>
 
             <div className="w-80 flex flex-row justify-between">
-              <Typography>
+              <Typography
+                style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+              >
                 <label>City:</label>
                 <br />
                 <input
@@ -133,7 +147,9 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
                 />
               </Typography>
 
-              <Typography>
+              <Typography
+                style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+              >
                 <label>State:</label>
                 <br />
                 <input
@@ -147,7 +163,9 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
               </Typography>
             </div>
 
-            <Typography>
+            <Typography
+              style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+            >
               <label>Postal Code:</label>
               <br />
               <input
@@ -160,7 +178,9 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
               />
             </Typography>
 
-            <Typography>
+            <Typography
+              style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+            >
               <label>Credit Card Number:</label>
               <br />
               <input
@@ -174,7 +194,9 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
             </Typography>
 
             <div className="w-80 flex flex-row justify-between">
-              <Typography>
+              <Typography
+                style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+              >
                 <label>Expiration:</label>
                 <br />
                 <input
@@ -187,7 +209,9 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
                 />
               </Typography>
 
-              <Typography>
+              <Typography
+                style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+              >
                 <label>CVC:</label>
                 <br />
                 <input
@@ -210,16 +234,30 @@ export default function Checkout({ cartQuantity, cartTotal, itemsInfo, user }) {
           </form>
         </div>
       ) : (
-        <div className="flex flex-col">
-          <Typography className="flex justify-center">
+        <div
+          className="flex flex-col justify-evenly items-center"
+          style={{ height: "58vh" }}
+        >
+          <Typography
+            className="text-4xl"
+            style={{
+              fontFamily: "'HelpUsGiambattista', sans-serif",
+              color: "rgb(96, 20, 30)",
+            }}
+          >
             Thank you for your order!
           </Typography>
           <Button
             type="submit"
+            variant="outlined"
             onClick={() => {
               navigate("/");
             }}
-            className="w-40 flex justify-center mx-auto"
+            className="w-40 flex justify-center mx-auto rounded-none"
+            style={{
+              fontFamily: "'HelpUsGiambattista', sans-serif",
+              color: "rgb(96, 20, 30)",
+            }}
           >
             Home
           </Button>

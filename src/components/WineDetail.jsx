@@ -14,8 +14,16 @@ export default function WineDetail({ wine }) {
         alt={wine.WineName}
         style={{ height: "50vh" }}
       />
-      <Typography className="font-black">{wine.WineName}</Typography>
-      <Typography className="font-black text-green-500">
+      <Typography
+        className="font-black"
+        style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+      >
+        {wine.WineName}
+      </Typography>
+      <Typography
+        className="font-black text-green-500"
+        style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+      >
         ${wine.Price}
       </Typography>
     </div>

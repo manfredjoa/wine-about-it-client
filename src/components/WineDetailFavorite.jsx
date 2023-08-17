@@ -23,7 +23,11 @@ export default function WineDetailFavorite({ wine, user }) {
         <Button
           variant="outlined"
           className="h-8 w-8 p-1 rounded-none absolute z-50 outline-none"
-          style={{ color: "rgb(96, 20, 30)", border: "none" }}
+          style={{
+            color: "rgb(96, 20, 30)",
+            border: "none",
+            fontFamily: "'HelpUsGiambattista', sans-serif",
+          }}
           onClick={handleRemoveFromFavorites}
         >
           x
@@ -36,8 +40,16 @@ export default function WineDetailFavorite({ wine, user }) {
         alt={wine.WineName}
         style={{ height: "50vh" }}
       />
-      <Typography className="font-black">{wine.WineName}</Typography>
-      <Typography className="font-black text-green-500">
+      <Typography
+        className="font-black"
+        style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+      >
+        {wine.WineName}
+      </Typography>
+      <Typography
+        className="font-black text-green-500"
+        style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
+      >
         ${wine.Price}
       </Typography>
     </div>
