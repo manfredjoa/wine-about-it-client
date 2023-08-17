@@ -7,14 +7,14 @@ export default function PromoBanner() {
         className="flex items-center justify-center text-lg w-1/3 border-r"
         style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
       >
-        Free shipping over $50
+        Free shipping over $100
       </Typography>
 
       <Typography
         className="flex items-center justify-center text-lg w-1/3 border-r"
         style={{ fontFamily: "'HelpUsGiambattista', sans-serif" }}
       >
-        Over 200 Wines in our Collection
+        Over 150 Wines in our Collection
       </Typography>
 
       <Typography
