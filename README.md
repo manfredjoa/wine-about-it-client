@@ -1,6 +1,6 @@
 # 🍷 Wine About It Client 🍷
 
-Welcome to the front-end repository of **Wine About It**, an ecommerce web application where customers can create an account and log in, filter through our selection of wines, save their favorite wines, add wines to their shopping cart, checkout, and have access to order history once an order is placed.
+Welcome to the front-end repository of **[Wine About It](https://wineaboutit.netlify.app/)**, an ecommerce web application where customers can create an account and log in, filter through our selection of wines, save their favorite wines, add wines to their shopping cart, checkout, and have access to order history once an order is placed.
 
 ## Table of Contents
 
@@ -81,10 +81,10 @@ JWT (JSON Web Token)
 
 ## Contributing
 
-Contributions are welcome! If you'd like to contribute to Wine About It, please follow these steps:
+Contributions are welcome! If you'd like to contribute to **Wine About It**, please follow these steps:
 
 - Fork and clone this repository.
-- Run ` npm i` in your terminal to install dependencies.
+- Run `npm i` in your terminal to install dependencies.
 - Create a new branch for your feature by running `git checkout -b feature-name` in your terminal.
 - Run `git push -u origin feature-name` to set the remote branch
 - `git add .` your modifications
