@@ -10,7 +10,7 @@ Welcome to the front-end repository of **Wine About It**, an ecommerce web appli
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
 - [Contributing](#contributing)
-- [Contact](#contact)
+- [Collaborators](#collaborators)
 
 ## Introduction
 
@@ -94,7 +94,7 @@ Contributions are welcome! If you'd like to contribute to Wine About It, please 
 
 Please make sure to thoroughly test your code before submitting a pull request, and make sure to follow the Code of Conduct when contributing to this project.
 
-## Contributors
+## Collaborators
 
 1. Manfred Joa
 
