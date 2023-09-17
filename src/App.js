@@ -13,7 +13,6 @@ import Footer from "./layouts/Footer.jsx";
 import { useState, useEffect } from "react";
 import { verifyUser } from "./api/users.js";
 import { useNavigate } from "react-router-dom";
-import { loginUser } from "./api/users.js";
 import { useSelector, useDispatch } from "react-redux";
 import { addUserId } from "./redux/features/cart/cartSlice.js";
 import Development from "./components/Development.jsx";

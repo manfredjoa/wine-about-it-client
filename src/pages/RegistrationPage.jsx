@@ -40,8 +40,6 @@ export default function RegistrationPage(props) {
     } catch (error) {
       console.error(error);
     }
-
-    console.log(formData);
   };
 
   return (
