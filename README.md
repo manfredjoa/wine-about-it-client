@@ -10,6 +10,7 @@ Welcome to the client-side repository of **[Wine About It](https://wineaboutit.n
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
 - [Endpoints](#endpoints)
+- [Known Issues](#known-issues)
 - [Next Steps](#next-steps)
 - [Contributing](#contributing)
 - [Collaborators](#collaborators)
@@ -103,7 +104,21 @@ JWT (JSON Web Token)
 | /filter/rose    | View rosé wines            |
 | /filter/:wineId | View a specific wine by ID |
 
+## Known Issues
+
+- Responsive design is not fully implemented
+- Order History card is not formatted correctly when there is no order history
+- Favorites are not displaying correctly at the /account-info endpoint
+- The popover message for adding wines to your favorites and shopping cart needs to be cliked out of in order for the correct message to display
+
 ## Next Steps
+
+- Fix known issues
+- Search Bar function where you can search for a specific wine by name
+- Add a "Reviews" section where users can leave reviews for wines
+- Add a "Contact Us" section where users can send us a message
+- Add ability to adjust quantity of wines in shopping cart (you can currently only clear the entire cart)
+- Add ability to update account information
 
 ## Contributing
 
