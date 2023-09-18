@@ -1,6 +1,6 @@
 # 🍷 Wine About It Client 🍷
 
-Welcome to the front-end repository of **[Wine About It](https://wineaboutit.netlify.app/)**, an ecommerce web application where customers can create an account and log in, filter through our selection of wines, save their favorite wines, add wines to their shopping cart, checkout, and have access to order history once an order is placed.
+Welcome to the client-side repository of **[Wine About It](https://wineaboutit.netlify.app/)**, an ecommerce web application built in a one week timeline, utilizing a MERN stack (MongoDB, Express.js, React.js, Node.js).
 
 ## Table of Contents
 
@@ -9,12 +9,14 @@ Welcome to the front-end repository of **[Wine About It](https://wineaboutit.net
 - [Installation](#installation)
 - [Usage](#usage)
 - [Technologies Used](#technologies-used)
+- [Endpoints](#endpoints)
+- [Next Steps](#next-steps)
 - [Contributing](#contributing)
 - [Collaborators](#collaborators)
 
 ## Introduction
 
-This repository contains the front-end code for the Wine About It application. Wine About It is designed to provide users with a platform to discover and share their favorite wines, write reviews, and interact with fellow wine lovers, while being able to purchse their favorite wines.
+This repository contains the front-end code for the **Wine About It** application. Wine About It is designed to enable customers to create an account and log in, filter through our selection of wines, save their favorite wines, add wines to their shopping cart, checkout, and have access to order history once an order is placed.
 
 ## Features
 
@@ -79,6 +81,30 @@ Styling and layout design
 
 JWT (JSON Web Token)
 
+## Endpoints
+
+### Users
+
+| Endpoint       | Description                                                               |
+| -------------- | ------------------------------------------------------------------------- |
+| /sign-in       | Sign in to your account                                                   |
+| /registration  | Register for an account                                                   |
+| /account-info  | View your account information, including your order history and favorites |
+| /favorites     | View your favorite wines                                                  |
+| /shopping-cart | View your shopping cart                                                   |
+
+### Wines
+
+| Endpoint        | Description                |
+| --------------- | -------------------------- |
+| /filter/all     | View all wines             |
+| /filter/red     | View red wines             |
+| /filter/white   | View white wines           |
+| /filter/rose    | View rosé wines            |
+| /filter/:wineId | View a specific wine by ID |
+
+## Next Steps
+
 ## Contributing
 
 Contributions are welcome! If you'd like to contribute to **Wine About It**, please follow these steps:
@@ -117,3 +143,5 @@ Please make sure to thoroughly test your code before submitting a pull request, 
 
 - [GitHub](https://github.com/agilani14)
 - [LinkedIn](https://www.linkedin.com/in/aneesa-gilani/)
+
+&copy; 2023 Wine About It
