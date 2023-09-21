@@ -109,7 +109,7 @@ JWT (JSON Web Token)
 - Responsive design is not fully implemented
 - Order History card is not formatted correctly when there is no order history
 - Favorites are not displaying correctly at the /account-info endpoint
-- The popover message for adding wines to your favorites and shopping cart needs to be cliked out of in order for the correct message to display
+- The popover message for adding wines to your favorites and shopping cart needs to be clicked out of in order for the correct message to display
 
 ## Next Steps
 
